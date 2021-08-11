@@ -1,0 +1,20 @@
+To do:
+ - extract feature (extract_feature_DB.py, save_feature_matrices_DB.py)
+      - tag list
+	  -word list
+	  -pos list (stanfordparser)
+	  - save feature matrice
+  - DeepDisfluencyTagger()
+		-change input directory
+		- change pos tagger
+		
+checking data.csv
+that 's <hard> [/] a hard one to--check tags
+issues:
+Kempler/d5.cha xxx
+Kempler/d5.cha [%
+Kempler/d6.cha [% 173915_180519
+Kempler/d10.cha uh was missing
+Kempler/d6.cha 112449_114139 *PAR:	<they> [/] I do !
+Kempler/d6.cha 163263_164916
+Kempler/d6cookie.cha 87267_90877

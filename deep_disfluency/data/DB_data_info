@@ -1,0 +1,102 @@
+***********************
+WLS en corpora:
+The WLS is a large-scale, long-term, longitudinal study of a random sample
+ of men and women who graduated from Wisconsin high schools in 1957. 
+ Data on these participants were collected five more times through 2011. The data here are a small subset of tasks from the 2004 (sometimes labeled as 2003) and 2011 testing that are relevant to the other language tasks used in DementiaBank corpora. The large majority of 
+these participants would be considered healthy controls.
+participants: 1369
+age>=60
+**********************
+English hopkins PPA:
+For the participants in this corpus, diagnosis of Primary Progressive Aphasia 
+was based on primary language deficit out of proportion to other cognitive impairment, 
+that has been progressive and the main impairment for at least 1 year. Diagnosis was based
+ on cognitive and language testing and neurological examination and history, 
+ at Johns Hopkins Hospital, along with imaging and lab tests to exclude alternative diagnoses.
+ Potential participants were excluded based on evidence of other diagnosis (e.g, tumor, strokes,
+ encephalitis on MRI) or other tests that could explain the progressive language deficit, 
+ other than neurodegenerative disease.
+
+25 of the 36 participants were seen once; 9 were seen twice; 1 was seen 3 times; and 1 was seen 4 times. 
+23 participants were females; 13 were males
+
+Tests include:
+
+NACC battery – oral nouns, written nouns, oral verbs, written verbs
+BNT (short)
+Hopkins Assessment of Naming Actions
+BERNDT – noun score, verb score
+Cookie Theft Picture Description – written score (from BDAE)
+All transcripts include a Cinderella story telling. Some also include 
+a picture description (circus, see below), counting forward to 30, 
+counting backward from 30, and The Grandfather Passage.
+*********************
+Depaul corpus
+
+Discourse samples were collected from a 66-year old female participant (DOB March 21, 1950) with semantic PPA. She was a participant in the aphasia group program at the University of Wisconsin-Whitewater. She was diagnosed with PPA by a neurologist in 2013, and reported worsening symptoms in 2015. Prior to the diagnosis, she had worked as a high school math teacher. The samples were collected by a graduate student clinician. The first sample (November 2016) is audio only, the second sample (January 2017) is video. WAB-R AQ test results (see below) were consistent with Anomic aphasia at both times.
+
+Both data sets include these discourse tasks (from the AphasiaBank discourse protocol):
+Section I: Free Speech Samples
+a. Stroke story and coping
+b. Important event
+Section II: Picture Descriptions
+a. Broken window
+b. Refused umbrella
+c. Cat rescue
+Section III: Story Narrative
+a. Cinderella story
+
+WAB-R Results	      Time 1	      Time 2
+Spontaneous Speech	      17	      18
+Auditory Verbal Comprehension	      8.05	      8.3
+Repetition	      9.2	      8.2
+Naming	      2.4	      3.5
+Aphasia Quotient	      73.3	      76
+
+***********************
+Kempler Corpus
+These files contain conversations between the participant and the investigator. Some also include a Cookie Theft picture description. All participants were diagnosed with Alzheimer's dementia.
+
+Participant	Age	Education	MMSE	Sex	Occupation
+D1	74	11 yrs	--	M	butcher
+D4	82	BA	15	F	--
+D5	--	--	6	M	--
+D6	87	--	15	F	elem sch teacher
+D9	65	11 yrs	14	M	--
+D10	82	8th grade	17	M	wood carver
+******************
+Holland Corpus
+
+These 2 videos were part of Telerounds, which are educational Grand Rounds dealing with different clinical speech and language problems of neurogenic origin. They are presented by national and international experts. Audrey Holland (University of Arizona) made these videos available.
+
+01a -- 62 year old man with mild Alzheimer's Disease
+02a -- continuation of 01a followed by a 78 year old woman with more advanced Alzheimer's Disease
+
+***********************
+Lanzi corpus
+These files contain semi-structured interviews examining the continued use of preferred External Memory Aids (EMAs) and experiences of individuals with mild neurocognitive disorder (mNCD) who completed a group intervention 1.5 years prior to the interviews.
+
+Participants completed six weekly group-treatment sessions. During the sessions, three categories (i.e., calendars, timers, and personal information) of EMAs were taught. Two non-congruent sessions were dedicated to each category. Treatment sessions included the three-step training program to teach the EMAs (Sohlberg & Mateer, 1989): exploration of aids, role-play, and instructions for home practice. Participant demographics appear in the table below. All six participants passed hearing and vision screenings.
+
+Researchers used a questionnaire of 11 open-ended questions to guide the semi-structured interview 1.5 years post-treatment. The interview was completed individually during one session, lasting approximately 45 minutes. Question themes included: continued EMA use, metamemory, memory ability, treatment experiences, and strategy use. The interview questions were:
+
+What were the three categories of EMAs that were trained during the treatment? (If incorrect, examiner states “calendar, timer and personal information”.)
+Do you still use any of the external memory aids trained? If so, which ones?
+Why do you no longer use (state the aids)?
+Have you integrated using any of the aids into your daily routine? For example, every morning you wake up and look at your calendar.
+How do you feel your memory has changed since treatment?
+What daily tasks are difficult for you to complete due to your memory?
+Are you concerned about your memory and/or talked with any medical professionals about your memory?
+How would you benefit if you received sessions following treatment to review the strategies taught to you?
+What ways was group treatment beneficial for you?
+Do you use any strategies that were not trained during treatment?
+Is there anything else you would like to share?
+Note: Not all of the media files have yet been transcribed.
+
+Participant	Group	Age	Education	MoCa score
+1	1	88	12	24	
+2	1	72	14	25	
+3	1	86	12	22	
+4	2	75	12	24	
+5	2	75	14	25	
+6	2	74	14	21

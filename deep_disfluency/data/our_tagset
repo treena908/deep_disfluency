@@ -1,0 +1,84 @@
+disfleuncy in a sentence is structured with three parts reparadum, integrenum and repair.
+
+
+
+
+Following tag set is used to label each word:
+
+<e/> - an edit term word, not necessarily inside a repair structure
+
+<rms id=“N”/> - reparandum start word for repair with ID number N (ID indicate the last word index of the reparandum part)
+
+<rm id=“N”/> - mid-reparandum word for repair N
+
+<i id=“N”/> - interregnum word for repair N
+
+<rps id=“N”/> - repair onset word for repair N (where N is normally the 0-indexed position in the sequence)
+
+<rp id=“N”/> - mid-repair word for repair N
+
+<rpnrep id=“N”/> - repair end word for  repetition repair N
+
+<rpndel id=“N”/> - repair end word for a delete repair N
+<inc> - label for the last token of the sentence if that utterance to be incomplete Trailing Off (+… )
+Remark:
+1. phonological fragment, fillers, incomplete words starting with '&' tag with <e/> term not 
+necessarily inside a repair structure.
+2. Semantic errors [* s]:
+s:r related word, target known, as in mother for father
+s:ur unrelated word, target known, as in comb for umbrella
+s:uk word, unknown target, as in “I go wolf”
+s:per perseveration, as in “he kicked the ball through the ball”
+
+but this type error is dfficult to handle as it needs knowledgebase or topic. not including.
+
+
+
+We are using same tag as the base paper (EACL'17) excluding one tag.
+
+
+
+Example:
+word rep. and ret.
+1.       and &uh &uh   the [/]    the [//] outside the window there's a path leading to a garage it looks like 
+=new_tag: <f> <e> <e> <rms id=4> <rps id=4,rpnrep id=4, rms id=5> <rps id=5, rpndel id=5> ...(rest are fluent)
+word and phrase ret.
+2.         the &m &uh mother is [//] &um <I'm                                       assuming    it's      a         mother> [//] is stepping in it .
+=new_tag:	<f> <f> <e> <f> <rms id=6> <i id=6, e> <rps id=6, rpndel id=6, rms id=11> <rm id=11> <rm id=11><rm id=11><rm id=11> <rps id=11, rpndel=11><f><f><f><f>
+
+
+Remarks
+
+#In the paper, they have emsasized o repair part accuracy. We need to emphasize on both reparandum and repair.
+Will discuss in the meeting. 
+#generating this tagset from the model traing our own dataset, 
+we can decode word and phrase level rep. and ret. and annotate utterance as per CHAT protocol.
+#we will first train the non-incremental disfluency only model on presegmented utterance of transcript.
+# for training data, we can use Pitt corpus (all the corpora, fluency task, recall etc) and other talkbank
+corpus (lanzi, kemler, depaul), as all of them are annotated with disfluency. that will give us 
+~ 1000 transcripts and audio (added detail about the corpus in DB_data_info.txt).
+
+******
+need to be changed
+1. make another column (cleaned_text_wo_disfluen_marker) where disfluent words will there but not signs.
+actual_text: the children are in [/] in short sleeve &um tops and have sandals.
+cleaned_text_wo_disfluency_marker: the children are in in short sleeve um tops and have sandals
+2. for each column, make another one w/o punctuation. ()
+3. remove xxx token. if any utterance is xxx, skip that utterance (count how many utterances are like
+that.)
+4. some utterance (cleaned_w_disfluency,cleaned_wo_disfluency ) has '+.' symbol. remove that.
+5. some utterance has phonological fragment and symbol '/.' like:
+she's doesn't &ha +//
+
+cleaned_w/wo disfluency should be like: she's doesn't 
+ (remove symbol +//) and phonological fragment &ha.
+6. just keep the fillers like (&um, &umm, &uh, &hm, &hmm like these). otherwise anythink starting with 
+'&' symbol, remove that.
+7. kids are trying to get a &s [x 6] +...
+here &s is a phonological fragment. remove it and cleaned text w oe wo disflency would be:
+cleaned_text: kids are trying to get a
+8.Pitt/Dementia/cookie/018-0.cha
+actual_text: &um <they're grading [* s:uk]> [//] &uh they [/] they are going to &um get &uh [x 3] some cookies from the cookie jar . 
+cleaned_w_disfluency: &um <they 're grading they are going to &um get &uh &uh &uh [x 3] some cookies from the cookie jar .
+'>' symbol of phrase retracing '<they're grading>' is missing.
+the cleaned_text_w_disfluency, should be like: &um <they 're grading> &uh they are going to &um get &uh &uh &uh [x 3] some cookies from the cookie jar .
