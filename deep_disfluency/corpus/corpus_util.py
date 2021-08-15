@@ -79,11 +79,11 @@ def detection_corpus_format(uttRef, words, pos, tags, indices):
             tags[i] = "<f/>"
     final_string = "\t".join(
         [uttRef, indices.pop(0), words.pop(0), pos.pop(0), tags.pop(0)]) + "\n"
-    print len(indices), len(words), len(pos), len(tags)
-    print indices
-    print words
-    print pos
-    print tags
+    # print len(indices), len(words), len(pos), len(tags)
+    # print indices
+    # print words
+    # print pos
+    # print tags
     for i in range(0, len(tags)):
         final_string += "\t".join(["", indices[i],
                                    words[i], pos[i], tags[i]]) + "\n"
