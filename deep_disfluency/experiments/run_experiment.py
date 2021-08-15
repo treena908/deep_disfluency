@@ -1,12 +1,11 @@
-z"""
-Script to run the experiments described in:
 
-Julian Hough and David Schlangen.
-Joint, Incremental Disfluency Detection and
-Utterance Segmentation from Speech.
-EACL 2017.
+# Script to run the experiments described in:
 
-"""
+# Julian Hough and David Schlangen.
+# Joint, Incremental Disfluency Detection and
+# Utterance Segmentation from Speech.
+# EACL 2017.
+
 import sys
 import subprocess
 import os
@@ -35,8 +34,8 @@ range_dir = THIS_DIR + \
 file_divisions_transcripts = [
     ('train', range_dir + '/DB_disf_train_1_ranges.text'),
     # range_dir + '/swbd_disf_train_audio_ranges.text',
-    #('heldout', range_dir + '/DB_disf_heldout_1_ranges.text'),
-   # ('test', range_dir + '/DB_disf_test_1_ranges.text')
+    ('heldout', range_dir + '/DB_disf_heldout_1_ranges.text'),
+   ('test', range_dir + '/DB_disf_test_1_ranges.text')
 ]
 
 
@@ -88,11 +87,11 @@ in the sister directory to the corpusLocation, else assume it is there
 -d boolean, include dialogue act tags in the info
 """
 if create_disf_corpus:
-    print 'Creating corpus...'
+    print('Creating corpus...')
     write_pos_map = True
     for div, divfile in file_divisions_transcripts:
         c = [sys.executable, THIS_DIR +
-             '/../corpus/deep_disfluency_DB_corpus_creator.py',
+             '/../corpus/deep_disfluency_db_corpus_creator.py',
              '-i', THIS_DIR+'/../../DisfluencyProject/',
              '-t', THIS_DIR + '/../data/disfluency_detection/DB/',
              '-f', divfile,
@@ -105,7 +104,7 @@ if create_disf_corpus:
         #     c.append('-pos')
         #     write_pos_map = False  # just call it once
         subprocess.call(c)
-    print 'Finished creating corpus.'
+    print('Finished creating corpus.')
 
 # 3. Run the preprocessing and extraction of features for all files
 """
@@ -138,7 +137,7 @@ audio string, path to open smile for audio features, if None
 no audio extraction.
 """
 if extract_features:
-    print 'Extracting features...'
+    print('Extracting features...')
     tags_created = False
     tagger_trained = False
     for div, divfile in file_divisions_transcripts:
@@ -159,4 +158,4 @@ if extract_features:
             tags_created = True
 
         subprocess.call(c)
-    print 'Finished extracting features.'
+    print('Finished extracting features.')
