@@ -18,7 +18,9 @@ index_map={}
 count_error={}
 count_map={}
 ranges=[]
-test=False
+valid_words=[]
+test=True
+pos_test=True
 def print_tag(wordList, DisfluencytagList,indexList):
     print('****************************************')
     print('final tags')
@@ -33,8 +35,17 @@ def index_mapping(tokens):
     pattern2 = re.compile('\d+\]')
     for i,words in enumerate(tokens):
 
-        if words!='[//]' and words!='[/]' and words!='<' and  words!='<' and  not pattern1.match(words) and not pattern2.match(words):
+        if words!='[//]' and words!='[/]' and words!='<' and  words!='>' and words!=',' and  not pattern1.match(words) and not pattern2.match(words):
             index_map[str(i)] = count
+            if '<' in words:
+                valid_words.append(words[1:])
+            elif '>' in words:
+                valid_words.append(words[:-1])
+            else:
+                valid_words.append(words)
+
+
+
             count+=1
 
     # return map
@@ -178,21 +189,39 @@ def extract_pos(pair,inv_tag,tokens):
   count=0
   jump=False
   for p in pair:
+
       if jump:
           jump=False
           pos_list[len(pos_list)-1]=pos_list[len(pos_list)-1]+p[1]
           count+=1
           continue
-      if p[0]==tokens[count]:
+      if p[0] == ',':
+          continue
+      if p[0]==valid_words[count]:
         pos_list.append(p[1])
         count+=1
       else:
           pattern=re.compile(r"^[a-zA-Z]*[\'][a-zA-Z]+$")
-          if pattern.match(tokens[count]):
+          if pattern.match(valid_words[count]):
               pos_list.append(p[1])
               jump=True
-              continue
+
+
   return pos_list
+def print_anomaly(pos_tag,index_map,tokens):
+    print('index_map')
+    print(len(index_map))
+    print(len(valid_words))
+    print(valid_words)
+    # for key in index_map.keys():
+    #     print(tokens[int(key)])
+    print(index_map)
+    print(pos_tag)
+    print(len(pos_tag))
+    for p in pos_tag:
+        print(p[0])
+
+
 def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_files):
     #samples = ['the &m &uh mother is [//] &um <I \'m assuming it \'s a mother > [//] is stepping in it']
     transcripts=[]
@@ -205,18 +234,24 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
 
 
 
-    # samples=[
-    #     # 'the &m &uh mother is [//] &um < I \'m assuming it \'s a mother > [//] is stepping in it',
+    samples=[
+        # 'mother standing in the overflowed water'
+        'and <stand up by> [//] stand up <in the> [//] in a window is [/] is [/] <is over the > [/] &uh is over the sink'
+        # 'the &m &uh mother is [//] &um < I \'m assuming it \'s a mother > [//] is stepping in it',
     # '<lot of> [/] a lot &uh of people do that',
     #  '<i can \'t> [//] I &uh don \'t do that',
-    # #    'he \'d [//] she did go home and lie down and rest and get some things changed',
-    # #          'and &uh <outside the> [//] &cup the cookie jar would have to be in the cupboard',
-    # # 'and there are dishes [//] &uh &uh two cups and a saucer on the sink',
-    # # 'and &uh &uh the [/] &uh a the [//] outside the window there"s a path leading to a garage it looks like',
-    # # '<her brother is> [/] her brother is taking cookies out_of a jar',
-    # # '&um <they \'re grading> [//] &uh they [/] they are going to &um get get get get [x 4] some cookies from the cookie jar',
-    # # 'and &th &th this [/] this is +...',
-    # 'he \'s gonna [/] gonna fall because his [//] &uh the [/] <the cookies jar or> [//] <the the the [x 3] bench> [//] the &s four legged stool <whatever it is> [//] is [/] is gonna fall overwith him and the cookie jar']
+    #    'he \'d [//] she did go home and lie down and rest and get some things changed',
+    #          'and &uh <outside the> [//] &cup the cookie jar would have to be in the cupboard',
+    # 'and there are dishes [//] &uh &uh two cups and a saucer on the sink',
+    # 'and &uh &uh the [/] &uh a the [//] outside the window there"s a path leading to a garage it looks like',
+    # '<her brother is> [/] her brother is taking cookies out_of a jar',
+    # '&um <they \'re grading> [//] &uh they [/] they are going to &um get get get get [x 4] some cookies from the cookie jar',
+    # 'and &th &th this [/] this is +...',
+    # 'he \'s gonna [/] gonna fall because his [//] &uh the [/] <the cookies jar or> [//] <the the the [x 3] bench> [//] the &s four legged stool <whatever it is> [//] is [/] is gonna fall overwith him and the cookie jar'
+             ]
+    POS_list=[[('mother', 'NN'), ('standing', 'VBG'), ('in', 'IN'), ('the', 'DT'), ('overflowed', 'JJ'), ('water', 'NN')]
+        # [('and', 'CC'), ('stand', 'VB'), ('up', 'RP'), ('by', 'IN'), ('stand', 'VB'), ('up', 'RP'), ('in', 'IN'), ('the', 'DT'), ('in', 'IN'), ('a', 'DT'), ('window', 'NN'), ('is', 'VBZ'), ('is', 'VBZ'), ('is', 'VBZ'), ('over', 'IN'), ('the', 'DT'), ('uh', 'UH'), ('is', 'VBZ'), ('over', 'IN'), ('the', 'DT'), ('sink', 'NN')]
+    ]
     overallWordsList = []  # all lists of words
     overallPOSList = []  # all lists of corresponding POS tags
     overallTagList = []  # all lists of corresponding Disfluency Tags
@@ -245,14 +280,18 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
             rows=df[df['filename']==trans_name]
             samples=rows.cleaned_text_w_disfluency_markers
             tags_pos = rows.pos_tag
+        if pos_test:
+            tags_pos=POS_list
+
 
         utt_count=0
-        tag_error = False
+
 
         space = re.compile('[\s]+')
         for utt,tagging in zip(samples,tags_pos):
-          
+
         # for utt in samples:
+            tag_error = False
             inv_tag=False
             wordList = []
             POSList = []
@@ -265,13 +304,7 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
 
             # print('tokens')
             # print(tokens)
-            if writeFile:
-              pos_list=literal_eval(tagging)
-              tag_pos=extract_pos(pos_list,inv_tag,tokens)
-            else:
-                tag_pos = ['none']
-            if ',' in tag_pos:
-                tag_pos.remove(',')
+
             if len(tokens)==0:
                 track_disfluency_type('empy_utt')
                 track_error('empy_utt',trans_name,utt_count)
@@ -279,7 +312,20 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
             # print(tokens)
             # index_map=index_mapping(tokens)
             index_mapping(tokens)
-            if(len(tag_pos)!=len(index_map)):
+            print('printing index map')
+            print(valid_words)
+            if writeFile:
+                pos_list = literal_eval(tagging)
+                tag_pos = extract_pos(pos_list, inv_tag, tokens)
+            elif pos_test:
+                tag_pos = tagging
+
+            else:
+                tag_pos = ['none']
+
+            if(len(tag_pos)!=len(valid_words)):
+                # print_anomaly(tag_pos,index_map,tokens)
+                # continue
 
                 track_disfluency_type("pos_len_mismatch")
                 track_error("pos_len_mismatch",trans_name,str(utt_count))
@@ -530,7 +576,9 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
             if len(repetition)>0:  #repetition tags
                 for ind in repetition:
                     if ind>0 and '>' in tokens[ind-1]:#phrase repetition
-                       #print("phrase repetition")
+
+                        print("phrase repetition" +str(ind) +" "+tokens[ind-1])
+                        print(tokens)
                         track_disfluency_type("phrase_repetition")
                         reparandum_stack = deque([])
                         idx=ind-1
@@ -910,6 +958,8 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                         words = words[1:]
                     elif '>' in words and len(words)>1:
                         words = words[:-1]
+                    elif ',' in words and len(words) > 1:
+                        words = words[:-1]
 
                     wordList.append(words)
                     if tag_error:
@@ -1077,6 +1127,8 @@ if __name__ == '__main__':
             replace("_ranges.text", "")
         print('corpusname :'+ corpusName)
         make_DB_corpus(True, False, False,args.targetDir, corpusName,[args.divisionFile])
+    elif pos_test:
+        make_DB_corpus(False, False, False, 'a', 'a', None)
     else:
         make_DB_corpus(False, False, False, 'a', 'a', None)
 
