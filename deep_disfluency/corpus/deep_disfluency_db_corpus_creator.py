@@ -18,7 +18,7 @@ index_map={}
 count_error={}
 count_map={}
 ranges=[]
-test=True
+test=False
 def print_tag(wordList, DisfluencytagList,indexList):
     print('****************************************')
     print('final tags')
@@ -170,6 +170,29 @@ def read_file_ranges(range_files):
             rangeFile.close()
         print("files in ranges =%s " % (str(len(ranges))))
         #print "files in ranges = " + str(len((ranges))
+def extract_pos(pair,inv_tag,tokens):
+  pos_list=[]
+  if inv_tag:
+    pair=pair[1:]
+
+  count=0
+  jump=False
+  for p in pair:
+      if jump:
+          jump=False
+          pos_list[len(pos_list)-1]=pos_list[len(pos_list)-1]+p[1]
+          count+=1
+          continue
+      if p[0]==tokens[count]:
+        pos_list.append(p[1])
+        count+=1
+      else:
+          pattern=re.compile(r"^[a-zA-Z]*[\'][a-zA-Z]+$")
+          if pattern.match(tokens[count]):
+              pos_list.append(p[1])
+              jump=True
+              continue
+  return pos_list
 def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_files):
     #samples = ['the &m &uh mother is [//] &um <I \'m assuming it \'s a mother > [//] is stepping in it']
     transcripts=[]
@@ -182,18 +205,18 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
 
 
 
-    samples=[
-        # 'the &m &uh mother is [//] &um < I \'m assuming it \'s a mother > [//] is stepping in it',
-    '<lot of> [/] a lot &uh of people do that',
-     '<i can \'t> [//] I &uh don \'t do that',
-    #    'he \'d [//] she did go home and lie down and rest and get some things changed',
-    #          'and &uh <outside the> [//] &cup the cookie jar would have to be in the cupboard',
-    # 'and there are dishes [//] &uh &uh two cups and a saucer on the sink',
-    # 'and &uh &uh the [/] &uh a the [//] outside the window there"s a path leading to a garage it looks like',
-    # '<her brother is> [/] her brother is taking cookies out_of a jar',
-    # '&um <they \'re grading> [//] &uh they [/] they are going to &um get get get get [x 4] some cookies from the cookie jar',
-    # 'and &th &th this [/] this is +...',
-    'he \'s gonna [/] gonna fall because his [//] &uh the [/] <the cookies jar or> [//] <the the the [x 3] bench> [//] the &s four legged stool <whatever it is> [//] is [/] is gonna fall overwith him and the cookie jar']
+    # samples=[
+    #     # 'the &m &uh mother is [//] &um < I \'m assuming it \'s a mother > [//] is stepping in it',
+    # '<lot of> [/] a lot &uh of people do that',
+    #  '<i can \'t> [//] I &uh don \'t do that',
+    # #    'he \'d [//] she did go home and lie down and rest and get some things changed',
+    # #          'and &uh <outside the> [//] &cup the cookie jar would have to be in the cupboard',
+    # # 'and there are dishes [//] &uh &uh two cups and a saucer on the sink',
+    # # 'and &uh &uh the [/] &uh a the [//] outside the window there"s a path leading to a garage it looks like',
+    # # '<her brother is> [/] her brother is taking cookies out_of a jar',
+    # # '&um <they \'re grading> [//] &uh they [/] they are going to &um get get get get [x 4] some cookies from the cookie jar',
+    # # 'and &th &th this [/] this is +...',
+    # 'he \'s gonna [/] gonna fall because his [//] &uh the [/] <the cookies jar or> [//] <the the the [x 3] bench> [//] the &s four legged stool <whatever it is> [//] is [/] is gonna fall overwith him and the cookie jar']
     overallWordsList = []  # all lists of words
     overallPOSList = []  # all lists of corresponding POS tags
     overallTagList = []  # all lists of corresponding Disfluency Tags
@@ -227,18 +250,24 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
         tag_error = False
 
         space = re.compile('[\s]+')
-        # for utt,tagging in zip(samples,tags_pos):
-        for utt in samples:
-
+        for utt,tagging in zip(samples,tags_pos):
+          
+        # for utt in samples:
+            inv_tag=False
             wordList = []
             POSList = []
             disfluencyTagList = []
             indexList = []
             tokens=utt.split()
+            if 'INV' in tokens:
+              tokens.remove('INV')
+              inv_tag=True
+
             # print('tokens')
             # print(tokens)
             if writeFile:
-                tag_pos=literal_eval(tagging)
+              pos_list=literal_eval(tagging)
+              tag_pos=extract_pos(pos_list,inv_tag,tokens)
             else:
                 tag_pos = ['none']
             if ',' in tag_pos:

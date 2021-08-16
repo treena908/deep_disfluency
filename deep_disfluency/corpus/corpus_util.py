@@ -414,7 +414,7 @@ def find_repair_end_in_previous_utts(repair, overallTagList, uttlist):
     while not repair.complete == True:
         search += 1
         if search >= len(overallTagList):
-            print 'Repair not found!'
+            print('Repair not found!')
             raise Exception
         # print "search " + str(search)
         # get the tag list *search* utterances back
