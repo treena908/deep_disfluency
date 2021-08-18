@@ -34,13 +34,18 @@ def index_mapping(tokens):
     count=0
     pattern1 = re.compile('\[x')
     pattern2 = re.compile('\d+\]')
+    pattern3=re.compile(r"^&?[-]?[a-zA-Z]+$|^[a-zA-Z]*[\'][a-zA-Z]+$|^<[a-zA-Z]+$|^[a-zA-Z]>$|^<[a-zA-Z]+>$")
+
     for i,words in enumerate(tokens):
 
-        if words!='[//]' and words!='[/]' and words!='<' and  words!='>' and words!=',' and  not pattern1.match(words) and not pattern2.match(words):
+        if pattern3.match(words):
+        # if words!='[//]' and words!='[/]' and words!='<' and  words!='>' and words!=',' and word and  not pattern1.match(words) and not pattern2.match(words):
             index_map[str(i)] = count
             if '<' in words:
                 valid_words.append(words[1:])
             elif '>' in words:
+                valid_words.append(words[:-1])
+            elif ',' in words:
                 valid_words.append(words[:-1])
             else:
                 valid_words.append(words)
@@ -202,15 +207,16 @@ def extract_pos(pair,inv_tag):
 
       if count<len(valid_words):
           if p[0]==valid_words[count]:
-            print('milse: '+p[0]+" "+valid_words[count])
+            # print('milse: '+p[0]+" "+valid_words[count])
             pos_list.append(p[1])
             count+=1
           else:
               if '&' in valid_words[count] and p[0]==valid_words[count][1:]:
-                  print('milse: ' + p[0] + " " + valid_words[count])
+                  # print('milse: ' + p[0] + " " + valid_words[count])
                   pos_list.append(p[1])
                   count += 1
                   continue
+
 
               print('mile nai: ' + p[0] + " " + valid_words[count])
               pattern=re.compile(r"^[a-zA-Z]*[\'][a-zA-Z]+$")
@@ -237,6 +243,14 @@ def print_anomaly(pos_tag,index_map,tokens):
     for p in pos_tag:
         print(p[0])
 
+def clean_tokens(tokens):
+    inv_tag=False
+    if 'INV' in tokens:
+        tokens.remove('INV')
+        inv_tag = True
+    if ',' in tokens:
+        tokens.remove(',')
+    return tokens,inv_tag
 
 def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_files):
     #samples = ['the &m &uh mother is [//] &um <I \'m assuming it \'s a mother > [//] is stepping in it']
@@ -320,9 +334,8 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
             indexList = []
             tokens=utt.split()
             # print('tokens: '+str(tokens))
-            if 'INV' in tokens:
-              tokens.remove('INV')
-              inv_tag=True
+            tokens,inv_tag=clean_tokens(tokens)
+
 
             # print('tokens')
             # print(tokens)
@@ -342,7 +355,7 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                 tag_pos,msg = extract_pos(pos_list, inv_tag)
                 if msg!='okay':
                     track_disfluency_type('valid_word list index out of range')
-                    track_error('tag_pos list index out of range', trans_name, utt_count)
+                    track_error('valid_word list index out of range', trans_name, utt_count)
             elif pos_test:
                 # tag_pos = tagging
                 tag_pos,msg=extract_pos(tagging, inv_tag)
