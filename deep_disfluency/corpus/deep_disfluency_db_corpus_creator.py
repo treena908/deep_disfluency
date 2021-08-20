@@ -34,7 +34,7 @@ def index_mapping(tokens):
     count=0
     pattern1 = re.compile('\[x')
     pattern2 = re.compile('\d+\]')
-    pattern3=re.compile(r"^&?[-]?[a-zA-Z]+$|^[a-zA-Z]*[\'][a-zA-Z]+$|^<[a-zA-Z]+$|^[a-zA-Z]>$|^<[a-zA-Z]+>$")
+    pattern3=re.compile(r"^<[a-zA-Z]+$|^[a-zA-Z]+>$|^&?[-]?[a-zA-Z]+[,]?$|^[a-zA-Z]*[\'][a-zA-Z]+$|^<[a-zA-Z]+>$|^[a-zA-Z]*[\'][a-zA-Z]+$|^<[a-zA-Z]*[\'][a-zA-Z]+$|^[a-zA-Z]*[\'][a-zA-Z]+>$|^<[a-zA-Z]*[\'][a-zA-Z]+>$")
 
     for i,words in enumerate(tokens):
 
@@ -188,7 +188,12 @@ def read_file_ranges(range_files):
         print("files in ranges =%s " % (str(len(ranges))))
         #print "files in ranges = " + str(len((ranges))
 def extract_pos(pair,inv_tag):
+
   pos_list=[]
+  informal_contraction=['gonna','gotta','wanna','lemme','dunno','kinda','sorta','gotcha','betcha','mighta','shoulda',
+                        'coulda','woulda','musta','couldna','shouldna','wouldna','outta','cuppa','sorta','lotta',
+                        'needa','hafta','hasta','oughta','useta','gimme','tellem','cannot','hafta','hasta','supposeta',
+                        ]
   if inv_tag:
     pair=pair[1:]
 
@@ -220,7 +225,7 @@ def extract_pos(pair,inv_tag):
 
               print('mile nai: ' + p[0] + " " + valid_words[count])
               pattern=re.compile(r"^[a-zA-Z]*[\'][a-zA-Z]+$")
-              if pattern.match(valid_words[count]):
+              if pattern.match(valid_words[count]) or valid_words[count] in informal_contraction:
                   pos_list.append(p[1])
                   jump=True
       else:
@@ -348,8 +353,9 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
             # index_map=index_mapping(tokens)
             index_mapping(tokens)
             # print('after index tokens: ' + str(tokens))
-            # print('printing index map')
-            # print(valid_words)
+            print('printing index map')
+            print(valid_words)
+            print(index_map)
             if writeFile:
                 pos_list = literal_eval(tagging)
                 tag_pos,msg = extract_pos(pos_list, inv_tag)
@@ -721,17 +727,26 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                             idx += 1
                         # integrenum tagging ends
                         # checking is there any fluent word in phrase rep. repair part
+                        more_rep=False
                         while idx < len(tokens) and tokens[idx] != reparandum_stack[-1]:
                            #
-                            idx+=1
-                            track_disfluency_type("fluent_repair_phrase_repetition")
-                            #print('fluent word in repair part of phrase repetition')
+                           if '<' in tokens[idx] and tokens[idx][1:]==reparandum_stack[-1]:
+                               more_rep=True
+
+                               break
+                           else:
+
+                                idx+=1
+                                track_disfluency_type("fluent_repair_phrase_repetition")
+                                track_error('fluent_repair_phrase_repetition', trans_name, utt_count)
+                                #print('fluent word in repair part of phrase repetition')
                         # repair part of phrase repetition tagging
                         while idx < len(tokens) and len(reparandum_stack)>0 and not space.match(tokens[idx]):
                             tag=""
                             pattern = re.compile('&[-]+[a-zA-Z]+')
                             if pattern.match(tokens[idx]) :
                                 track_disfluency_type("hesitation_repair_phrase_repetition")
+                                track_error('hesitation_repair_phrase_repetition', trans_name, utt_count)
                                # print('hesitation in repair part of phrase rep.')
                                 if idx < len(tokens) and str(idx) in tags.keys():
                                     tag = tags[str(idx)]
@@ -744,22 +759,38 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                                     # first word of repair rep.
                                     current_word=reparandum_stack.pop()
                                   #  print('current_word :' + current_word)
-                                    if(current_word==tokens[idx]):
-                                        if idx < len(tokens) and str(idx) in tags.keys():
-                                            tag = tags[str(idx)]
-                                        if not prev_tag:
-                                            tag += '<rps id="{}"/>'.format(index_map[str(prev_idx)])
-                                        tags[str(idx)] = tag
+                                    if more_rep:
+                                        if (current_word == tokens[idx][1:]):
+                                            if idx < len(tokens) and str(idx) in tags.keys():
+                                                tag = tags[str(idx)]
+                                            if not prev_tag:
+                                                tag += '<rps id="{}"/>'.format(index_map[str(prev_idx)])
+                                            tags[str(idx)] = tag
+                                    else:
+                                        if(current_word==tokens[idx]  ):
+                                            if idx < len(tokens) and str(idx) in tags.keys():
+                                                tag = tags[str(idx)]
+                                            if not prev_tag:
+                                                tag += '<rps id="{}"/>'.format(index_map[str(prev_idx)])
+                                            tags[str(idx)] = tag
                                 elif len(reparandum_stack)==1:
                                     #last word of repair rep.
                                     current_word = reparandum_stack.pop()
                                    # print('current_word :'+current_word)
-                                    if (current_word == tokens[idx]):
-                                        if idx < len(tokens) and str(idx) in tags.keys():
-                                            tag = tags[str(idx)]
-                                        if not prev_tag:
-                                            tag += '<rpnrep id="{}"/>'.format(index_map[str(prev_idx)])
-                                        tags[str(idx)] = tag
+                                    if more_rep:
+                                        if (current_word == tokens[idx][:-1]):
+                                            if idx < len(tokens) and str(idx) in tags.keys():
+                                                tag = tags[str(idx)]
+                                            if not prev_tag:
+                                                tag += '<rpnrep id="{}"/>'.format(index_map[str(prev_idx)])
+                                            tags[str(idx)] = tag
+                                    else:
+                                        if (current_word == tokens[idx]):
+                                            if idx < len(tokens) and str(idx) in tags.keys():
+                                                tag = tags[str(idx)]
+                                            if not prev_tag:
+                                                tag += '<rpnrep id="{}"/>'.format(index_map[str(prev_idx)])
+                                            tags[str(idx)] = tag
                                 else:
                                     # mid word of repair rep.
                                     current_word = reparandum_stack.pop()
@@ -1182,7 +1213,7 @@ if __name__ == '__main__':
         corpusName = args.divisionFile[args.divisionFile.rfind("/") + 1:]. \
             replace("_ranges.text", "")
         print('corpusname :'+ corpusName)
-        make_DB_corpus(True, False, False,args.targetDir, corpusName,[args.divisionFile])
+        make_DB_corpus(True, True, True,args.targetDir, corpusName,[args.divisionFile])
     elif pos_test:
         make_DB_corpus(False, False, False, 'a', 'a', None)
     elif test:
