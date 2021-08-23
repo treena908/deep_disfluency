@@ -19,9 +19,9 @@ count_error={}
 count_map={}
 ranges=[]
 valid_words=[]
-run=True
+run=False
 test=False
-pos_test=False
+pos_test=True
 def print_tag(wordList, DisfluencytagList,indexList):
     print('****************************************')
     print('final tags')
@@ -270,16 +270,18 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
 
 
     samples=[
+        # '< i wanna > [/] &um i wanna go',
+        #     '< the young > [/] &um < the young > [/] the young boy he\'s up on a ladder and with some cookies'
         # 'mother standing in the overflowed water'
-        'and <stand up by> [//] stand up <in the> [//] in a window is [/] is [/] <is over the> [/] &uh is over the sink'
+        'and < stand up [//] by > [//] stand up <in the> [//] in a window is [/] is [/] <is over the> [/] &uh is over the sink',
         # 'the &m &uh mother is [//] &um < I \'m assuming it \'s a mother > [//] is stepping in it',
     # '<lot of> [/] a lot &uh of people do that',
     #  '<i can \'t> [//] I &uh don \'t do that',
     #    'he \'d [//] she did go home and lie down and rest and get some things changed',
     #          'and &uh <outside the> [//] &cup the cookie jar would have to be in the cupboard',
-    # 'and there are dishes [//] &uh &uh two cups and a saucer on the sink',
+    # 'and there are dishes [//] &uh &uh two cups and a saucer on the sink'
     # 'and &uh &uh the [/] &uh a the [//] outside the window there"s a path leading to a garage it looks like',
-    # '<her brother is> [/] her brother is taking cookies out_of a jar',
+    # '<her brother is> [/] her brother is taking cookies out_of a jar'
     # '&um <they \'re grading> [//] &uh they [/] they are going to &um get get get get [x 4] some cookies from the cookie jar',
     # 'and &th &th this [/] this is +...',
     # 'he \'s gonna [/] gonna fall because his [//] &uh the [/] <the cookies jar or> [//] <the the the [x 3] bench> [//] the &s four legged stool <whatever it is> [//] is [/] is gonna fall overwith him and the cookie jar'
@@ -287,7 +289,8 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
     POS_list=[
         [('and', 'CC'), ('stand', 'VB'), ('up', 'RP'), ('by', 'IN'), ('stand', 'VB'), ('up', 'RP'), ('in', 'IN'),
          ('the', 'DT'), ('in', 'IN'), ('a', 'DT'), ('window', 'NN'), ('is', 'VBZ'), ('is', 'VBZ'), ('is', 'VBZ'),
-         ('over', 'IN'), ('the', 'DT'), ('uh', 'UH'), ('is', 'VBZ'), ('over', 'IN'), ('the', 'DT'), ('sink', 'NN')]
+         ('over', 'IN'), ('the', 'DT'), ('uh', 'UH'), ('is', 'VBZ'), ('over', 'IN'), ('the', 'DT'), ('sink', 'NN')],
+        []
         # [('mother', 'NN'), ('standing', 'VBG'), ('in', 'IN'), ('the', 'DT'), ('overflowed', 'JJ'), ('water', 'NN')]
         # [('and', 'CC'), ('stand', 'VB'), ('up', 'RP'), ('by', 'IN'), ('stand', 'VB'), ('up', 'RP'), ('in', 'IN'), ('the', 'DT'), ('in', 'IN'), ('a', 'DT'), ('window', 'NN'), ('is', 'VBZ'), ('is', 'VBZ'), ('is', 'VBZ'), ('over', 'IN'), ('the', 'DT'), ('uh', 'UH'), ('is', 'VBZ'), ('over', 'IN'), ('the', 'DT'), ('sink', 'NN')]
     ]
@@ -439,16 +442,16 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                                 reparandum_stack.append(tokens[idx+1])
                                 break
 
-                            elif not digit_pattern.match(tokens[idx]) and tokens[idx] not in ['[x']:
+                            elif not digit_pattern.match(tokens[idx]) and tokens[idx] not in ['[x','[/]','[//]']:
                                 if idx >= 0 and idx < len(tokens) and str(idx) in tags.keys():
                                     tag = tags[str(idx)]
                                 if not prev_tag:
                                     tag += '<rm id="{}"/>'.format(index_map[str(mark)])
                                 tags[str(idx)] = tag
                                 # adding repeted phrase to stack
-                                if '>' in tokens[idx]:
+                                if '>' in tokens[idx] and len(tokens[idx])>1:
                                     reparandum_stack.append(tokens[idx][:-1])
-                                else:
+                                elif '>' not in tokens[idx]:
                                     reparandum_stack.append(tokens[idx])
 
                             idx -= 1
@@ -464,7 +467,7 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                         idx = ind + 1
                         prev_idx = mark
                         prev_tag=False
-                        pattern = re.compile('&[-]+[a-zA-Z]+')
+                        pattern = re.compile('&[-]?[a-zA-Z]+')
                         if mark <0  and str(mark) not in index_map.keys():
                             track_disfluency_type('problem')
                             track_error('problem', trans_name, utt_count)
@@ -587,7 +590,7 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                         #check if any integranum is after the retraced word
                         idx=ind+1
                         prev_idx=ind-1
-                        pattern = re.compile('&[-]+[a-zA-Z]+')
+                        pattern = re.compile('&[-]?[a-zA-Z]+')
                         prev_tag=False
                         if prev_idx < 0 or str(prev_idx) not in index_map.keys():
                             track_disfluency_type('problem')
@@ -634,9 +637,14 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                         reparandum_stack = deque([])
                         idx=ind-1
                         mark=idx
+                        prev_tag=False
                         if len(tokens[ind-1])==1:
                             mark=ind-2
-
+                        if mark < 0 or str(mark) not in index_map.keys():
+                            track_disfluency_type('problem')
+                            track_error('problem', trans_name, utt_count)
+                            prev_tag = True
+                        digit_pattern = re.compile('\d+]')
                         while idx>=0 and idx<len(tokens)  and not space.match(tokens[idx]) :
                             tag = ""
                             if '<' in tokens[idx] and len(tokens[idx]) > 1:
@@ -670,20 +678,20 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                                 reparandum_stack.pop()
                                 reparandum_stack.append(tokens[idx+1])
                                 break
-                            else:
-                                if idx > 0 and idx<len(tokens) and str(idx) in tags.keys():
+
+                            elif not digit_pattern.match(tokens[idx]) and tokens[idx] not in ['[x','[/]','[//]']:
+                                if idx >= 0 and idx < len(tokens) and str(idx) in tags.keys():
                                     tag = tags[str(idx)]
-                                if ind - 1 < 0 or str(ind - 1) not in index_map.keys():
-                                    track_disfluency_type('problem')
-                                    track_error('problem', trans_name, utt_count)
-                                else:
-                                    tag+='<rm id="{}"/>'.format(index_map[str(ind - 1)])
+
+                                if not prev_tag:
+                                    tag += '<rm id="{}"/>'.format(index_map[str(mark)])
                                 tags[str(idx)] = tag
-                                #adding repeted phrase to stack
-                                if '>' in tokens[idx]:
+                                # adding repeted phrase to stack
+                                if '>' in tokens[idx] and len(tokens[idx])>1:
                                     reparandum_stack.append(tokens[idx][:-1])
-                                else:
+                                elif '>' not in tokens[idx] :
                                     reparandum_stack.append(tokens[idx])
+
 
 
                             idx-=1
@@ -702,19 +710,21 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
 
 
                         stack_size=len(reparandum_stack)
-                        #print('reparandum stack')
-                        #print( reparandum_stack)
+                        print('reparandum stack')
+                        print( reparandum_stack)
+
                         # tagging reparandum of phrase repetition ends
 
                         # integrenum tagging
                         idx = ind + 1
-                        prev_idx = ind - 1
-                        pattern = re.compile('&[-]+[a-zA-Z]+')
+                        prev_idx = mark
+                        pattern = re.compile('&[-]?[a-zA-Z]+')
                         prev_tag=False
                         if prev_idx < 0 or str(prev_idx) not in index_map.keys():
                             track_disfluency_type('problem')
                             track_error('problem', trans_name, utt_count)
                             prev_tag = True
+                        print('prev_tag: '+str(prev_tag))
                         while idx<len(tokens) and pattern.match(tokens[idx]) :
                             tag = ""
                             track_disfluency_type("integranum_phrase_repetition")
@@ -731,6 +741,7 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                         while idx < len(tokens) and tokens[idx] != reparandum_stack[-1]:
                            #
                            if '<' in tokens[idx] and tokens[idx][1:]==reparandum_stack[-1]:
+                               print('< paoa gese')
                                more_rep=True
 
                                break
@@ -743,7 +754,7 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                         # repair part of phrase repetition tagging
                         while idx < len(tokens) and len(reparandum_stack)>0 and not space.match(tokens[idx]):
                             tag=""
-                            pattern = re.compile('&[-]+[a-zA-Z]+')
+                            pattern = re.compile('&[-]?[a-zA-Z]+')
                             if pattern.match(tokens[idx]) :
                                 track_disfluency_type("hesitation_repair_phrase_repetition")
                                 track_error('hesitation_repair_phrase_repetition', trans_name, utt_count)
@@ -761,10 +772,16 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                                   #  print('current_word :' + current_word)
                                     if more_rep:
                                         if (current_word == tokens[idx][1:]):
+                                            print('prothom ta paoa gese '+tokens[idx])
                                             if idx < len(tokens) and str(idx) in tags.keys():
                                                 tag = tags[str(idx)]
                                             if not prev_tag:
                                                 tag += '<rps id="{}"/>'.format(index_map[str(prev_idx)])
+                                                print('inside: '+tag+"  "+tokens[idx])
+                                            print('tag: '+tag+"  "+tokens[idx]+" "+str(idx))
+                                            print(tokens)
+                                            print(index_map)
+                                            print(valid_words)
                                             tags[str(idx)] = tag
                                     else:
                                         if(current_word==tokens[idx]  ):
@@ -779,10 +796,17 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                                    # print('current_word :'+current_word)
                                     if more_rep:
                                         if (current_word == tokens[idx][:-1]):
+                                            print('last er ta')
                                             if idx < len(tokens) and str(idx) in tags.keys():
                                                 tag = tags[str(idx)]
                                             if not prev_tag:
                                                 tag += '<rpnrep id="{}"/>'.format(index_map[str(prev_idx)])
+                                                print('inside: '+tag+"  "+tokens[idx])
+                                            print('tag: ' + tag+"  "+tokens[idx]+ " "+str(idx))
+
+                                            print(tokens)
+                                            print(index_map)
+                                            print(valid_words)
                                             tags[str(idx)] = tag
                                     else:
                                         if (current_word == tokens[idx]):
@@ -842,10 +866,10 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                                 tag += '<rms id="{}"/>'.format(index_map[str(ind - 1)])
                             tags[str(ind - 1)] = tag  # tagging reparandum of retrace word
                             # tagging reparandum of retrace word ends
-                        # check if any integranum is after the retraced word
+                        # check if any integranum is after the repeted word
                         idx = ind + 1
                         prev_idx = ind - 1
-                        pattern = re.compile('&[-]+[a-zA-Z]+')
+                        pattern = re.compile('&[-]?[a-zA-Z]+')
                         prev_tag=False
                         if prev_idx < 0 or str(prev_idx) not in index_map.keys():
                             track_disfluency_type('problem')
@@ -860,7 +884,7 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                             tag += '<e/>'
                             tags[str(idx)] = tag
                             idx += 1
-                        # check if any integranum is after the retraced word ends
+                        # check if any integranum is after the repeted word ends
 
                         # tagging repair of repeted word
                         tag=""
@@ -915,14 +939,21 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
 
                         else:
                             while idx < len(tokens) :
-                                target_word=tokens[idx]
+                                target_word1=tokens[idx]
+                                target_word2 = tokens[ind-1]
                                 if '<' in tokens[idx]:
-                                    target_word=tokens[idx][1:]
+                                    target_word1=tokens[idx][1:]
                                     # tokens[idx]=tokens[idx][1:]
                                 elif '>' in tokens[idx]:
-                                    target_word=tokens[idx][:-1]
+                                    target_word1=tokens[idx][:-1]
                                     # tokens[idx] = tokens[idx][:-1]
-                                if target_word==tokens[ind-1]:
+                                if '<' in tokens[ind-1]:
+                                    target_word2=tokens[ind-1][1:]
+                                    # tokens[idx]=tokens[idx][1:]
+                                elif '>' in tokens[ind-1]:
+                                    target_word2=tokens[ind-1][:-1]
+                                    # tokens[idx] = tokens[idx][:-1]
+                                if target_word1==target_word2:
                                     break
 
                                 idx+=1
@@ -1022,7 +1053,9 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
 
             count = 0
             index = 0
-            for ind, words in enumerate(valid_words):
+            print('complete tags')
+            print(tags)
+            for ind, words in enumerate(tokens):
             # for ind,words in enumerate(tokens): # adding word, pos, tag, index per utt. in lists excluding disf. markers
                 if space.match(words) :
 
@@ -1035,15 +1068,25 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                     continue
 
                 if words!='[//]' and words!='[/]' and not pattern1.match(words)and not pattern2.match(words) :
-
+                    print('check word: '+words+" "+str(index))
                     if '<' in words and len(words)>1:
                         words = words[1:]
                     elif '>' in words and len(words)>1:
                         words = words[:-1]
                     elif ',' in words and len(words) > 1:
                         words = words[:-1]
+                    # if count<len(valid_words):
+                    #     if valid_words[count]==words :
+                    #         wordList.append(words)
+                    #     else:
+                    #         track_disfluency_type('valid_word list and tokens differe')
+                    #         track_error('valid_word list and tokens differe', trans_name, utt_count)
+                    # else:
+                    #     track_disfluency_type('valid_word list out of bound')
+                    #     track_error('valid_word list out of bound', trans_name, utt_count)
 
                     wordList.append(words)
+
                     if tag_error:
                         POSList.append('##') #add pos tag
                     else:
@@ -1056,9 +1099,10 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                     indexList.append((trans_count, utt_count, count))
 
                     if(str(index) in tags.keys()):
+                        print('rag ase: '+tags[str(index)])
                         disfluencyTagList.append(tags[str(index)])
                     else:
-                        hesitation=re.compile('&[-]+[a-zA-Z]+')
+                        hesitation=re.compile('&[-]?[a-zA-Z]+')
                         if hesitation.match(words):
                             disfluencyTagList.append('<e/>') # filler word tags which is not in integrenum
                         else:
@@ -1070,7 +1114,7 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
 
                 index+=1
             utt_count+=1
-            # print_tag(wordList, disfluencyTagList,indexList)
+            print_tag(wordList, disfluencyTagList,indexList)
             uttList.append(['utt.swda_filename', str(utt_count),
                             'PAR', 'utt.damsl_act_tag()', trans_name,
                             'utt.utterance_index'])
@@ -1114,6 +1158,7 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
         # like the ATIS shared challenge
         easyread_format = uttref + "," + wordstring + \
                           "\nPOS," + posstring + "\n" + "REF," + indexstring
+        # print('transname: '+ uttref)
         corpus_format = detection_corpus_format(
             uttref, deepcopy(overallWordsList[i]),
             deepcopy(overallPOSList[i]),
