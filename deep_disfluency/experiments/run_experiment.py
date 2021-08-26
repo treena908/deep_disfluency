@@ -34,8 +34,8 @@ range_dir = THIS_DIR + \
 file_divisions_transcripts = [
     # ('train', range_dir + '/DB_disf_train_1_ranges.text'),
     # range_dir + '/swbd_disf_train_audio_ranges.text',
-    # ('heldout', range_dir + '/DB_disf_heldout_1_ranges.text'),
-   ('test', range_dir + '/DB_disf_test_1_ranges.text')
+    ('heldout', range_dir + '/DB_disf_heldout_1_ranges.text')
+   # ('test', range_dir + '/DB_disf_test_1_ranges.text')
 ]
 
 
