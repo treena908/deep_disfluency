@@ -19,9 +19,9 @@ count_error={}
 count_map={}
 ranges=[]
 valid_words=[]
-run=False
+run=True
 test=False
-pos_test=True
+pos_test=False
 def print_tag(wordList, DisfluencytagList,indexList):
     print('****************************************')
     print('final tags')
@@ -551,6 +551,7 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                             if pattern.match(tokens[idx]):
                                 #print('hesitation in repair part of phrase rep.')
                                 track_disfluency_type("hesitation_repair_retrace")
+                                track_error('hesitation_repair_retrace',trans_name,utt_count)
                                 if idx < len(tokens) and str(idx) in tags.keys():
                                     tag = tags[str(idx)]
 
