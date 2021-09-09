@@ -22,23 +22,23 @@ valid_words=[]
 run=True
 test=False
 pos_test=False
-def print_tag(wordList, DisfluencytagList,indexList):
+def print_tag(wordList, DisfluencytagList,indexList,POSList):
     print('****************************************')
     print('final tags')
-    print(len(wordList))
-    print(len(DisfluencytagList))
-    for word,tag in zip(wordList, DisfluencytagList):
-        print(word+ " :"+tag)
+    # print(len(wordList))
+    # print(len(DisfluencytagList))
+    for word,tag,pos in zip(wordList, DisfluencytagList,POSList):
+        print(word+ " :"+tag+" :"+pos)
 def index_mapping(tokens):
 
     count=0
     pattern1 = re.compile('\[x')
     pattern2 = re.compile('\d+\]')
-    pattern3=re.compile(r"^<[a-zA-Z]+$|^[a-zA-Z]+>$|^&?[-]?[a-zA-Z]+[,]?$|^[a-zA-Z]*[\'][a-zA-Z]+$|^<[a-zA-Z]+>$|^[a-zA-Z]*[\'][a-zA-Z]+$|^<[a-zA-Z]*[\'][a-zA-Z]+$|^[a-zA-Z]*[\'][a-zA-Z]+>$|^<[a-zA-Z]*[\'][a-zA-Z]+>$")
-
+    # allowed_words=re.compile(r"^<[a-zA-Z]+$|^[a-zA-Z]+>$|^&?[-]?[a-zA-Z]+[,]?$|^[a-zA-Z]*[\'][a-zA-Z]+$|^<[a-zA-Z]+>$|^[a-zA-Z]*[\'][a-zA-Z]+$|^<[a-zA-Z]*[\'][a-zA-Z]+$|^[a-zA-Z]*[\'][a-zA-Z]+>$|^<[a-zA-Z]*[\'][a-zA-Z]+>$")
+    allowed_words = re.compile(r"^[<]?&?[-]?[a-zA-Z]+[,]?[>]?$|^[<]?[a-zA-Z]*[\'][a-zA-Z]+[,]?[>]?$")
     for i,words in enumerate(tokens):
 
-        if pattern3.match(words):
+        if allowed_words.match(words):
         # if words!='[//]' and words!='[/]' and words!='<' and  words!='>' and words!=',' and word and  not pattern1.match(words) and not pattern2.match(words):
             index_map[str(i)] = count
             if '<' in words and '>' in words:
@@ -201,6 +201,7 @@ def extract_pos(pair,inv_tag):
 
   count=0
   jump=False
+  hesitation=re.compile('^[<]?&[-]?[a-zA-Z]+[>]?$')
   # print('len pair: '+str(len(pair)))
   for p in pair:
 
@@ -217,6 +218,11 @@ def extract_pos(pair,inv_tag):
             # print('milse: '+p[0]+" "+valid_words[count])
             pos_list.append(p[1])
             count+=1
+
+          elif p[0] == '&--' and hesitation.match(valid_words[count]):
+              pos_list.append('UH')
+              count += 1
+              continue
           else:
               if '&' in valid_words[count] and p[0]==valid_words[count][1:]:
                   # print('milse: ' + p[0] + " " + valid_words[count])
@@ -263,7 +269,7 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
     #samples = ['the &m &uh mother is [//] &um <I \'m assuming it \'s a mother > [//] is stepping in it']
     transcripts=[]
     if writeFile:
-        df=pd.read_csv(THIS_DIR+'/../../DisfluencyProject/data_w_pos.csv')
+        df=pd.read_csv(THIS_DIR+'/../../DisfluencyProject/data_w_pos3.csv')
         transcripts=df.filename.unique()
     else:
         transcripts.append('1')
@@ -272,8 +278,14 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
 
 
     samples=[
-        '<she just> [/] &uh <she just came> [//] I just saw her today',
-        '<we weren\'t > [//] I I [x 2] <I didn\'t I> [//] I don\'t know how the rest of the girls'
+        'I\'m thinking , oh , that\'s why [//] you know , when people live more multigenerationally'
+        # 'hm <the only> [/] the only thing I know <of it> [/] &-uh of it is to [/] to get [/] &-uh get back <and then up> [/] and then <up to> [/] up to [/] to [/] to the &-uh &-uh another thing'
+        # '&-uh there are bushes outside the window and a driveway or a sidewalk',
+        # 'and the men that were working for [/] for the crew people were work couldn\'t get anything done because <they> [/] they <&uh they> [/] &uh they ran off with a lot of stuff',
+        # 'by the time I <&uh got> [/] &uh got <my whatchamacallit> [//] my [/] &uh my work that I was in I went to they sent me into school there',
+        # '&-uh'
+        # '<she just> [/] &uh <she just came> [//] I just saw her today',
+        # '<we weren\'t > [//] I I [x 2] <I didn\'t I> [//] I don\'t know how the rest of the girls'
         # 'and < curtains > [/] &-um so curtains there she has a window above the sink which is nice',
 
         # '<one of his foot> [//] one <of his [/] his> [/] of his feet <are a> [//] is a [//] &ha about a third off of the stool'
@@ -294,15 +306,19 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
     # 'he \'s gonna [/] gonna fall because his [//] &uh the [/] <the cookies jar or> [//] <the the the [x 3] bench> [//] the &s four legged stool <whatever it is> [//] is [/] is gonna fall overwith him and the cookie jar'
              ]
     POS_list=[
-        [('and', 'CC'), ('stand', 'VB'), ('up', 'RP'), ('by', 'IN'), ('stand', 'VB'), ('up', 'RP'), ('in', 'IN'),
-         ('the', 'DT'), ('in', 'IN'), ('a', 'DT'), ('window', 'NN'), ('is', 'VBZ'), ('is', 'VBZ'), ('is', 'VBZ'),
-         ('over', 'IN'), ('the', 'DT'), ('uh', 'UH'), ('is', 'VBZ'), ('over', 'IN'), ('the', 'DT'), ('sink', 'NN')],
-        []
+        [('&--', 'HYPH'), ('there', 'EX'), ('are', 'VBP'), ('bushes', 'NNS'), ('outside', 'IN'), ('the', 'DT'),
+         ('window', 'NN'), ('and', 'CC'), ('a', 'DT'), ('driveway', 'NN'), ('or', 'CC'), ('a', 'DT'),
+         ('sidewalk', 'NN')]
+        # [('and', 'CC'), ('stand', 'VB'), ('up', 'RP'), ('by', 'IN'), ('stand', 'VB'), ('up', 'RP'), ('in', 'IN'),
+        #  ('the', 'DT'), ('in', 'IN'), ('a', 'DT'), ('window', 'NN'), ('is', 'VBZ'), ('is', 'VBZ'), ('is', 'VBZ'),
+        #  ('over', 'IN'), ('the', 'DT'), ('uh', 'UH'), ('is', 'VBZ'), ('over', 'IN'), ('the', 'DT'), ('sink', 'NN')],
+        # [],
+        # [('&--', 'HYPH')]
         # [('mother', 'NN'), ('standing', 'VBG'), ('in', 'IN'), ('the', 'DT'), ('overflowed', 'JJ'), ('water', 'NN')]
         # [('and', 'CC'), ('stand', 'VB'), ('up', 'RP'), ('by', 'IN'), ('stand', 'VB'), ('up', 'RP'), ('in', 'IN'), ('the', 'DT'), ('in', 'IN'), ('a', 'DT'), ('window', 'NN'), ('is', 'VBZ'), ('is', 'VBZ'), ('is', 'VBZ'), ('over', 'IN'), ('the', 'DT'), ('uh', 'UH'), ('is', 'VBZ'), ('over', 'IN'), ('the', 'DT'), ('sink', 'NN')]
     ]
-    exclude_list_trans=['DB/Pitt/Dementia/cookie/053-1.cha','DB/Lanzi/Group1/539.cha','DB/Lanzi/Group1/538.cha']
-    exclude_list_utt=[27,337,622]
+    exclude_list_trans=['DB/WLS/16/16169.cha','DB/WLS/14/14554.cha','DB/WLS/07/07628.cha','DB/Pitt/Dementia/cookie/221-0.cha','DB/WLS/10/10752.cha','DB/Pitt/Dementia/cookie/212-2.cha','DB/Pitt/Dementia/cookie/526-1.cha','DB/Pitt/Dementia/cookie/049-1.cha','DB/Pitt/Dementia/cookie/053-1.cha','DB/Lanzi/Group1/539.cha','DB/Lanzi/Group1/538.cha','DB/Kempler/d1.cha']
+    exclude_list_utt=[37,2,103,20,9,14,1,5,27,337,622,67]
 
     overallWordsList = []  # all lists of words
     overallPOSList = []  # all lists of corresponding POS tags
@@ -381,13 +397,19 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
             # print(index_map)
             if writeFile:
                 pos_list = literal_eval(tagging)
+
                 tag_pos,msg = extract_pos(pos_list, inv_tag)
+                if '&-uh' in tokens or '&-um' in tokens:
+                    print('pos list')
+                    print(tag_pos)
+
                 if msg!='okay':
                     track_disfluency_type('valid_word list index out of range')
                     track_error('valid_word list index out of range', trans_name, utt_count)
             elif pos_test:
                 # tag_pos = tagging
                 tag_pos,msg=extract_pos(tagging, inv_tag)
+
 
 
             else:
@@ -399,10 +421,14 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                 # print('valid word len: '+str(len(valid_words)))
                 # print_anomaly(tag_pos,valid_words,tokens)
                 # continue
+                # print('pos_len_mismatch')
+                # print(tag_pos)
+                # print(valid_words)
 
                 track_disfluency_type("pos_len_mismatch")
                 track_error("pos_len_mismatch",trans_name,str(utt_count))
                 tag_error = True
+
 
             # print('index_map')
             # print(index_map)
@@ -427,59 +453,142 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                             prev_tag = True
                         # reparandum tagging
                         digit_pattern = re.compile('\d+]')
-                        allowed_words = re.compile(r"^<[a-zA-Z]+$|^[a-zA-Z]+>$|^&?[-]?[a-zA-Z]+[,]?$|^[a-zA-Z]*[\'][a-zA-Z]+$|^<[a-zA-Z]+>$|^[a-zA-Z]*[\'][a-zA-Z]+$|^<[a-zA-Z]*[\'][a-zA-Z]+$|^[a-zA-Z]*[\'][a-zA-Z]+>$|^<[a-zA-Z]*[\'][a-zA-Z]+>$")
-
+                        # allowed_words = re.compile(r"^<[a-zA-Z]+$|^[a-zA-Z]+>$|^&?[-]?[a-zA-Z]+[,]?$|^[a-zA-Z]*[\'][a-zA-Z]+$|^<[a-zA-Z]+>$|^[a-zA-Z]*[\'][a-zA-Z]+$|^<[a-zA-Z]*[\'][a-zA-Z]+$|^[a-zA-Z]*[\'][a-zA-Z]+>$|^<[a-zA-Z]*[\'][a-zA-Z]+>$")
+                        allowed_words = re.compile(
+                            r"^[<]?&?[-]?[a-zA-Z]+[,]?[>]?$|^[<]?[a-zA-Z]*[\'][a-zA-Z]+[,]?[>]?$")
+                        hes=False
                         while idx>=0 and  not space.match(tokens[idx]):
                             tag = ""
 
-                            if '<' in tokens[idx] and len(tokens[idx]) > 1:
-                                print('edge token with < :' + tokens[idx])
-                                tag = ""
-                                if idx >= 0 and idx < len(tokens) and str(idx) in tags.keys():
-                                    tag = tags[str(idx)]
-                                if mark < 0 or str(mark) not in index_map.keys():
-                                    track_disfluency_type('problem')
-                                    track_error('problem', trans_name, utt_count)
-                                else:
-                                    try:
-                                        tag += '<rms id="{}"/>'.format(index_map[str(mark)])
-                                    except Exception as e:
-                                        print("Oops!", e.__class__, "occurred.")
-                                        track_disfluency_type(str(e.__class__))
-                                        track_error(str(e.__class__),trans_name,utt_count)
-                                tags[str(idx)] = tag
-                                # adding onset of repeted phrase to stack
-                                reparandum_stack.append(tokens[idx][1:])
-                                break
-                            elif '<' in tokens[idx] and len(tokens[idx]) == 1:
-                                #the retrace phrase has space after < and then the token
-                                print('edge token with only < :' + tokens[idx] +"  "+tokens[idx+1])
-                                tag = ""
-                                if idx+1 >= 0 and idx+1 < len(tokens) and str(idx+1) in tags.keys():
-                                    tag = tags[str(idx+1)]
-                                if mark < 0 or str(mark) not in index_map.keys():
-                                    track_disfluency_type('problem')
-                                    track_error('problem', trans_name, utt_count)
-                                else:
-                                    tag=re.sub('\<rm id=\"\d+\"\/\>', '', tag)
-                                    tag += '<rms id="{}"/>'.format(index_map[str(mark)])
-                                tags[str(idx+1)] = tag
-                                # adding onset of repeted phrase to stack
-                                reparandum_stack.pop()
-                                reparandum_stack.append(tokens[idx+1])
-                                break
-                            elif allowed_words.match(tokens[idx]):
+                            # if '<' in tokens[idx] and len(tokens[idx]) > 1:
+                            #     print('edge token with < :' + tokens[idx])
+                            #     tag = ""
+                            #     if idx >= 0 and idx < len(tokens) and str(idx) in tags.keys():
+                            #         tag = tags[str(idx)]
+                            #     if mark < 0 or str(mark) not in index_map.keys():
+                            #         track_disfluency_type('problem')
+                            #         track_error('problem', trans_name, utt_count)
+                            #     else:
+                            #         try:
+                            #             tag += '<rms id="{}"/>'.format(index_map[str(mark)])
+                            #         except Exception as e:
+                            #             print("Oops!", e.__class__, "occurred.")
+                            #             track_disfluency_type(str(e.__class__))
+                            #             track_error(str(e.__class__),trans_name,utt_count)
+                            #     tags[str(idx)] = tag
+                            #     # adding onset of repeted phrase to stack
+                            #     reparandum_stack.append(tokens[idx][1:])
+                            #     break
+                            # elif '<' in tokens[idx] and len(tokens[idx]) == 1:
+                            #     #the retrace phrase has space after < and then the token
+                            #     print('edge token with only < :' + tokens[idx] +"  "+tokens[idx+1])
+                            #     tag = ""
+                            #     if idx+1 >= 0 and idx+1 < len(tokens) and str(idx+1) in tags.keys():
+                            #         tag = tags[str(idx+1)]
+                            #     if mark < 0 or str(mark) not in index_map.keys():
+                            #         track_disfluency_type('problem')
+                            #         track_error('problem', trans_name, utt_count)
+                            #     else:
+                            #         tag=re.sub('\<rm id=\"\d+\"\/\>', '', tag)
+                            #         tag += '<rms id="{}"/>'.format(index_map[str(mark)])
+                            #     tags[str(idx+1)] = tag
+                            #     # adding onset of repeted phrase to stack
+                            #     reparandum_stack.pop()
+                            #     reparandum_stack.append(tokens[idx+1])
+                            #     break
+                            if allowed_words.match(tokens[idx]):
+                                hesitation=re.compile('^[<]?&[-]?[a-zA-Z]+[>]?$')
+                                if '>' in tokens[idx] and '<' in tokens[idx] and len(tokens[idx]) > 2:
+                                # print('duita > < ase :' + tokens[idx])
+                                    tag = ""
+                                    if hesitation.match(tokens[idx]):
+                                        track_error('hesit. in ret. reparandum', trans_name, utt_count)
+                                        track_disfluency_type('hesit. in ret. reparandum')
+                                        tag += '<e/>'
+                                        tags[str(idx)] = tag
+                                    else:
+
+                                        if idx >= 0 and idx < len(tokens) and str(idx) in tags.keys():
+                                            tag = tags[str(idx)]
+                                        if mark < 0 or str(mark) not in index_map.keys():
+                                            track_disfluency_type('problem')
+                                            track_error('problem', trans_name, utt_count)
+                                        else:
+                                            tag += '<rms id="{}"/>'.format(index_map[str(mark)])
+                                        tags[str(idx)] = tag
+                                        reparandum_stack.append(tokens[idx][1:-1])
+                                    break
+                                elif '<' in tokens[idx] and len(tokens[idx]) > 1:
+                                        print('edge token with < :' + tokens[idx])
+                                        tag = ""
+                                        if hesitation.match(tokens[idx]):
+                                            track_disfluency_type('hesit. in ret. reparandum')
+                                            track_error('hesit. in ret. reparandum', trans_name, utt_count)
+                                            tag += '<e/>'
+                                            tags[str(idx)] = tag
+                                            tag = ""
+                                            if idx + 1 >= 0 and idx + 1 < len(tokens) and str(idx + 1) in tags.keys():
+                                                tag = tags[str(idx + 1)]
+                                            if mark < 0 or str(mark) not in index_map.keys():
+                                                track_disfluency_type('problem')
+                                                track_error('problem', trans_name, utt_count)
+                                            else:
+                                                if not hesitation.match(tokens[idx+1]):
+                                                    tag = re.sub('\<rm id=\"\d+\"\/\>', '', tag)
+                                                    tag += '<rms id="{}"/>'.format(index_map[str(mark)])
+                                                    tags[str(idx+1)]=tag
+                                        else:
+                                            if idx >= 0 and idx < len(tokens) and str(idx) in tags.keys():
+                                                tag = tags[str(idx)]
+                                            if mark < 0 or str(mark) not in index_map.keys():
+                                                track_disfluency_type('problem')
+                                                track_error('problem', trans_name, utt_count)
+                                            else:
+                                                try:
+                                                    tag += '<rms id="{}"/>'.format(index_map[str(mark)])
+                                                except Exception as e:
+                                                    print("Oops!", e.__class__, "occurred.")
+                                                    track_disfluency_type(str(e.__class__))
+                                                    track_error(str(e.__class__),trans_name,utt_count)
+                                            tags[str(idx)] = tag
+                                            # adding onset of repeted phrase to stack
+                                            reparandum_stack.append(tokens[idx][1:])
+                                        break
+                                elif '<' in tokens[idx] and len(tokens[idx]) == 1:
+                                    #the retrace phrase has space after < and then the token
+                                    print('edge token with only < :' + tokens[idx] +"  "+tokens[idx+1])
+                                    tag = ""
+                                    if idx+1 >= 0 and idx+1 < len(tokens) and str(idx+1) in tags.keys():
+                                        tag = tags[str(idx+1)]
+                                    if mark < 0 or str(mark) not in index_map.keys():
+                                        track_disfluency_type('problem')
+                                        track_error('problem', trans_name, utt_count)
+                                    else:
+                                        if not hesitation.match(tokens[idx+1]):
+                                            tag=re.sub('\<rm id=\"\d+\"\/\>', '', tag)
+                                            tag += '<rms id="{}"/>'.format(index_map[str(mark)])
+                                    tags[str(idx+1)] = tag
+                                    # adding onset of repeted phrase to stack
+                                    reparandum_stack.pop()
+                                    reparandum_stack.append(tokens[idx+1])
+                                    break
+
+
 
                             # elif not digit_pattern.match(tokens[idx]) and tokens[idx] not in ['[x','[/]','[//]']:
                                 if idx >= 0 and idx < len(tokens) and str(idx) in tags.keys():
                                     tag = tags[str(idx)]
                                 if not prev_tag:
-                                    tag += '<rm id="{}"/>'.format(index_map[str(mark)])
+                                    if not hesitation.match(tokens[idx]):
+                                        tag += '<rm id="{}"/>'.format(index_map[str(mark)])
+                                    else:
+                                        tag += '<e/>'.format(index_map[str(mark)])
+
                                 tags[str(idx)] = tag
                                 # adding repeted phrase to stack
-                                if '>' in tokens[idx] and len(tokens[idx])>1:
+                                if not hesitation.match(tokens[idx]) and '>' in tokens[idx] and len(tokens[idx])>1:
                                     reparandum_stack.append(tokens[idx][:-1])
-                                elif '>' not in tokens[idx]:
+                                elif not hesitation.match(tokens[idx]) and'>' not in tokens[idx]:
                                     reparandum_stack.append(tokens[idx])
                             # word rep. inside phrase rep.
                             elif '[/]' in tokens[idx]:
@@ -537,9 +646,27 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                                 else:
                                     track_disfluency_type('keyerror')
                                     track_error('keyerror',trans_name,utt_count)
-                            tag += '<e/>'
+                            if '<e/>' not in tag:
+                                tag += '<e/>'
                             tags[str(idx)] = tag
                             idx += 1
+                        if (idx<len(tokens) and tokens[idx]=='you' and tokens[idx+1]=='know') or (idx+1<len(tokens) and tokens[idx]=='i' and tokens[idx+1]=='mean'):
+                            tag = ""
+                            track_disfluency_type("integranum_phrase_retrace second type")
+                            track_error("integranum_phrase_retrace second type",trans_name,utt_count)
+                            if idx < len(tokens) and str(idx) in tags.keys():
+                                tag = tags[str(idx)]
+                            if not prev_tag:
+                                tag += '<i id="{}"/>'.format(index_map[str(prev_idx)])
+                            tag += '<e/>'
+                            tags[str(idx)] = tag
+                            if idx+1 < len(tokens) and str(idx+1) in tags.keys():
+                                tag = tags[str(idx+1)]
+                            if not prev_tag:
+                                tag += '<i id="{}"/>'.format(index_map[str(prev_idx)])
+                            tag += '<e/>'
+                            tags[str(idx+1)] = tag
+                            idx += 2
                         # integrenum tagging ends
                         # repair part of phrase repetition tagging
                         digit_pattern = re.compile('\d+]')
@@ -640,8 +767,9 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                     else:
                         #print("word retrace")
                         # tagging reparandum of retrace word
-                        allowed_words = re.compile(r"^<[a-zA-Z]+$|^[a-zA-Z]+>$|^&?[-]?[a-zA-Z]+[,]?$|^[a-zA-Z]*[\'][a-zA-Z]+$|^<[a-zA-Z]+>$|^[a-zA-Z]*[\'][a-zA-Z]+$|^<[a-zA-Z]*[\'][a-zA-Z]+$|^[a-zA-Z]*[\'][a-zA-Z]+>$|^<[a-zA-Z]*[\'][a-zA-Z]+>$")
-
+                        # allowed_words = re.compile(r"^<[a-zA-Z]+$|^[a-zA-Z]+>$|^&?[-]?[a-zA-Z]+[,]?$|^[a-zA-Z]*[\'][a-zA-Z]+$|^<[a-zA-Z]+>$|^[a-zA-Z]*[\'][a-zA-Z]+$|^<[a-zA-Z]*[\'][a-zA-Z]+$|^[a-zA-Z]*[\'][a-zA-Z]+>$|^<[a-zA-Z]*[\'][a-zA-Z]+>$")
+                        allowed_words = re.compile(
+                            r"^[<]?&?[-]?[a-zA-Z]+[,]?[>]?$|^[<]?[a-zA-Z]*[\'][a-zA-Z]+[,]?[>]?$")
                         track_disfluency_type("word_retrace")
                         tag=""
                         #chech contraction in reparandum of retr. word
@@ -700,9 +828,29 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                                 tag = tags[str(idx)]
                             if not prev_tag:
                                 tag += '<i id="{}"/>'.format(index_map[str(prev_idx)])
-                            tag += '<e/>'
+                            if '<e/>' not in tag:
+                                tag += '<e/>'
+
                             tags[str(idx)] = tag
                             idx+=1
+                        if idx<len(tokens) and tokens[idx]=='you' and tokens[idx+1]=='know' or idx+1<len(tokens) and tokens[idx]=='i' and tokens[idx+1]=='mean':
+                            tag = ""
+                            track_disfluency_type("integranum_word_retrace second type")
+                            track_error("integranum_word_retrace second type",trans_name,utt_count)
+                            if idx < len(tokens) and str(idx) in tags.keys():
+                                tag = tags[str(idx)]
+                            if not prev_tag:
+                                tag += '<i id="{}"/>'.format(index_map[str(prev_idx)])
+                            tag += '<e/>'
+                            tags[str(idx)] = tag
+                            tag=""
+                            if idx+1 < len(tokens) and str(idx+1) in tags.keys():
+                                tag = tags[str(idx+1)]
+                            if not prev_tag:
+                                tag += '<i id="{}"/>'.format(index_map[str(prev_idx)])
+                            tag += '<e/>'
+                            tags[str(idx+1)] = tag
+                            idx += 2
                         # check if any integranum is after the retraced word ends
 
                         # tagging repair of retrace word
@@ -748,70 +896,102 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                             track_error('problem', trans_name, utt_count)
                             prev_tag = True
                         digit_pattern = re.compile('\d+]')
-                        allowed_words = re.compile(r"^<[a-zA-Z]+$|^[a-zA-Z]+>$|^&?[-]?[a-zA-Z]+[,]?$|^[a-zA-Z]*[\'][a-zA-Z]+$|^<[a-zA-Z]+>$|^[a-zA-Z]*[\'][a-zA-Z]+$|^<[a-zA-Z]*[\'][a-zA-Z]+$|^[a-zA-Z]*[\'][a-zA-Z]+>$|^<[a-zA-Z]*[\'][a-zA-Z]+>$")
-
+                        allowed_words = re.compile(r"^[<]?&?[-]?[a-zA-Z]+[,]?[>]?$|^[<]?[a-zA-Z]*[\'][a-zA-Z]+[,]?[>]?$")
+                        hes=False
                         #reparandum of repair tagging
                         while idx>=0 and idx<len(tokens)  and not space.match(tokens[idx]) :
                             tag = ""
-                            if '>' in tokens[idx] and '<' in tokens[idx] and len(tokens[idx]) > 2:
-                                # print('duita > < ase :' + tokens[idx])
-                                tag = ""
-                                if idx >= 0 and idx < len(tokens) and str(idx) in tags.keys():
-                                    tag = tags[str(idx)]
-                                if mark < 0 or str(mark) not in index_map.keys():
-                                    track_disfluency_type('problem')
-                                    track_error('problem', trans_name, utt_count)
-                                else:
-                                    tag += '<rms id="{}"/>'.format(index_map[str(mark)])
-                                tags[str(idx)] = tag
-                                reparandum_stack.append(tokens[idx][1:-1])
-                                break
-                            elif '<' in tokens[idx] and len(tokens[idx]) > 1:
-                                print('edge token with < :' + tokens[idx])
-                                tag = ""
-                                if idx >= 0 and idx < len(tokens) and str(idx) in tags.keys():
-                                    tag = tags[str(idx)]
-                                if mark < 0 or str(mark) not in index_map.keys():
-                                    track_disfluency_type('problem')
-                                    track_error('problem', trans_name, utt_count)
-                                else:
-                                    tag += '<rms id="{}"/>'.format(index_map[str(mark)])
-                                tags[str(idx)] = tag
-                                # adding onset of repeted phrase to stack
-                                reparandum_stack.append(tokens[idx][1:])
-                                break
-                            elif '<' in tokens[idx] and len(tokens[idx]) == 1:
-                                #the rep. phrase has space after < and then the token
-                                print('edge token with only < :' + tokens[idx] +"  "+tokens[idx+1])
-                                tag = ""
-                                if idx+1 >= 0 and idx+1 < len(tokens) and str(idx+1) in tags.keys():
-                                    tag = tags[str(idx+1)]
-                                if mark < 0 or str(mark) not in index_map.keys():
-                                    track_disfluency_type('problem')
-                                    track_error('problem', trans_name, utt_count)
-                                else:
-                                    tag=re.sub('\<rm id=\"\d+\"\/\>', '', tag)
-                                    tag += '<rms id="{}"/>'.format(index_map[str(mark)])
-                                tags[str(idx+1)] = tag
-                                # adding onset of repeted phrase to stack
-                                reparandum_stack.pop()
-                                reparandum_stack.append(tokens[idx+1])
-                                break
 
-                            elif allowed_words.match(tokens[idx]):
+                            if allowed_words.match(tokens[idx]):
+                                hesitation=re.compile('^[<]?&[-]?[a-zA-Z]+[>]?$')
+                                if '>' in tokens[idx] and '<' in tokens[idx] and len(tokens[idx]) > 2:
+                                # print('duita > < ase :' + tokens[idx])
+                                    tag = ""
+                                    if hesitation.match(tokens[idx]):
+                                        track_error('hesit. in rep. reparandum', trans_name, utt_count)
+                                        track_disfluency_type('hesit. in rep. reparandum')
+                                        tag += '<e/>'
+                                        tags[str(idx)] = tag
+                                    else:
+
+                                        if idx >= 0 and idx < len(tokens) and str(idx) in tags.keys():
+                                            tag = tags[str(idx)]
+                                        if mark < 0 or str(mark) not in index_map.keys():
+                                            track_disfluency_type('problem')
+                                            track_error('problem', trans_name, utt_count)
+                                        else:
+                                            tag += '<rms id="{}"/>'.format(index_map[str(mark)])
+                                        tags[str(idx)] = tag
+                                        reparandum_stack.append(tokens[idx][1:-1])
+                                    break
+                                elif '<' in tokens[idx] and len(tokens[idx]) > 1:
+                                    print('edge token with < :' + tokens[idx])
+                                    tag = ""
+                                    if hesitation.match(tokens[idx]):
+                                        track_error('hesit. in rep. reparandum', trans_name, utt_count)
+                                        track_disfluency_type('hesit. in rep. reparandum')
+                                        tag += '<e/>'
+                                        tags[str(idx)] = tag
+                                        tag=""
+                                        if idx + 1 >= 0 and idx + 1 < len(tokens) and str(idx + 1) in tags.keys():
+                                            tag = tags[str(idx + 1)]
+                                        if mark < 0 or str(mark) not in index_map.keys():
+                                            track_disfluency_type('problem')
+                                            track_error('problem', trans_name, utt_count)
+                                        else:
+                                            if not hesitation.match(tokens[idx + 1]):
+                                                tag = re.sub('\<rm id=\"\d+\"\/\>', '', tag)
+                                                tag += '<rms id="{}"/>'.format(index_map[str(mark)])
+                                                tags[str(idx+1)]=tag
+                                    else:
+                                        if idx >= 0 and idx < len(tokens) and str(idx) in tags.keys():
+                                            tag = tags[str(idx)]
+                                        if mark < 0 or str(mark) not in index_map.keys():
+                                            track_disfluency_type('problem')
+                                            track_error('problem', trans_name, utt_count)
+                                        else:
+                                            tag += '<rms id="{}"/>'.format(index_map[str(mark)])
+                                        tags[str(idx)] = tag
+                                        # adding onset of repeted phrase to stack
+                                        reparandum_stack.append(tokens[idx][1:])
+                                    break
+                                elif '<' in tokens[idx] and len(tokens[idx]) == 1:
+                                    #the rep. phrase has space after < and then the token
+                                    print('edge token with only < :' + tokens[idx] +"  "+tokens[idx+1])
+                                    tag = ""
+                                    if idx+1 >= 0 and idx+1 < len(tokens) and str(idx+1) in tags.keys():
+                                        tag = tags[str(idx+1)]
+                                    if mark < 0 or str(mark) not in index_map.keys():
+                                        track_disfluency_type('problem')
+                                        track_error('problem', trans_name, utt_count)
+                                    else:
+                                        if not hesitation.match(tokens[idx+1]):
+                                            tag=re.sub('\<rm id=\"\d+\"\/\>', '', tag)
+                                            tag += '<rms id="{}"/>'.format(index_map[str(mark)])
+                                    tags[str(idx+1)] = tag
+                                    # adding onset of repeted phrase to stack
+                                    reparandum_stack.pop()
+                                    reparandum_stack.append(tokens[idx+1])
+                                    break
+
                             # elif not digit_pattern.match(tokens[idx]) and tokens[idx] not in ['[x','[/]','[//]']:
                                 if idx >= 0 and idx < len(tokens) and str(idx) in tags.keys():
                                     tag = tags[str(idx)]
 
                                 if not prev_tag:
-                                    tag += '<rm id="{}"/>'.format(index_map[str(mark)])
+                                    if not hesitation.match(tokens[idx]):
+                                        tag += '<rm id="{}"/>'.format(index_map[str(mark)])
+                                    else:
+                                        tag += '<e/>'
+
                                 tags[str(idx)] = tag
                                 # adding repeted phrase to stack
 
-                                if '>' in tokens[idx] and len(tokens[idx])>1:
+                                if not hesitation.match(tokens[idx]) and  '>' in tokens[idx] and len(tokens[idx])>1:
                                     reparandum_stack.append(tokens[idx][:-1])
                                 else:
-                                    reparandum_stack.append(tokens[idx])
+                                    if not hesitation.match(tokens[idx]):
+                                        reparandum_stack.append(tokens[idx])
                             # word rep. inside phrase rep.
                             elif '[/]' in tokens[idx]:
                                 if idx-1>=0:
@@ -841,18 +1021,7 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
 
 
                             idx-=1
-                        # if '<' in tokens[idx]:
-                        #     tag=""
-                        #     if idx > 0 and idx < len(tokens) and str(idx) in tags.keys():
-                        #         tag = tags[str(idx)]
-                        #     if ind - 1 < 0 or str(ind - 1) not in index_map.keys():
-                        #         track_disfluency_type('problem')
-                        #         track_error('problem', trans_name, utt_count)
-                        #     else:
-                        #         tag+='<rms id="{}"/>'.format(index_map[str(ind - 1)])
-                        #     tags[str(idx)] = tag
-                        #     # adding onset of repeted phrase to stack
-                        #     reparandum_stack.append(tokens[idx][1:])
+
 
 
                         stack_size=len(reparandum_stack)
@@ -878,9 +1047,30 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                                 tag = tags[str(idx)]
                             if not prev_tag:
                                 tag += '<i id="{}"/>'.format(index_map[str(prev_idx)])
-                            tag += '<e/>'
+                            if '<e/>' not in tag:
+                                tag += '<e/>'
                             tags[str(idx)] = tag
                             idx += 1
+
+                        if idx<len(tokens) and idx+1<len(tokens) and (tokens[idx]=='you' and tokens[idx+1]=='know') or  (tokens[idx]=='i' and tokens[idx+1]=='mean') and (tokens[idx]!=reparandum_stack[-1]):
+                            tag = ""
+                            track_disfluency_type("integranum_phrase_repetition second type")
+                            track_error("integranum_phrase_repetition second type",trans_name,utt_count)
+                            if idx < len(tokens) and str(idx) in tags.keys():
+                                tag = tags[str(idx)]
+                            if not prev_tag:
+                                tag += '<i id="{}"/>'.format(index_map[str(prev_idx)])
+                            tag += '<e/>'
+                            tags[str(idx)] = tag
+                            tag=""
+                            if idx+1 < len(tokens) and str(idx+1) in tags.keys():
+                                tag = tags[str(idx+1)]
+                            if not prev_tag:
+                                tag += '<i id="{}"/>'.format(index_map[str(prev_idx)])
+                            tag += '<e/>'
+                            tags[str(idx+1)] = tag
+                            idx += 2
+
                         # integrenum tagging ends
                         # checking is there any fluent word in phrase rep. repair part
                         more_rep=False
@@ -901,12 +1091,14 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                                 #print('fluent word in repair part of phrase repetition')
                         # repair part of phrase repetition tagging
                         rep_found=False
-                        allowed_words = re.compile(r"^<[a-zA-Z]+$|^[a-zA-Z]+>$|^&?[-]?[a-zA-Z]+[,]?$|^[a-zA-Z]*[\'][a-zA-Z]+$|^<[a-zA-Z]+>$|^[a-zA-Z]*[\'][a-zA-Z]+$|^<[a-zA-Z]*[\'][a-zA-Z]+$|^[a-zA-Z]*[\'][a-zA-Z]+>$|^<[a-zA-Z]*[\'][a-zA-Z]+>$")
-
+                        # allowed_words = re.compile(r"^<[a-zA-Z]+$|^[a-zA-Z]+>$|^&?[-]?[a-zA-Z]+[,]?$|^[a-zA-Z]*[\'][a-zA-Z]+$|^<[a-zA-Z]+>$|^[a-zA-Z]*[\'][a-zA-Z]+$|^<[a-zA-Z]*[\'][a-zA-Z]+$|^[a-zA-Z]*[\'][a-zA-Z]+>$|^<[a-zA-Z]*[\'][a-zA-Z]+>$")
+                        allowed_words = re.compile(
+                            r"^[<]?&?[-]?[a-zA-Z]+[,]?[>]?$|^[<]?[a-zA-Z]*[\'][a-zA-Z]+[,]?[>]?$")
                         while idx < len(tokens) and len(reparandum_stack)>0 and not space.match(tokens[idx]):
                             tag=""
-                            print('token: '+tokens[idx])
+
                             pattern = re.compile('&[-]?[a-zA-Z]+')
+
                             if pattern.match(tokens[idx]) :
                                 track_disfluency_type("hesitation_repair_phrase_repetition")
                                 track_error('hesitation_repair_phrase_repetition', trans_name, utt_count)
@@ -923,6 +1115,7 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                                     current_word=reparandum_stack.pop()
 
                                   #  print('current_word :' + current_word)
+
                                     if more_rep:
                                         target_word=tokens[idx][1:]
                                         #repeted repetition
@@ -990,8 +1183,16 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                                                 tag += '<rpnrep id="{}"/>'.format(index_map[str(prev_idx)])
                                                 rep_found = True
                                             tags[str(idx)] = tag
+
                                     else:
                                         if (current_word == tokens[idx]):
+                                            if idx < len(tokens) and str(idx) in tags.keys():
+                                                tag = tags[str(idx)]
+                                            if not prev_tag:
+                                                tag += '<rpnrep id="{}"/>'.format(index_map[str(prev_idx)])
+                                                rep_found = True
+                                            tags[str(idx)] = tag
+                                        elif '<' in tokens[idx] and tokens[idx][1:] == current_word:
                                             if idx < len(tokens) and str(idx) in tags.keys():
                                                 tag = tags[str(idx)]
                                             if not prev_tag:
@@ -1003,6 +1204,12 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                                     current_word = reparandum_stack.pop()
                                     #print('current_word :' + current_word)
                                     if (current_word == tokens[idx]):
+                                        if idx < len(tokens) and str(idx) in tags.keys():
+                                            tag = tags[str(idx)]
+                                        if not prev_tag:
+                                            tag += '<rp id="{}"/>'.format(index_map[str(prev_idx)])
+                                        tags[str(idx)] = tag
+                                    elif '<' in tokens[idx] and tokens[idx][1:] == current_word:
                                         if idx < len(tokens) and str(idx) in tags.keys():
                                             tag = tags[str(idx)]
                                         if not prev_tag:
@@ -1065,9 +1272,27 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                                 tag = tags[str(idx)]
                             if not prev_tag:
                                 tag += '<i id="{}"/>'.format(index_map[str(prev_idx)])
-                            tag += '<e/>'
+                            if '<e/>' not in tag:
+                                tag += '<e/>'
                             tags[str(idx)] = tag
                             idx += 1
+                        if idx<len(tokens) and tokens[idx]=='you' and tokens[idx+1]=='know' or idx+1<len(tokens) and tokens[idx]=='i' and tokens[idx+1]=='mean':
+                            tag = ""
+                            track_disfluency_type("integranum_word_repetition second type")
+                            track_error("integranum_word_repetition second type",trans_name,utt_count)
+                            if idx < len(tokens) and str(idx) in tags.keys():
+                                tag = tags[str(idx)]
+                            if not prev_tag:
+                                tag += '<i id="{}"/>'.format(index_map[str(prev_idx)])
+                            tag += '<e/>'
+                            tags[str(idx)] = tag
+                            if idx+1 < len(tokens) and str(idx+1) in tags.keys():
+                                tag = tags[str(idx+1)]
+                            if not prev_tag:
+                                tag += '<i id="{}"/>'.format(index_map[str(prev_idx)])
+                            tag += '<e/>'
+                            tags[str(idx+1)] = tag
+                            idx += 2
                         # check if any integranum is after the repeted word ends
 
                         # tagging repair of repeted word
@@ -1260,9 +1485,11 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
                     #count+=1
                     continue
 
-                pattern3 = re.compile(
-                r"^<[a-zA-Z]+$|^[a-zA-Z]+>$|^&?[-]?[a-zA-Z]+[,]?$|^[a-zA-Z]*[\'][a-zA-Z]+$|^<[a-zA-Z]+>$|^[a-zA-Z]*[\'][a-zA-Z]+$|^<[a-zA-Z]*[\'][a-zA-Z]+$|^[a-zA-Z]*[\'][a-zA-Z]+>$|^<[a-zA-Z]*[\'][a-zA-Z]+>$")
-                if pattern3.match(words):
+                # pattern3 = re.compile(
+                # r"^<[a-zA-Z]+$|^[a-zA-Z]+>$|^[<]?&?[-]?[a-zA-Z]+[,]?[>]?$|^[a-zA-Z]*[\'][a-zA-Z]+$|^<[a-zA-Z]+>$|^[a-zA-Z]*[\'][a-zA-Z]+$|^<[a-zA-Z]*[\'][a-zA-Z]+$|^[a-zA-Z]*[\'][a-zA-Z]+>$|^<[a-zA-Z]*[\'][a-zA-Z]+>$")
+                allowed_words = re.compile(
+                    r"^[<]?&?[-]?[a-zA-Z]+[,]?[>]?$|^[<]?[a-zA-Z]*[\'][a-zA-Z]+[,]?[>]?$")
+                if allowed_words.match(words):
                 # if words!='[//]' and words!='[/]' and not pattern1.match(words)and not pattern2.match(words) :
                     print('check word: '+words+" "+str(index))
                     if '<' in words and '>' in words:
@@ -1313,7 +1540,7 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
 
                 index+=1
             utt_count+=1
-            print_tag(wordList, disfluencyTagList,indexList)
+            print_tag(wordList, disfluencyTagList,indexList,POSList)
             uttList.append(['utt.swda_filename', str(utt_count),
                             'PAR', 'utt.damsl_act_tag()', trans_name,
                             'utt.utterance_index'])
@@ -1383,7 +1610,7 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
 
 
 
-        with open('dictionary_heldout.txt', 'a') as convert_file:
+        with open('dictionary_train.txt', 'a') as convert_file:
             convert_file.write('after write heldout file: '+ filename+'\n')
 
             convert_file.write(json.dumps(count_map))
@@ -1398,7 +1625,7 @@ def make_DB_corpus(writeFile,writecleanFile,writeeditFile,target,filename,range_
     if writeeditFile:
         write_edit_term_corpus(easyread_corpus, THIS_DIR+'/../data/lm_corpora/'+filename + "_edit.text")
 
-        with open('dictionary_all_heldout.txt', 'w') as convert_file:
+        with open('dictionary_all_train.txt', 'w') as convert_file:
             convert_file.write('after write all file'+ filename+'\n')
             convert_file.write(json.dumps(count_map))
             convert_file.write("\n")
