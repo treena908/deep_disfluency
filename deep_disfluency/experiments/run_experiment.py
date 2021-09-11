@@ -21,8 +21,8 @@ print('this_dir'+ THIS_DIR)
 # each of the parts of the below can be turned off
 # though they must be run in order so the latter stages work
 download_raw_data = False
-create_disf_corpus = True
-extract_features = False
+create_disf_corpus = False
+extract_features = True
 train_models = False
 test_models = False
 
@@ -32,10 +32,10 @@ partial = False  # whether to include partial words or not
 range_dir = THIS_DIR + \
     '/../data/disfluency_detection/DB_divisions_disfluency_detection'
 file_divisions_transcripts = [
-    # ('train', range_dir + '/DB_disf_train_1_ranges.text'),
+    ('train', range_dir + '/DB_disf_train_1_ranges.text'),
     # range_dir + '/swbd_disf_train_audio_ranges.text',
-    ('heldout', range_dir + '/DB_disf_heldout_1_ranges.text')
-   # ('test', range_dir + '/DB_disf_test_1_ranges.text')
+    ('heldout', range_dir + '/DB_disf_heldout_1_ranges.text'),
+   ('test', range_dir + '/DB_disf_test_1_ranges.text')
 ]
 
 

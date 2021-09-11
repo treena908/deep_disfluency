@@ -333,6 +333,10 @@ def convert_from_eval_tags_to_inc_disfluency_tags(tags, words,
     """
     repair_dict = defaultdict(list)
     new_tags = []
+    print("tags")
+    print(tags)
+    print('words')
+    print(words)
     for t in range(0, len(tags)):
         if "uttseg" in representation:
             m = re.search(r'<[ct]*/>', tags[t])
@@ -363,6 +367,10 @@ def convert_from_eval_tags_to_inc_disfluency_tags(tags, words,
             rps = re.findall("<rps id\=\"[0-9]+\"\/>", tags[t], re.S)
             for r in rps:
                 repairID = r[r.find("=")+2:-3]
+                print('repairID')
+                print(repairID)
+                print(repair_dict.get(repairID))
+                print(str(repairID)+str(tags)+str(words))
                 assert repair_dict.get(repairID), str(repairID)+str(tags)+str(words)
                 repair_dict[repairID][1] = t
                 dist = min(t-repair_dict[repairID][0], limit)

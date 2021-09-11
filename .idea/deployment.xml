@@ -5,7 +5,7 @@
       <paths name="sfarza3@10.8.49.15:22">
         <serverdata>
           <mappings>
-            <mapping deploy="/deep_disfluency" local="$PROJECT_DIR$" />
+            <mapping deploy="/AD-HOME/sfarza3/Research/deep_disfluency" local="$PROJECT_DIR$" />
             <mapping />
           </mappings>
         </serverdata>

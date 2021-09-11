@@ -175,9 +175,10 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    corpus_file = args.corpusFile
-    print
-    "creating tag files. Using file:", corpus_file
+    corpus_file = args.corpusFile+'.csv'
+    print("creating tag files. Using file:")
+    print(corpus_file)
+
     word_rep_file = args.tagFolder + "/DB_word_rep.csv"
     pos_rep_file = args.tagFolder + "/DB_pos_rep.csv"
     disf_tag_rep_file = args.tagFolder + "/DB_disf1_tags.csv"
@@ -193,6 +194,7 @@ if __name__ == '__main__':
                                                                 True)
 
     else:
+        print('creating tagset')
         IDs, timings, seq, pos_seq, targets = \
             load_data_from_disfluency_corpus_file(
                 corpus_file,

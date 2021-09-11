@@ -1,5 +1,6 @@
 after write file: DB_disf_test_1
-{"phrase retrace": 83, "ret._repair_error": 6, "word_retrace": 132, "word_repetition": 118, "phrase_repetition": 36,
+{"phrase retrace": 83, "ret._repair_error": 6, "word_retrace": 132,
+ "word_repetition": 118, "phrase_repetition": 36,
 "integranum_phrase_retrace": 8, "empy_utt": 22, "integranum_word_retrace": 11,
 "word rep. inside phrase ret.": 4, "hesitation_repair_retrace": 3, "integranum_phrase_repetition": 1,
  "word rep. inside phrase rep.": 1}

@@ -1,5 +1,5 @@
 DB/Pitt/Control/cookie/045-0.cha:PAR:1:da,start whenever you want
-POS,NN WRB PRP VBP
+POS,VB WRB PRP VBP
 DB/Pitt/Control/cookie/045-0.cha:PAR:2:da,cookie jar
 POS,NN NN
 DB/Pitt/Control/cookie/045-0.cha:PAR:3:da,a lad standing on a stool teetering grabbing for the cookies
@@ -45,7 +45,7 @@ POS,UH
 DB/Pitt/Control/cookie/045-0.cha:PAR:23:da,mhm
 POS,UH
 DB/Pitt/Control/cookie/059-2.cha:PAR:1:da,what action do you see going on in that picture
-POS,WP NN VBP PRP VB VBG IN IN DT NN
+POS,WDT NN VBP PRP VB VBG IN IN DT NN
 DB/Pitt/Control/cookie/059-2.cha:PAR:2:da,all the action
 POS,PDT DT NN
 DB/Pitt/Control/cookie/059-2.cha:PAR:3:da,mother is drying dishes and the tap water is overflowing the sink and running on the floor
@@ -65,7 +65,7 @@ POS,DT NNPOS VBG IN DT NN WDT VBD IN DT NN
 DB/Pitt/Control/cookie/059-2.cha:PAR:10:da,that's all I can be sure of
 POS,DTVBZ DT PRP MD VB JJ IN
 DB/Pitt/Control/cookie/059-2.cha:PAR:11:da,okay that's fine
-POS,JJ DTVBZ JJ
+POS,UH DTVBZ JJ
 DB/Pitt/Control/cookie/068-2.cha:PAR:1:da,oh yes
 POS,UH UH
 DB/Pitt/Control/cookie/068-2.cha:PAR:2:da,well the mother is washing the dishes
@@ -129,13 +129,13 @@ POS,PRP VBP CD NNS CC DT NN IN DT JJ NN NN
 DB/Pitt/Control/cookie/073-3.cha:PAR:12:da,her feet was in a puddle of water coming from the overflowing sink
 POS,PRP$ NNS VBD IN DT NN IN NN VBG IN DT VBG NN
 DB/Pitt/Control/cookie/073-3.cha:PAR:13:da,okay that's fine
-POS,JJ DTVBZ JJ
-DB/Pitt/Control/cookie/073-3.cha:PAR:14:da,the curtains
-POS,DT NNS
+POS,UH DTVBZ JJ
+DB/Pitt/Control/cookie/073-3.cha:PAR:14:da,the curtains the outside
+POS,DT NNS DT NN
 DB/Pitt/Control/cookie/073-3.cha:PAR:15:da,that's fine
 POS,DTVBZ JJ
 DB/Pitt/Control/cookie/073-3.cha:PAR:16:da,that was good
-POS,WDT VBD JJ
+POS,DT VBD JJ
 DB/Pitt/Control/cookie/114-1.cha:PAR:1:da,okay there it is
 POS,RB RB PRP VBZ
 DB/Pitt/Control/cookie/114-1.cha:PAR:2:da,what do you see going on in that picture
@@ -159,7 +159,7 @@ POS,NN RB
 DB/Pitt/Control/cookie/114-1.cha:PAR:11:da,nothing that I can see of action
 POS,NN WDT PRP MD VB IN NN
 DB/Pitt/Control/cookie/114-1.cha:PAR:12:da,okay fine
-POS,JJ NN
+POS,UH UH
 DB/Pitt/Control/cookie/121-4.cha:PAR:1:da,alright
 POS,UH
 DB/Pitt/Control/cookie/121-4.cha:PAR:2:da,the little boy is on the stool which is tipping
@@ -239,7 +239,7 @@ POS,UH
 DB/Pitt/Control/cookie/132-0.cha:PAR:16:da,the wind might be blowing near the curtain
 POS,DT NN MD VB VBG IN DT NN
 DB/Pitt/Control/cookie/132-0.cha:PAR:17:da,okey dokey
-POS,NN NN
+POS,JJ NN
 DB/Pitt/Control/cookie/140-0.cha:PAR:1:da,there is the picture
 POS,RB VBZ DT NN
 DB/Pitt/Control/cookie/140-0.cha:PAR:2:da,doesn't matter where you start then right
@@ -269,7 +269,7 @@ POS,RB PRP MD VB DT NN CC DT NNS
 DB/Pitt/Control/cookie/140-0.cha:PAR:14:da,that's not action right is it
 POS,DTVBZ RB NN NN VBZ PRP
 DB/Pitt/Control/cookie/140-0.cha:PAR:15:da,no you don't needta mention those
-POS,DT PRP VBPRB JJ NN DT
+POS,UH PRP VBPRB JJ NN DT
 DB/Pitt/Control/cookie/140-0.cha:PAR:16:da,the breeze might be blowing
 POS,DT NN MD VB VBG
 DB/Pitt/Control/cookie/140-0.cha:PAR:17:da,the curtains look like they might be
@@ -341,7 +341,7 @@ POS,DT NN VBZ IN DT NN NN IN DT VBZ NN
 DB/Pitt/Control/cookie/155-3.cha:PAR:8:da,I think that's all I can see in there
 POS,PRP VBP DTVBZ DT PRP MD VB IN RB
 DB/Pitt/Control/cookie/155-3.cha:PAR:9:da,okay that's fine
-POS,JJ DTVBZ JJ
+POS,UH DTVBZ JJ
 DB/Pitt/Control/cookie/167-1.cha:PAR:1:da,oh the boy is going to fall off the stool because he is stealing cookies from the cookie jar and his sister is reaching I assume it's his sister reaching up for him to hand her a cookie
 POS,UH DT NN VBZ VBG TO VB RP DT NN IN PRP VBZ VBG NNS IN DT NN NN CC PRP$ NN VBZ VBG PRP VBP PRPVBZ PRP$ NN VBG RP IN PRP TO VB PRP DT NN
 DB/Pitt/Control/cookie/167-1.cha:PAR:2:da,mother is drying dishes but she's very inattentive here because the water is pouring all over the sink
@@ -382,23 +382,25 @@ DB/Pitt/Control/cookie/172-0.cha:PAR:10:da,he's got one cookie in his hand
 POS,PRPVBZ VBN CD NN IN PRP$ NN
 DB/Pitt/Control/cookie/172-0.cha:PAR:11:da,he's handing it to the little girl and he's getting another one out of the cookie jar in the cupboard
 POS,PRPVBZ VBG PRP IN DT JJ NN CC PRPVBZ VBG DT CD IN IN DT NN NN IN DT NN
-DB/Pitt/Control/cookie/172-0.cha:PAR:12:da,uhhuh
-POS,NN
-DB/Pitt/Control/cookie/172-0.cha:PAR:13:da,the little girl kinda has her hand up to
+DB/Pitt/Control/cookie/172-0.cha:PAR:12:da,did you say action that's going on
+POS,VBD PRP VB NN WDTVBZ VBG RP
+DB/Pitt/Control/cookie/172-0.cha:PAR:13:da,uhhuh
+POS,NNP
+DB/Pitt/Control/cookie/172-0.cha:PAR:14:da,the little girl kinda has her hand up to
 POS,DT JJ NN RB VBZ PRP$ NN RP TO
-DB/Pitt/Control/cookie/172-0.cha:PAR:14:da,looks like she's telling him either to be quiet or she's laughing
+DB/Pitt/Control/cookie/172-0.cha:PAR:15:da,looks like she's telling him either to be quiet or she's laughing
 POS,VBZ IN PRPVBZ VBG PRP RB TO VB JJ CC PRPVBZ VBG
-DB/Pitt/Control/cookie/172-0.cha:PAR:15:da,the mother doesn't seem to be paying much attention
+DB/Pitt/Control/cookie/172-0.cha:PAR:16:da,the mother doesn't seem to be paying much attention
 POS,DT NN VBZRB VB TO VB VBG JJ NN
-DB/Pitt/Control/cookie/172-0.cha:PAR:16:da,she looks like she's looking out the window
+DB/Pitt/Control/cookie/172-0.cha:PAR:17:da,she looks like she's looking out the window
 POS,PRP VBZ IN PRPVBZ VBG RP DT NN
-DB/Pitt/Control/cookie/172-0.cha:PAR:17:da,the water is splashing onto the floor
+DB/Pitt/Control/cookie/172-0.cha:PAR:18:da,the water is splashing onto the floor
 POS,DT NN VBZ VBG IN DT NN
-DB/Pitt/Control/cookie/172-0.cha:PAR:18:da,okay
+DB/Pitt/Control/cookie/172-0.cha:PAR:19:da,okay
 POS,UH
-DB/Pitt/Control/cookie/172-0.cha:PAR:19:da,that's it
+DB/Pitt/Control/cookie/172-0.cha:PAR:20:da,that's it
 POS,DTVBZ PRP
-DB/Pitt/Control/cookie/172-0.cha:PAR:20:da,good
+DB/Pitt/Control/cookie/172-0.cha:PAR:21:da,good
 POS,JJ
 DB/Pitt/Control/cookie/196-0.cha:PAR:1:da,and there's the picture
 POS,CC EXVBZ DT NN
@@ -479,7 +481,7 @@ POS,DT CD JJ NN VBZ VBG RP IN PRP
 DB/Pitt/Control/cookie/210-2.cha:PAR:8:da,they're nicely dressed kids but the boy needs his socks pulled up
 POS,PRPVBP RB JJ NNS CC DT NN VBZ PRP$ NNS VBD RP
 DB/Pitt/Control/cookie/210-2.cha:PAR:9:da,that's all I see there
-POS,WDTVBZ DT PRP VBP RB
+POS,DTVBZ DT PRP VBP RB
 DB/Pitt/Control/cookie/210-2.cha:PAR:10:da,I presume it's mother is at the sink
 POS,PRP VBP PRPVBZ NN VBZ IN DT NN
 DB/Pitt/Control/cookie/210-2.cha:PAR:11:da,the water is running over out of sink
@@ -519,7 +521,7 @@ POS,UH VBZ RB DT NN IN NNS
 DB/Pitt/Control/cookie/227-1.cha:PAR:4:da,I mean do I hafta come up with a certain amount
 POS,PRP VBP VBP PRP VBP VB RP IN DT JJ NN
 DB/Pitt/Control/cookie/227-1.cha:PAR:5:da,no
-POS,DT
+POS,UH
 DB/Pitt/Control/cookie/227-1.cha:PAR:6:da,oh okay
 POS,UH UH
 DB/Pitt/Control/cookie/227-1.cha:PAR:7:da,just whatever you see happening there
@@ -557,7 +559,7 @@ POS,VBZ IN DT NN VBZ DT JJ NN INNNP
 DB/Pitt/Control/cookie/227-1.cha:PAR:23:da,and that's about all I can see
 POS,CC DTVBZ RB DT PRP MD VB
 DB/Pitt/Control/cookie/227-1.cha:PAR:24:da,okay fine
-POS,JJ NN
+POS,UH UH
 DB/Pitt/Control/cookie/227-1.cha:PAR:25:da,that's good thank you very much
 POS,DTVBZ JJ VBP PRP RB RB
 DB/Pitt/Control/cookie/267-0.cha:PAR:1:da,just tell me what's happening in the picture
@@ -731,7 +733,7 @@ POS,DT JJ NNPOS VBG IN PRP$ NN
 DB/Pitt/Control/cookie/678-0.cha:PAR:13:da,and I think I mentioned that the boy has one cookie in his left hand and just grabbing one with his right hand
 POS,CC PRP VBP PRP VBD IN DT NN VBZ CD NN IN PRP$ JJ NN CC RB VBG CD IN PRP$ JJ NN
 DB/Pitt/Control/cookie/678-0.cha:PAR:14:da,okay thank you
-POS,JJ VBP PRP
+POS,UH VBP PRP
 DB/Pitt/Dementia/cookie/001-2.cha:PAR:1:da,you see going on in the picture
 POS,PRP VBP VBG IN IN DT NN
 DB/Pitt/Dementia/cookie/001-2.cha:PAR:2:da,tell me all the action
@@ -841,7 +843,7 @@ POS,WRB IN DT
 DB/Pitt/Dementia/cookie/010-2.cha:PAR:34:da,does that have enough
 POS,VBZ DT VB RB
 DB/Pitt/Dementia/cookie/010-2.cha:PAR:35:da,okay that's fine
-POS,JJ DTVBZ JJ
+POS,UH DTVBZ JJ
 DB/Pitt/Dementia/cookie/014-2.cha:PAR:1:da,okay what do you see going on in that picture
 POS,UH WP VBP PRP VB VBG IN IN DT NN
 DB/Pitt/Dementia/cookie/014-2.cha:PAR:2:da,well this here is cookie jar
@@ -876,23 +878,31 @@ DB/Pitt/Dementia/cookie/014-2.cha:PAR:16:da,this thing here
 POS,DT NN RB
 DB/Pitt/Dementia/cookie/014-2.cha:PAR:17:da,I don't know what you'd call it
 POS,PRP VBPRB VB WP PRPMD VB PRP
-DB/Pitt/Dementia/cookie/014-2.cha:PAR:18:da,she spilt the water and washed the dishes here
+DB/Pitt/Dementia/cookie/014-2.cha:PAR:18:da,anything else
+POS,NN RB
+DB/Pitt/Dementia/cookie/014-2.cha:PAR:19:da,she spilt the water and washed the dishes here
 POS,PRP VBD DT NN CC VBD DT NNS RB
-DB/Pitt/Dementia/cookie/014-2.cha:PAR:19:da,anything else going on
+DB/Pitt/Dementia/cookie/014-2.cha:PAR:20:da,anything else going on
 POS,NN RB VBG RP
-DB/Pitt/Dementia/cookie/014-2.cha:PAR:20:da,okay
+DB/Pitt/Dementia/cookie/014-2.cha:PAR:21:da,she washes dishes there or what's she doing
+POS,PRP VBZ NNS RB CC WPVBZ PRP VBG
+DB/Pitt/Dementia/cookie/014-2.cha:PAR:22:da,okay
 POS,UH
-DB/Pitt/Dementia/cookie/014-2.cha:PAR:21:da,anything else going on over here
+DB/Pitt/Dementia/cookie/014-2.cha:PAR:23:da,anything else going on over here
 POS,NN RB VBG IN IN RB
-DB/Pitt/Dementia/cookie/014-2.cha:PAR:22:da,that is picking something out of that cookie jar for this little girl
+DB/Pitt/Dementia/cookie/014-2.cha:PAR:24:da,that is picking something out of that cookie jar for this little girl
 POS,DT VBZ VBG NN IN IN DT NN NN IN DT JJ NN
-DB/Pitt/Dementia/cookie/014-2.cha:PAR:23:da,bench is falling over here for one thing
+DB/Pitt/Dementia/cookie/014-2.cha:PAR:25:da,anything else
+POS,NN RB
+DB/Pitt/Dementia/cookie/014-2.cha:PAR:26:da,bench is falling over here for one thing
 POS,NN VBZ VBG RB RB IN CD NN
-DB/Pitt/Dementia/cookie/014-2.cha:PAR:24:da,is that it
+DB/Pitt/Dementia/cookie/014-2.cha:PAR:27:da,anything else
+POS,NN RB
+DB/Pitt/Dementia/cookie/014-2.cha:PAR:28:da,is that it
 POS,VBZ IN PRP
-DB/Pitt/Dementia/cookie/014-2.cha:PAR:25:da,yeah that's what's the end of the line
+DB/Pitt/Dementia/cookie/014-2.cha:PAR:29:da,yeah that's what's the end of the line
 POS,UH DTVBZ WPVBZ DT NN IN DT NN
-DB/Pitt/Dementia/cookie/014-2.cha:PAR:26:da,okay good
+DB/Pitt/Dementia/cookie/014-2.cha:PAR:30:da,okay good
 POS,RB JJ
 DB/Pitt/Dementia/cookie/023-0.cha:PAR:1:da,everything that's happening in that picture
 POS,NN WDTVBZ VBG IN DT NN
@@ -914,12 +924,14 @@ DB/Pitt/Dementia/cookie/023-0.cha:PAR:9:da,they're heading into a disaster
 POS,PRPVBP VBG IN DT NN
 DB/Pitt/Dementia/cookie/023-0.cha:PAR:10:da,okay
 POS,UH
-DB/Pitt/Dementia/cookie/023-0.cha:PAR:11:da,well the little boy's gonna break his neck there if he doesn't watch out
+DB/Pitt/Dementia/cookie/023-0.cha:PAR:11:da,anything else
+POS,NN RB
+DB/Pitt/Dementia/cookie/023-0.cha:PAR:12:da,well the little boy's gonna break his neck there if he doesn't watch out
 POS,UH DT JJ NNPOS VBGTO VB PRP$ NN RB IN PRP VBZRB VB RP
-DB/Pitt/Dementia/cookie/023-0.cha:PAR:12:da,now I expect there are a whole lot more that I didn't see
+DB/Pitt/Dementia/cookie/023-0.cha:PAR:13:da,now I expect there are a whole lot more that I didn't see
 POS,RB PRP VBP EX VBP DT JJ NN RBR IN PRP VBDRB VB
-DB/Pitt/Dementia/cookie/023-0.cha:PAR:13:da,okay that's fine
-POS,JJ DTVBZ JJ
+DB/Pitt/Dementia/cookie/023-0.cha:PAR:14:da,okay that's fine
+POS,UH DTVBZ JJ
 DB/Pitt/Dementia/cookie/065-1.cha:PAR:1:da,you see going on in that picture
 POS,PRP VBP VBG IN IN DT NN
 DB/Pitt/Dementia/cookie/065-1.cha:PAR:2:da,the little girl is waiting for the boy to get her a cookie
@@ -944,11 +956,15 @@ DB/Pitt/Dementia/cookie/065-1.cha:PAR:11:da,let me see about there anything happ
 POS,VB PRP VB RB RB NN VBG RB
 DB/Pitt/Dementia/cookie/065-1.cha:PAR:12:da,no
 POS,UH
-DB/Pitt/Dementia/cookie/065-1.cha:PAR:13:da,if it is you could hardly tasty
+DB/Pitt/Dementia/cookie/065-1.cha:PAR:13:da,the wind might be blowing beside but I don't think anybody
+POS,DT NN MD VB VBG RB CC PRP VBPRB VB NN
+DB/Pitt/Dementia/cookie/065-1.cha:PAR:14:da,if it is you could hardly tasty
 POS,IN PRP VBZ PRP MD RB JJ
-DB/Pitt/Dementia/cookie/065-1.cha:PAR:14:da,okay
+DB/Pitt/Dementia/cookie/065-1.cha:PAR:15:da,is that it
+POS,VBZ IN PRP
+DB/Pitt/Dementia/cookie/065-1.cha:PAR:16:da,okay
 POS,UH
-DB/Pitt/Dementia/cookie/065-1.cha:PAR:15:da,okay
+DB/Pitt/Dementia/cookie/065-1.cha:PAR:17:da,okay
 POS,UH
 DB/Pitt/Dementia/cookie/067-1.cha:PAR:1:da,there it is
 POS,RB PRP VBZ
@@ -1002,16 +1018,18 @@ DB/Pitt/Dementia/cookie/070-2.cha:PAR:8:da,she's drying the dishes
 POS,PRPVBZ VBG DT NNS
 DB/Pitt/Dementia/cookie/070-2.cha:PAR:9:da,there's a cup and saucer and plate on the counter
 POS,EXVBZ DT NN CC NN CC NN IN DT NN
-DB/Pitt/Dementia/cookie/070-2.cha:PAR:10:da,hmhunh
+DB/Pitt/Dementia/cookie/070-2.cha:PAR:10:da,see anything else
+POS,VB NN JJ
+DB/Pitt/Dementia/cookie/070-2.cha:PAR:11:da,hmhunh
 POS,NN
-DB/Pitt/Dementia/cookie/070-2.cha:PAR:11:da,okay good
+DB/Pitt/Dementia/cookie/070-2.cha:PAR:12:da,okay good
 POS,RB JJ
 DB/Pitt/Dementia/cookie/125-0.cha:PAR:1:da,cookie jar
 POS,NN NN
 DB/Pitt/Dementia/cookie/125-0.cha:PAR:2:da,mhm
 POS,UH
-DB/Pitt/Dementia/cookie/125-0.cha:PAR:3:da,what's happening
-POS,WPVBZ VBG
+DB/Pitt/Dementia/cookie/125-0.cha:PAR:3:da,what's happening in the picture
+POS,WPVBZ VBG IN DT NN
 DB/Pitt/Dementia/cookie/125-0.cha:PAR:4:da,cookie jar
 POS,NN NN
 DB/Pitt/Dementia/cookie/125-0.cha:PAR:5:da,okay
@@ -1020,35 +1038,41 @@ DB/Pitt/Dementia/cookie/125-0.cha:PAR:6:da,what's happening over here
 POS,WPVBZ VBG RP RB
 DB/Pitt/Dementia/cookie/125-0.cha:PAR:7:da,plate
 POS,NN
-DB/Pitt/Dementia/cookie/125-0.cha:PAR:8:da,mhm
+DB/Pitt/Dementia/cookie/125-0.cha:PAR:8:da,did I say a cookie jar
+POS,VBD PRP VBP DT NN NN
+DB/Pitt/Dementia/cookie/125-0.cha:PAR:9:da,mhm
 POS,UH
-DB/Pitt/Dementia/cookie/125-0.cha:PAR:9:da,well I'll give it
+DB/Pitt/Dementia/cookie/125-0.cha:PAR:10:da,well I'll give it
 POS,UH PRPMD VB PRP
-DB/Pitt/Dementia/cookie/125-0.cha:PAR:10:da,what's happening to this
+DB/Pitt/Dementia/cookie/125-0.cha:PAR:11:da,what's happening to this
 POS,WPVBZ VBG IN DT
-DB/Pitt/Dementia/cookie/125-0.cha:PAR:11:da,foot stool
+DB/Pitt/Dementia/cookie/125-0.cha:PAR:12:da,foot stool
 POS,NN NN
-DB/Pitt/Dementia/cookie/125-0.cha:PAR:12:da,what's it doing
+DB/Pitt/Dementia/cookie/125-0.cha:PAR:13:da,what's it doing
 POS,WPVBZ PRP VBG
-DB/Pitt/Dementia/cookie/125-0.cha:PAR:13:da,they're raiding a cookie jar here
+DB/Pitt/Dementia/cookie/125-0.cha:PAR:14:da,they're raiding a cookie jar here
 POS,PRPVBP VBG DT NN NN RB
-DB/Pitt/Dementia/cookie/125-0.cha:PAR:14:da,and what's this woman doing
+DB/Pitt/Dementia/cookie/125-0.cha:PAR:15:da,and what's this woman doing
 POS,CC WPVBZ DT NN VBG
-DB/Pitt/Dementia/cookie/125-0.cha:PAR:15:da,she's cleaning a plate
+DB/Pitt/Dementia/cookie/125-0.cha:PAR:16:da,she's cleaning a plate
 POS,PRPVBZ VBG DT NN
-DB/Pitt/Dementia/cookie/125-0.cha:PAR:16:da,and what's happening here
+DB/Pitt/Dementia/cookie/125-0.cha:PAR:17:da,and what's happening here
 POS,CC WPVBZ VBG RB
-DB/Pitt/Dementia/cookie/125-0.cha:PAR:17:da,this here one
+DB/Pitt/Dementia/cookie/125-0.cha:PAR:18:da,this here one
 POS,DT RB CD
-DB/Pitt/Dementia/cookie/125-0.cha:PAR:18:da,she drops a plate I guess
+DB/Pitt/Dementia/cookie/125-0.cha:PAR:19:da,is that everything
+POS,VBZ DT NN
+DB/Pitt/Dementia/cookie/125-0.cha:PAR:20:da,she drops a plate I guess
 POS,PRP VBZ DT NN PRP VBP
-DB/Pitt/Dementia/cookie/125-0.cha:PAR:19:da,you could do what
+DB/Pitt/Dementia/cookie/125-0.cha:PAR:21:da,is that everything now
+POS,VBZ DT NN RB
+DB/Pitt/Dementia/cookie/125-0.cha:PAR:22:da,you could do what
 POS,PRP MD VB WP
-DB/Pitt/Dementia/cookie/125-0.cha:PAR:20:da,is that everything you see
+DB/Pitt/Dementia/cookie/125-0.cha:PAR:23:da,is that everything you see
 POS,VBZ IN NN PRP VBP
-DB/Pitt/Dementia/cookie/125-0.cha:PAR:21:da,uhhuh
+DB/Pitt/Dementia/cookie/125-0.cha:PAR:24:da,uhhuh
 POS,NNP
-DB/Pitt/Dementia/cookie/125-0.cha:PAR:22:da,good
+DB/Pitt/Dementia/cookie/125-0.cha:PAR:25:da,good
 POS,JJ
 DB/Pitt/Dementia/cookie/172-3.cha:PAR:1:da,okay
 POS,UH
@@ -1097,7 +1121,7 @@ POS,UH
 DB/Pitt/Dementia/cookie/181-3.cha:PAR:13:da,up on a stool that looks like it's gonna topple over
 POS,RB IN DT NN WDT VBZ IN PRPVBZ VBGTO VB RP
 DB/Pitt/Dementia/cookie/181-3.cha:PAR:14:da,what about over here
-POS,WP RB RB RB
+POS,WP IN RB RB
 DB/Pitt/Dementia/cookie/181-3.cha:PAR:15:da,what else is going on over here
 POS,WP RB VBZ VBG RP IN RB
 DB/Pitt/Dementia/cookie/181-3.cha:PAR:16:da,looks like she's washing dishes
@@ -1108,14 +1132,14 @@ DB/Pitt/Dementia/cookie/181-3.cha:PAR:18:da,she's got a cloth in her hand and a 
 POS,PRPVBZ VBN DT NN IN PRP$ NN CC DT NN IN PRP$ NN
 DB/Pitt/Dementia/cookie/181-3.cha:PAR:19:da,and the
 POS,CC DT
-DB/Pitt/Dementia/cookie/181-3.cha:PAR:20:da,oh maybe she's gonna wipe up some water because it's sure running out
-POS,UH RB PRPVBZ VBGTO VB RP DT NN IN PRPVBZ JJ VBG RP
+DB/Pitt/Dementia/cookie/181-3.cha:PAR:20:da,oh maybe she's gonna wipe up some water because it's sure running out here
+POS,UH RB PRPVBZ VBGTO VB RP DT NN IN PRPVBZ JJ VBG RB RB
 DB/Pitt/Dementia/cookie/181-3.cha:PAR:21:da,okay
 POS,UH
 DB/Pitt/Dementia/cookie/181-3.cha:PAR:22:da,of the sink
 POS,IN DT NN
 DB/Pitt/Dementia/cookie/181-3.cha:PAR:23:da,okay good
-POS,RB JJ
+POS,UH JJ
 DB/Pitt/Dementia/cookie/183-1.cha:PAR:1:da,I want you to tell me everything that you see going on in that picture
 POS,PRP VBP PRP TO VB PRP NN WDT PRP VBP VBG IN IN DT NN
 DB/Pitt/Dementia/cookie/183-1.cha:PAR:2:da,just tell me everything that you see happening there
@@ -1141,7 +1165,7 @@ POS,NNPOS IN DT NN
 DB/Pitt/Dementia/cookie/183-1.cha:PAR:12:da,that's all I know
 POS,DTVBZ DT PRP VBP
 DB/Pitt/Dementia/cookie/183-1.cha:PAR:13:da,okay that's great
-POS,JJ DTVBZ JJ
+POS,UH DTVBZ JJ
 DB/Pitt/Dementia/cookie/207-0.cha:PAR:1:da,this picture
 POS,DT NN
 DB/Pitt/Dementia/cookie/207-0.cha:PAR:2:da,yes
@@ -1153,7 +1177,7 @@ POS,WPVBZ VBG RB
 DB/Pitt/Dementia/cookie/207-0.cha:PAR:5:da,the water
 POS,DT NN
 DB/Pitt/Dementia/cookie/207-0.cha:PAR:6:da,uhhuh
-POS,NN
+POS,NNP
 DB/Pitt/Dementia/cookie/207-0.cha:PAR:7:da,what about it
 POS,WP IN PRP
 DB/Pitt/Dementia/cookie/207-0.cha:PAR:8:da,well let's see
@@ -1195,7 +1219,7 @@ POS,PRP VBPRB VB WP DT VBZ
 DB/Pitt/Dementia/cookie/207-0.cha:PAR:26:da,I would call that the u pipe
 POS,PRP MD VB IN DT NN NN
 DB/Pitt/Dementia/cookie/207-0.cha:PAR:27:da,is that what it's called
-POS,VBZ IN WP PRPVBZ VBN
+POS,VBZ DT WP PRPVBZ VBN
 DB/Pitt/Dementia/cookie/207-0.cha:PAR:28:da,the what
 POS,DT WP
 DB/Pitt/Dementia/cookie/207-0.cha:PAR:29:da,a u pipe
@@ -1279,7 +1303,7 @@ POS,NN NN
 DB/Pitt/Dementia/cookie/207-0.cha:PAR:68:da,what's this cocoa
 POS,WPVBZ DT NN
 DB/Pitt/Dementia/cookie/207-0.cha:PAR:69:da,say it again
-POS,VBP PRP RB
+POS,VB PRP RB
 DB/Pitt/Dementia/cookie/207-0.cha:PAR:70:da,can you read it again for me
 POS,MD PRP VB PRP RB IN PRP
 DB/Pitt/Dementia/cookie/207-0.cha:PAR:71:da,c o o k i e
@@ -1367,7 +1391,7 @@ POS,UH
 DB/Pitt/Dementia/cookie/207-0.cha:PAR:112:da,is that what you call them a plate
 POS,VBZ IN WP PRP VBP PRP DT NN
 DB/Pitt/Dementia/cookie/207-0.cha:PAR:113:da,well a cup and saucer
-POS,RB DT NN CC NN
+POS,UH DT NN CC NN
 DB/Pitt/Dementia/cookie/207-0.cha:PAR:114:da,oh this is a cup
 POS,UH DT VBZ DT NN
 DB/Pitt/Dementia/cookie/207-0.cha:PAR:115:da,it might be a saucer
@@ -1398,37 +1422,39 @@ DB/Pitt/Dementia/cookie/222-1.cha:PAR:7:da,and then this here when the water it 
 POS,CC RB DT RB WRB DT NN PRP MD VB VBG RP IN RB CC PRPVBZ VBG RP IN DT NN RB
 DB/Pitt/Dementia/cookie/222-1.cha:PAR:8:da,it's going all the way down in there
 POS,PRPVBZ VBG PDT DT NN RB IN RB
-DB/Pitt/Dementia/cookie/222-1.cha:PAR:9:da,they're getting something to eat here
+DB/Pitt/Dementia/cookie/222-1.cha:PAR:9:da,any more action going on in the picture
+POS,DT RBR NN VBG IN IN DT NN
+DB/Pitt/Dementia/cookie/222-1.cha:PAR:10:da,they're getting something to eat here
 POS,PRPVBP VBG NN TO VB RB
-DB/Pitt/Dementia/cookie/222-1.cha:PAR:10:da,cookeiejar
+DB/Pitt/Dementia/cookie/222-1.cha:PAR:11:da,cookeiejar
 POS,NN
-DB/Pitt/Dementia/cookie/222-1.cha:PAR:11:da,and they're getting something to eat here
+DB/Pitt/Dementia/cookie/222-1.cha:PAR:12:da,and they're getting something to eat here
 POS,CC PRPVBP VBG NN TO VB RB
-DB/Pitt/Dementia/cookie/222-1.cha:PAR:12:da,and this is a nice place what they have
+DB/Pitt/Dementia/cookie/222-1.cha:PAR:13:da,and this is a nice place what they have
 POS,CC DT VBZ DT JJ NN WP PRP VBP
-DB/Pitt/Dementia/cookie/222-1.cha:PAR:13:da,but they put that stuff around in there
+DB/Pitt/Dementia/cookie/222-1.cha:PAR:14:da,but they put that stuff around in there
 POS,CC PRP VBD DT NN IN IN RB
-DB/Pitt/Dementia/cookie/222-1.cha:PAR:14:da,it looks nice
+DB/Pitt/Dementia/cookie/222-1.cha:PAR:15:da,it looks nice
 POS,PRP VBZ JJ
-DB/Pitt/Dementia/cookie/222-1.cha:PAR:15:da,okay
+DB/Pitt/Dementia/cookie/222-1.cha:PAR:16:da,okay
 POS,UH
-DB/Pitt/Dementia/cookie/222-1.cha:PAR:16:da,and then here when they had some stuff in through here
+DB/Pitt/Dementia/cookie/222-1.cha:PAR:17:da,and then here when they had some stuff in through here
 POS,CC RB RB WRB PRP VBD DT NN IN IN RB
-DB/Pitt/Dementia/cookie/222-1.cha:PAR:17:da,mhm
+DB/Pitt/Dementia/cookie/222-1.cha:PAR:18:da,mhm
 POS,UH
-DB/Pitt/Dementia/cookie/222-1.cha:PAR:18:da,and
+DB/Pitt/Dementia/cookie/222-1.cha:PAR:19:da,and
 POS,CC
-DB/Pitt/Dementia/cookie/222-1.cha:PAR:19:da,is that all the action
-POS,VBZ IN PDT DT NN
-DB/Pitt/Dementia/cookie/222-1.cha:PAR:20:da,I like these things in through here too
+DB/Pitt/Dementia/cookie/222-1.cha:PAR:20:da,is that all the action
+POS,VBZ DT PDT DT NN
+DB/Pitt/Dementia/cookie/222-1.cha:PAR:21:da,I like these things in through here too
 POS,PRP VBP DT NNS IN IN RB RB
-DB/Pitt/Dementia/cookie/222-1.cha:PAR:21:da,mhm
+DB/Pitt/Dementia/cookie/222-1.cha:PAR:22:da,mhm
 POS,UH
-DB/Pitt/Dementia/cookie/222-1.cha:PAR:22:da,okay
+DB/Pitt/Dementia/cookie/222-1.cha:PAR:23:da,okay
 POS,UH
-DB/Pitt/Dementia/cookie/222-1.cha:PAR:23:da,yeah
+DB/Pitt/Dementia/cookie/222-1.cha:PAR:24:da,yeah
 POS,UH
-DB/Pitt/Dementia/cookie/222-1.cha:PAR:24:da,good
+DB/Pitt/Dementia/cookie/222-1.cha:PAR:25:da,good
 POS,JJ
 DB/Pitt/Dementia/cookie/235-2.cha:PAR:1:da,everything that's going on in this picture
 POS,NN WDTVBZ VBG RP IN DT NN
@@ -1470,52 +1496,6 @@ DB/Pitt/Dementia/cookie/244-0.cha:PAR:4:da,cookie in the left arm of the boy
 POS,NN IN DT JJ NN IN DT NN
 DB/Pitt/Dementia/cookie/244-0.cha:PAR:5:da,his right hand is touching a cookie in the cookie jar
 POS,PRP$ JJ NN VBZ VBG DT NN IN DT NN NN
-DB/Pitt/Dementia/cookie/244-0.cha:PAR:6:da,one of his feet is about a third off of the stool
-POS,CD IN PRP$ NNS VBZ IN DT JJ NN IN DT NN
-DB/Pitt/Dementia/cookie/244-0.cha:PAR:7:da,he's got short pants and a blouse
-POS,PRPVBZ VBN JJ NNS CC DT NN
-DB/Pitt/Dementia/cookie/244-0.cha:PAR:8:da,and look like they're boots instead of shoes
-POS,CC VB IN PRPVBP NNS RB IN NNS
-DB/Pitt/Dementia/cookie/244-0.cha:PAR:9:da,the girl has a finger to her lips as though to say quiet one hand out
-POS,DT NN VBZ DT NN IN PRP$ NNS IN IN TO VB JJ CD NN RP
-DB/Pitt/Dementia/cookie/244-0.cha:PAR:10:da,her left hand is out
-POS,PRP$ JJ NN VBZ RB
-DB/Pitt/Dementia/cookie/244-0.cha:PAR:11:da,she's got short skirt and a blouse jersey sweater
-POS,PRPVBZ VBN JJ NN CC DT NN NN NN
-DB/Pitt/Dementia/cookie/244-0.cha:PAR:12:da,socks anklets rather
-POS,NNS NNS RB
-DB/Pitt/Dementia/cookie/244-0.cha:PAR:13:da,I did mention that the stool was tilting
-POS,PRP VBD VB IN DT NN VBD VBG
-DB/Pitt/Dementia/cookie/244-0.cha:PAR:14:da,the boy's standing on the stool and it's tilting
-POS,DT NNPOS NN IN DT NN CC PRPVBZ VBG
-DB/Pitt/Dementia/cookie/244-0.cha:PAR:15:da,I think I mentioned that
-POS,PRP VBP PRP VBD DT
-DB/Pitt/Dementia/cookie/244-0.cha:PAR:16:da,the girl has hair hanging to her neck
-POS,DT NN VBZ NN VBG IN PRP$ NN
-DB/Pitt/Dementia/cookie/244-0.cha:PAR:17:da,the boy has like hair combed straight back
-POS,DT NN VBZ IN NN VBN RB RB
-DB/Pitt/Dementia/cookie/244-0.cha:PAR:18:da,the jar is open on the cupboard
-POS,DT NN VBZ JJ IN DT NN
-DB/Pitt/Dementia/cookie/244-0.cha:PAR:19:da,the mother's drying the dish with her right hand holding it with her left
-POS,DT NNPOS VBG DT NN IN PRP$ JJ NN VBG PRP IN PRP$ JJ
-DB/Pitt/Dementia/cookie/244-0.cha:PAR:20:da,she's got an apron over her dress or whatever it may be
-POS,PRPVBZ VBN DT NN IN PRP$ NN CC WP PRP MD VB
-DB/Pitt/Dementia/cookie/244-0.cha:PAR:21:da,water spilling out of the sink
-POS,NN VBG IN IN DT NN
-DB/Pitt/Dementia/cookie/244-0.cha:PAR:22:da,two cups facing opposite direction
-POS,CD NNS VBG JJ NN
-DB/Pitt/Dementia/cookie/244-0.cha:PAR:23:da,one plate to the right of the cups
-POS,CD NN IN DT NN IN DT NNS
-DB/Pitt/Dementia/cookie/244-0.cha:PAR:24:da,curtains flowing in the breeze of the wind
-POS,NNS VBG IN DT NN IN DT NN
-DB/Pitt/Dementia/cookie/244-0.cha:PAR:25:da,okay
-POS,UH
-DB/Pitt/Dementia/cookie/244-0.cha:PAR:26:da,there still some more but
-POS,RB RB DT JJR CC
-DB/Pitt/Dementia/cookie/244-0.cha:PAR:27:da,that's about everything I think
-POS,DTVBZ IN NN PRP VBP
-DB/Pitt/Dementia/cookie/244-0.cha:PAR:28:da,oh yeah
-POS,UH UH
 DB/Pitt/Dementia/cookie/252-2.cha:PAR:1:da,I want you to tell me
 POS,PRP VBP PRP TO VB PRP
 DB/Pitt/Dementia/cookie/252-2.cha:PAR:2:da,I want you to put the picture
@@ -1536,11 +1516,13 @@ DB/Pitt/Dementia/cookie/252-2.cha:PAR:9:da,well the stool is falling over
 POS,UH DT NN VBZ VBG RP
 DB/Pitt/Dementia/cookie/252-2.cha:PAR:10:da,and the mother's sink is overrun
 POS,CC DT NNPOS NN VBZ VBN
-DB/Pitt/Dementia/cookie/252-2.cha:PAR:11:da,taking the cookies
+DB/Pitt/Dementia/cookie/252-2.cha:PAR:11:da,anything else you see happening
+POS,NN RB PRP VBP VBG
+DB/Pitt/Dementia/cookie/252-2.cha:PAR:12:da,taking the cookies
 POS,VBG DT NNS
-DB/Pitt/Dementia/cookie/252-2.cha:PAR:12:da,mhm
+DB/Pitt/Dementia/cookie/252-2.cha:PAR:13:da,mhm
 POS,UH
-DB/Pitt/Dementia/cookie/252-2.cha:PAR:13:da,okay
+DB/Pitt/Dementia/cookie/252-2.cha:PAR:14:da,okay
 POS,UH
 DB/Pitt/Dementia/cookie/257-0.cha:PAR:1:da,so we can hear you because I usually can't get it all written down
 POS,RB PRP MD VB PRP IN PRP RB MDRB VB PRP DT VBN RP
@@ -1615,7 +1597,7 @@ POS,IN DT MD VB NN CC RB
 DB/Pitt/Dementia/cookie/260-2.cha:PAR:11:da,that's about all I can see there
 POS,DTVBZ RB DT PRP MD VB RB
 DB/Pitt/Dementia/cookie/260-2.cha:PAR:12:da,okay that's fine
-POS,JJ DTVBZ JJ
+POS,UH DTVBZ JJ
 DB/Pitt/Dementia/cookie/268-0.cha:PAR:1:da,just tell me what's happening in the picture
 POS,RB VB PRP WPVBZ VBG IN DT NN
 DB/Pitt/Dementia/cookie/268-0.cha:PAR:2:da,the pearl mom's getting her feet wet because she thinking of days gone by and then the water run
@@ -1626,71 +1608,75 @@ DB/Pitt/Dementia/cookie/268-0.cha:PAR:4:da,I don't know the significance of that
 POS,PRP VBPRB VB DT NN IN DT JJ NN VBG PRP$ NN IN PRP$ NN VBG
 DB/Pitt/Dementia/cookie/268-0.cha:PAR:5:da,unless that's the way all silly girls act at that age
 POS,IN DTVBZ DT NN RB JJ NNS VBP IN DT NN
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:6:da,pardon
-POS,NN
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:7:da,anything else
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:6:da,anything else
 POS,NN RB
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:8:da,oh sure
-POS,UH UH
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:9:da,there's no handles on the cabinet drawers under the counter on the left side
-POS,EXVBZ DT NNS IN DT NN NNS IN DT NN IN DT JJ NN
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:10:da,and over in the window you see through the kitchen window all the styles are not in the glass
-POS,CC IN IN DT NN PRP VBP IN DT NN NN PDT DT NNS VBP RB IN DT NN
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:11:da,and if the kitchen window's the same type of window as well the other part of the house the style's only in the upper and the laterals
-POS,CC IN DT NN NNVBZ DT JJ NN IN NN RB RB DT JJ NN IN DT NN DT NNPOS RB IN DT JJ CC DT NNS
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:12:da,maybe they build them that way
-POS,RB PRP VBP PRP DT NN
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:13:da,no but I did notice that's a little I wouldn't say unusual but
-POS,UH CC PRP VBD VB DTVBZ DT JJ PRP MDRB VB JJ CC
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:14:da,okay anything else that's actually happening
-POS,JJ NN RB DTVBZ RB VBG
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:15:da,pardon
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:7:da,pardon
 POS,NN
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:16:da,anything else that's going on in the picture
-POS,NN RB DTVBZ VBG RP IN DT NN
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:17:da,I said that the sink was overflowing
-POS,PRP VBD IN DT NN VBD VBG
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:18:da,that's right mhm okay
-POS,DTVBZ JJ UH UH
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:19:da,the mother's getting her feet wet
-POS,DT NNPOS VBG PRP$ NNS JJ
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:20:da,the boy's going to fall very hard and hurt himself
-POS,DT NNVBZ VBG TO VB RB RB CC VB PRP
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:21:da,and nobody's gonna help him
-POS,CC NNVBZ VBGTO VB PRP
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:22:da,well happening
-POS,UH VBG
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:23:da,did I say the cabinet doors where the kids are have no handles on them
-POS,VBD PRP VBP DT NN NNS WRB DT NNS VBP VBP DT NNS IN PRP
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:24:da,yeah mhm
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:8:da,anything else
+POS,NN RB
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:9:da,oh sure
 POS,UH UH
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:25:da,oh there's got to be a dozen other things
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:10:da,there's no handles on the cabinet drawers under the counter on the left side
+POS,EXVBZ DT NNS IN DT NN NNS IN DT NN IN DT JJ NN
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:11:da,and over in the window you see through the kitchen window all the styles are not in the glass
+POS,CC IN IN DT NN PRP VBP IN DT NN NN PDT DT NNS VBP RB IN DT NN
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:12:da,and if the kitchen window's the same type of window as well the other part of the house the style's only in the upper and the laterals
+POS,CC IN DT NN NNVBZ DT JJ NN IN NN RB RB DT JJ NN IN DT NN DT NNPOS RB IN DT JJ CC DT NNS
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:13:da,maybe they build them that way
+POS,RB PRP VBP PRP DT NN
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:14:da,no but I did notice that's a little I wouldn't say unusual but
+POS,UH CC PRP VBD VB DTVBZ DT JJ PRP MDRB VB JJ CC
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:15:da,okay anything else that's actually happening
+POS,JJ NN RB DTVBZ RB VBG
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:16:da,pardon
+POS,NN
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:17:da,anything else that's going on in the picture
+POS,NN RB DTVBZ VBG RP IN DT NN
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:18:da,I said that the sink was overflowing
+POS,PRP VBD IN DT NN VBD VBG
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:19:da,that's right mhm okay
+POS,DTVBZ JJ UH UH
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:20:da,the mother's getting her feet wet
+POS,DT NNPOS VBG PRP$ NNS JJ
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:21:da,the boy's going to fall very hard and hurt himself
+POS,DT NNVBZ VBG TO VB RB RB CC VB PRP
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:22:da,and nobody's gonna help him
+POS,CC NNVBZ VBGTO VB PRP
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:23:da,well happening
+POS,UH VBG
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:24:da,did I say the cabinet doors where the kids are have no handles on them
+POS,VBD PRP VBP DT NN NNS WRB DT NNS VBP VBP DT NNS IN PRP
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:25:da,yeah mhm
+POS,UH UH
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:26:da,oh there's got to be a dozen other things
 POS,UH EXVBZ VBN TO VB DT NN JJ NNS
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:26:da,it's just what's going on
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:27:da,it's just what's going on
 POS,PRPVBZ RB WPVBZ VBG RP
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:27:da,responsible
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:28:da,responsible
 POS,JJ
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:28:da,just what's going on
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:29:da,just what's going on
 POS,RB WPVBZ VBG RP
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:29:da,well I'll tell you the way mom is looking there's not much going on in her head
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:30:da,well I'll tell you the way mom is looking there's not much going on in her head
 POS,UH PRPMD VB PRP DT NN NN VBZ VBG EXVBZ RB JJ VBG RP IN PRP$ NN
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:30:da,she's thinking of dad
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:31:da,she's thinking of dad
 POS,PRPVBZ VBG IN NN
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:31:da,okay
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:32:da,okay
 POS,UH
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:32:da,and the little girl is saying
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:33:da,and the little girl is saying
 POS,CC DT JJ NN VBZ VBG
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:33:da,sh don't tell mom
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:34:da,sh don't tell mom
 POS,NNP VBPRB VB NN
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:34:da,the conflict's in what she's thinking whereas she didn't know the kids are behind her
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:35:da,the conflict's in what she's thinking whereas she didn't know the kids are behind her
 POS,DT NNPOS IN WP PRPVBZ VBG IN PRP VBDRB VB DT NNS VBP IN PRP
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:35:da,the cabinet doors are different sizes
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:36:da,and did I say
+POS,CC VBD PRP VBP
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:37:da,the cabinet doors are different sizes
 POS,DT NN NNS VBP JJ NNS
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:36:da,have no handles
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:38:da,have no handles
 POS,VBP DT NNS
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:37:da,I guess you take a big sledge hammer to that
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:39:da,I guess you take a big sledge hammer to that
 POS,PRP VBP PRP VB DT JJ NN NN IN DT
-DB/Pitt/Dementia/cookie/268-0.cha:PAR:38:da,okay
+DB/Pitt/Dementia/cookie/268-0.cha:PAR:40:da,okay
 POS,UH
 DB/Pitt/Dementia/cookie/291-1.cha:PAR:1:da,what's going on in the picture
 POS,WPVBZ VBG RP IN DT NN
@@ -1710,11 +1696,13 @@ DB/Pitt/Dementia/cookie/291-1.cha:PAR:8:da,sink running over
 POS,VB VBG RB
 DB/Pitt/Dementia/cookie/291-1.cha:PAR:9:da,the stool the little boy is on is tilting
 POS,DT NN DT JJ NN VBZ RB VBZ VBG
-DB/Pitt/Dementia/cookie/291-1.cha:PAR:10:da,no
+DB/Pitt/Dementia/cookie/291-1.cha:PAR:10:da,anything else that you see going on in the picture
+POS,NN JJ WDT PRP VBP VBG IN IN DT NN
+DB/Pitt/Dementia/cookie/291-1.cha:PAR:11:da,no
 POS,UH
-DB/Pitt/Dementia/cookie/291-1.cha:PAR:11:da,okay
+DB/Pitt/Dementia/cookie/291-1.cha:PAR:12:da,okay
 POS,UH
-DB/Pitt/Dementia/cookie/291-1.cha:PAR:12:da,that's fine
+DB/Pitt/Dementia/cookie/291-1.cha:PAR:13:da,that's fine
 POS,DTVBZ JJ
 DB/Pitt/Dementia/cookie/339-0.cha:PAR:1:da,well the kid is it falling off the stool
 POS,UH DT NN VBZ PRP VBG IN DT NN
@@ -1724,23 +1712,27 @@ DB/Pitt/Dementia/cookie/339-0.cha:PAR:3:da,and the mother's drying dishes
 POS,CC DT NNPOS VBG NNS
 DB/Pitt/Dementia/cookie/339-0.cha:PAR:4:da,and the sink is spilling over
 POS,CC DT NN VBZ VBG RP
-DB/Pitt/Dementia/cookie/339-0.cha:PAR:5:da,and the floor's getting wet
+DB/Pitt/Dementia/cookie/339-0.cha:PAR:5:da,and what else
+POS,CC WP RB
+DB/Pitt/Dementia/cookie/339-0.cha:PAR:6:da,and the floor's getting wet
 POS,CC DT NNPOS VBG JJ
-DB/Pitt/Dementia/cookie/339-0.cha:PAR:6:da,anything else going on in the picture
+DB/Pitt/Dementia/cookie/339-0.cha:PAR:7:da,what else is new
+POS,WP RB VBZ JJ
+DB/Pitt/Dementia/cookie/339-0.cha:PAR:8:da,anything else going on in the picture
 POS,NN RB VBG RP IN DT NN
-DB/Pitt/Dementia/cookie/339-0.cha:PAR:7:da,and the kid
+DB/Pitt/Dementia/cookie/339-0.cha:PAR:9:da,and the kid
 POS,CC DT NN
-DB/Pitt/Dementia/cookie/339-0.cha:PAR:8:da,well the kid is stealing the cookies
+DB/Pitt/Dementia/cookie/339-0.cha:PAR:10:da,well the kid is stealing the cookies
 POS,UH DT NN VBZ VBG DT NNS
-DB/Pitt/Dementia/cookie/339-0.cha:PAR:9:da,and he's falling off the stool
+DB/Pitt/Dementia/cookie/339-0.cha:PAR:11:da,and he's falling off the stool
 POS,CC PRPVBZ VBG IN DT NN
-DB/Pitt/Dementia/cookie/339-0.cha:PAR:10:da,what else
+DB/Pitt/Dementia/cookie/339-0.cha:PAR:12:da,what else
 POS,WP RB
-DB/Pitt/Dementia/cookie/339-0.cha:PAR:11:da,there isn't much else left
+DB/Pitt/Dementia/cookie/339-0.cha:PAR:13:da,there isn't much else left
 POS,RB VBZRB JJ RB VBN
-DB/Pitt/Dementia/cookie/339-0.cha:PAR:12:da,okay
+DB/Pitt/Dementia/cookie/339-0.cha:PAR:14:da,okay
 POS,UH
-DB/Pitt/Dementia/cookie/339-0.cha:PAR:13:da,that's fine
+DB/Pitt/Dementia/cookie/339-0.cha:PAR:15:da,that's fine
 POS,DTVBZ JJ
 DB/Pitt/Dementia/cookie/461-0.cha:PAR:1:da,and there's the picture
 POS,CC EXVBZ DT NN
@@ -1860,8 +1852,10 @@ DB/Pitt/Dementia/cookie/470-1.cha:PAR:35:da,that's all that's going on that's al
 POS,DTVBZ DT WDTVBZ VBG IN DTVBZ DT WDT PRP VBP
 DB/Pitt/Dementia/cookie/508-1.cha:PAR:1:da,and there's the picture
 POS,CC EXVBZ DT NN
+DB/Pitt/Dementia/cookie/508-1.cha:PAR:2:da,and you're gonna draw the picture
+POS,CC PRPVBP VBGTO VB DT NN
 DB/Pitt/Dementia/cookie/508-1.cha:PAR:3:da,no you're going to tell me what you see going on in this picture
-POS,DT PRPVBP VBG TO VB PRP WP PRP VBP VBG IN IN DT NN
+POS,UH PRPVBP VBG TO VB PRP WP PRP VBP VBG IN IN DT NN
 DB/Pitt/Dementia/cookie/508-1.cha:PAR:4:da,oh yeah
 POS,UH UH
 DB/Pitt/Dementia/cookie/508-1.cha:PAR:5:da,the little girl looking up at the little boy
@@ -1897,7 +1891,7 @@ POS,VBPRB JJ NN
 DB/Pitt/Dementia/cookie/508-1.cha:PAR:20:da,that's about it
 POS,DTVBZ IN PRP
 DB/Pitt/Dementia/cookie/508-1.cha:PAR:21:da,okay fine
-POS,JJ NN
+POS,UH UH
 DB/Pitt/Dementia/cookie/530-0.cha:PAR:1:da,I want you to tell me everything that's going on in this picture
 POS,PRP VBP PRP TO VB PRP NN WDTVBZ VBG RP IN DT NN
 DB/Pitt/Dementia/cookie/530-0.cha:PAR:2:da,I want you to tell me everything that you see happening in this picture
@@ -1933,56 +1927,60 @@ POS,UH
 DB/Pitt/Dementia/cookie/579-0.cha:PAR:1:da,okay
 POS,UH
 DB/Pitt/Dementia/cookie/579-0.cha:PAR:2:da,see going on in the picture
-POS,VBP VBG IN IN DT NN
-DB/Pitt/Dementia/cookie/579-0.cha:PAR:3:da,woman doing dishes
+POS,VB VBG IN IN DT NN
+DB/Pitt/Dementia/cookie/579-0.cha:PAR:3:da,tell me what you see going on in the picture
+POS,VB PRP WP PRP VBP VBG IN IN DT NN
+DB/Pitt/Dementia/cookie/579-0.cha:PAR:4:da,woman doing dishes
 POS,NN VBG NNS
-DB/Pitt/Dementia/cookie/579-0.cha:PAR:4:da,boy climbing up to get some cookies
+DB/Pitt/Dementia/cookie/579-0.cha:PAR:5:da,boy climbing up to get some cookies
 POS,UH VBG RP TO VB DT NNS
-DB/Pitt/Dementia/cookie/579-0.cha:PAR:5:da,well girl waiting to get some of the cookies
+DB/Pitt/Dementia/cookie/579-0.cha:PAR:6:da,well girl waiting to get some of the cookies
 POS,UH NN VBG TO VB DT IN DT NNS
-DB/Pitt/Dementia/cookie/579-0.cha:PAR:6:da,bench is falling over with the boy
+DB/Pitt/Dementia/cookie/579-0.cha:PAR:7:da,bench is falling over with the boy
 POS,NN VBZ VBG RP IN DT NN
-DB/Pitt/Dementia/cookie/579-0.cha:PAR:7:da,the water's dripping out on the floor
+DB/Pitt/Dementia/cookie/579-0.cha:PAR:8:da,the water's dripping out on the floor
 POS,DT NNPOS VBG RP IN DT NN
-DB/Pitt/Dementia/cookie/579-0.cha:PAR:8:da,I guess that's it
+DB/Pitt/Dementia/cookie/579-0.cha:PAR:9:da,I guess that's it
 POS,PRP VBP DTVBZ PRP
-DB/Pitt/Dementia/cookie/579-0.cha:PAR:9:da,okay
+DB/Pitt/Dementia/cookie/579-0.cha:PAR:10:da,okay
 POS,UH
 DB/Pitt/Dementia/cookie/591-0.cha:PAR:1:da,is take a look at that picture
 POS,VBZ VB DT NN IN DT NN
 DB/Pitt/Dementia/cookie/591-0.cha:PAR:2:da,take a look at that picture and tell me everything that you see happening in that picture
 POS,VB DT NN IN DT NN CC VB PRP NN WDT PRP VBP VBG IN DT NN
-DB/Pitt/Dementia/cookie/591-0.cha:PAR:3:da,tell me everything that's going on in that picture
+DB/Pitt/Dementia/cookie/591-0.cha:PAR:3:da,what do
+POS,WP VBP
+DB/Pitt/Dementia/cookie/591-0.cha:PAR:4:da,tell me everything that's going on in that picture
 POS,VB PRP NN WDTVBZ VBG RP IN DT NN
-DB/Pitt/Dementia/cookie/591-0.cha:PAR:4:da,mhm
+DB/Pitt/Dementia/cookie/591-0.cha:PAR:5:da,mhm
 POS,UH
-DB/Pitt/Dementia/cookie/591-0.cha:PAR:5:da,everything that's happening there
+DB/Pitt/Dementia/cookie/591-0.cha:PAR:6:da,everything that's happening there
 POS,NN WDTVBZ VBG RB
-DB/Pitt/Dementia/cookie/591-0.cha:PAR:6:da,do you want them crossed out or just say it out loud
+DB/Pitt/Dementia/cookie/591-0.cha:PAR:7:da,do you want them crossed out or just say it out loud
 POS,VBP PRP VB PRP VBN RP CC RB VB PRP RB RB
-DB/Pitt/Dementia/cookie/591-0.cha:PAR:7:da,no just say it out loud what you see happening
+DB/Pitt/Dementia/cookie/591-0.cha:PAR:8:da,no just say it out loud what you see happening
 POS,DT RB VBP PRP RB RB WP PRP VBP VBG
-DB/Pitt/Dementia/cookie/591-0.cha:PAR:8:da,okay the little boy's climbing the cookie jar
-POS,UH DT JJ NNPOS VBG DT NN NN
-DB/Pitt/Dementia/cookie/591-0.cha:PAR:9:da,the little boy has a cookie in his hand that he got by climbing the step ladder which is ready to fall
+DB/Pitt/Dementia/cookie/591-0.cha:PAR:9:da,okay the little boy's climbing the cookie jar
+POS,JJ DT JJ NNPOS VBG DT NN NN
+DB/Pitt/Dementia/cookie/591-0.cha:PAR:10:da,the little boy has a cookie in his hand that he got by climbing the step ladder which is ready to fall
 POS,DT JJ NN VBZ DT NN IN PRP$ NN IN PRP VBD IN VBG DT NN NN WDT VBZ JJ TO VB
-DB/Pitt/Dementia/cookie/591-0.cha:PAR:10:da,the sister is asking for something to eat
+DB/Pitt/Dementia/cookie/591-0.cha:PAR:11:da,the sister is asking for something to eat
 POS,DT NN VBZ VBG IN NN TO VB
-DB/Pitt/Dementia/cookie/591-0.cha:PAR:11:da,she has started little and wants some more
+DB/Pitt/Dementia/cookie/591-0.cha:PAR:12:da,she has started little and wants some more
 POS,PRP VBZ VBN JJ CC VBZ DT JJR
-DB/Pitt/Dementia/cookie/591-0.cha:PAR:12:da,let's see now
+DB/Pitt/Dementia/cookie/591-0.cha:PAR:13:da,let's see now
 POS,VBPRP VB RB
-DB/Pitt/Dementia/cookie/591-0.cha:PAR:13:da,the mother has a small mess in the kitchen lucky it's small
+DB/Pitt/Dementia/cookie/591-0.cha:PAR:14:da,the mother has a small mess in the kitchen lucky it's small
 POS,DT NN VBZ DT JJ NN IN DT NN JJ PRPVBZ JJ
-DB/Pitt/Dementia/cookie/591-0.cha:PAR:14:da,the mother is now she's washing and drying the dishes in the kitchen
+DB/Pitt/Dementia/cookie/591-0.cha:PAR:15:da,the mother is now she's washing and drying the dishes in the kitchen
 POS,DT NN VBZ RB PRPVBZ VBG CC VBG DT NNS IN DT NN
-DB/Pitt/Dementia/cookie/591-0.cha:PAR:15:da,her water has spilled over terribly bad
+DB/Pitt/Dementia/cookie/591-0.cha:PAR:16:da,her water has spilled over terribly bad
 POS,PRP$ NN VBZ VBN RP RB JJ
-DB/Pitt/Dementia/cookie/591-0.cha:PAR:16:da,and looks like sister's back to try for some more cookies
+DB/Pitt/Dementia/cookie/591-0.cha:PAR:17:da,and looks like sister's back to try for some more cookies
 POS,CC VBZ IN NNPOS RB TO VB IN DT JJR NNS
-DB/Pitt/Dementia/cookie/591-0.cha:PAR:17:da,okay good
+DB/Pitt/Dementia/cookie/591-0.cha:PAR:18:da,okay good
 POS,RB JJ
-DB/Pitt/Dementia/cookie/591-0.cha:PAR:18:da,okay
+DB/Pitt/Dementia/cookie/591-0.cha:PAR:19:da,okay
 POS,UH
 DB/Pitt/Dementia/cookie/615-0.cha:PAR:1:da,me everything you see happening in that picture
 POS,PRP NN PRP VBP VBG IN DT NN
@@ -2121,7 +2119,7 @@ POS,PRP VBPRB VB WP RB
 DB/Pitt/Dementia/cookie/648-0.cha:PAR:12:da,water on the floor
 POS,NN IN DT NN
 DB/Pitt/Dementia/cookie/648-0.cha:PAR:13:da,is that everything then
-POS,VBZ IN NN RB
+POS,VBZ DT NN RB
 DB/Pitt/Dementia/cookie/648-0.cha:PAR:14:da,yeah
 POS,UH
 DB/Pitt/Dementia/cookie/690-0.cha:PAR:1:da,picture and tell me everything that you see happening in that picture
@@ -2147,7 +2145,7 @@ POS,CC DTVBZ RB DT PRP MD VB
 DB/Pitt/Dementia/cookie/690-0.cha:PAR:11:da,and I guess this is breakfast
 POS,CC PRP VBP DT VBZ NN
 DB/Pitt/Dementia/cookie/690-0.cha:PAR:12:da,okay that's fine
-POS,JJ DTVBZ JJ
+POS,UH DTVBZ JJ
 DB/Pitt/Dementia/cookie/705-0.cha:PAR:1:da,picture okay
 POS,NN JJ
 DB/Pitt/Dementia/cookie/705-0.cha:PAR:2:da,mhm
@@ -2191,7 +2189,7 @@ POS,UH
 DB/Pitt/Dementia/cookie/705-0.cha:PAR:21:da,she spilled something
 POS,PRP VBD NN
 DB/Pitt/Dementia/cookie/705-0.cha:PAR:22:da,okay that's fine
-POS,JJ DTVBZ JJ
+POS,UH DTVBZ JJ
 DB/DePaul/depaul2a.cha:PAR:1:da,I'm going to be asking you to do some talking
 POS,PRPVBP VBG TO VB VBG PRP TO VB DT NN
 DB/DePaul/depaul2a.cha:PAR:2:da,how do you think your speech is these days
@@ -2245,7 +2243,7 @@ POS,DT NN IN PRP$ NNS
 DB/DePaul/depaul2a.cha:PAR:26:da,so when you started feeling like all of the things you just described started happening
 POS,RB WRB PRP VBD VBG IN DT IN DT NNS PRP RB VBD VBD VBG
 DB/DePaul/depaul2a.cha:PAR:27:da,oh back in the summer of two thousand seven after my mom had passed away there was one little tiny thing in Chicago
-POS,UH RB IN DT NN IN CD CD CD IN PRP$ NN VBD VBN RB EX VBD CD JJ JJ NN IN NNP
+POS,UH NN IN DT NN IN CD CD CD IN PRP$ NN VBD VBN RB EX VBD CD JJ JJ NN IN NNP
 DB/DePaul/depaul2a.cha:PAR:28:da,that I useta know what it was called
 POS,IN PRP VBP VB WP PRP VBD VBN
 DB/DePaul/depaul2a.cha:PAR:29:da,and I couldn't think of what it was called
@@ -2310,8 +2308,8 @@ DB/DePaul/depaul2a.cha:PAR:58:da,but I didn't wanna get bad before I went out
 POS,CC PRP VBDRB VBTO VB JJ IN PRP VBD RP
 DB/DePaul/depaul2a.cha:PAR:59:da,I was already sort of bad but not terrible bad
 POS,PRP VBD RB RB RB JJ CC RB JJ JJ
-DB/DePaul/depaul2a.cha:PAR:60:da,now I am
-POS,RB PRP VBP
+DB/DePaul/depaul2a.cha:PAR:60:da,now I am so
+POS,RB PRP VBP RB
 DB/DePaul/depaul2a.cha:PAR:61:da,tell me about your recovery
 POS,VB PRP IN PRP$ NN
 DB/DePaul/depaul2a.cha:PAR:62:da,what kinds of things have you done to try and get better since that kind of started
@@ -2382,8 +2380,8 @@ DB/DePaul/depaul2a.cha:PAR:94:da,paid for the things for a nursing home
 POS,VBN IN DT NNS IN DT NN NN
 DB/DePaul/depaul2a.cha:PAR:95:da,but then it just didn't seem like I was going there going there going there
 POS,CC RB PRP RB VBDRB VB IN PRP VBD VBG RB VBG RB VBG RB
-DB/DePaul/depaul2a.cha:PAR:96:da,and
-POS,CC
+DB/DePaul/depaul2a.cha:PAR:96:da,and maybe maybe I won't but if I get worse or whatever
+POS,CC RB RB PRP MDRB CC IN PRP VBP JJR CC WDT
 DB/DePaul/depaul2a.cha:PAR:97:da,and even like I'm not making all sorts of different things to eat
 POS,CC RB IN PRPVBP RB VBG DT NNS IN JJ NNS TO VB
 DB/DePaul/depaul2a.cha:PAR:98:da,because I mean I useta like all sorts of stuff and big stuff
@@ -2475,7 +2473,7 @@ POS,PRP VBP PRPVBP VBG DT JJ NN RB
 DB/DePaul/depaul2a.cha:PAR:141:da,and in there everything was done really well for me
 POS,CC IN RB NN VBD VBN RB RB IN PRP
 DB/DePaul/depaul2a.cha:PAR:142:da,you know there's some people that were doing well an f but whatever
-POS,PRP VBP EXVBZ DT NNS WDT VBD VBG RB DT NN CC WDT
+POS,PRP VBP EXVBZ DT NNS WDT VBD VBG UH DT NN CC WDT
 DB/DePaul/depaul2a.cha:PAR:143:da,but I was doing well a lot of it when it was first little like that
 POS,CC PRP VBD VBG RB DT NN IN PRP WRB PRP VBD RB JJ IN DT
 DB/DePaul/depaul2a.cha:PAR:144:da,I don't know if it was a
@@ -2561,7 +2559,7 @@ POS,PRP MDRB VB IN WP PRPVBZ VBN
 DB/DePaul/depaul2a.cha:PAR:184:da,but he has those that he can throw
 POS,CC PRP VBZ DT WDT PRP MD VB
 DB/DePaul/depaul2a.cha:PAR:185:da,okay here are some more pictures that tell a story
-POS,RB RB VBP DT JJR NNS WDT VBP DT NN
+POS,UH RB VBP DT JJR NNS WDT VBP DT NN
 DB/DePaul/depaul2a.cha:PAR:186:da,take a look at all of them
 POS,VB DT NN IN DT IN PRP
 DB/DePaul/depaul2a.cha:PAR:187:da,and then I'll ask you to tell me the story with a beginning a middle and an end
@@ -2589,7 +2587,7 @@ POS,UH
 DB/DePaul/depaul2a.cha:PAR:198:da,now here is another picture
 POS,RB RB VBZ DT NN
 DB/DePaul/depaul2a.cha:PAR:199:da,look at everything that's happening
-POS,VBP IN NN WDTVBZ VBG
+POS,VB IN NN WDTVBZ VBG
 DB/DePaul/depaul2a.cha:PAR:200:da,and then tell me a story about what you see
 POS,CC RB VB PRP DT NN IN WP PRP VBP
 DB/DePaul/depaul2a.cha:PAR:201:da,tell me a story with a beginning a middle and an end
@@ -2678,20 +2676,22 @@ DB/DePaul/depaul2a.cha:PAR:242:da,but something is whacking at her
 POS,CC NN VBZ VBG IN PRP
 DB/DePaul/depaul2a.cha:PAR:243:da,someone's pointing at her
 POS,NNPOS VBG IN PRP
-DB/DePaul/depaul2a.cha:PAR:244:da,and somebody else is
-POS,CC NN RB VBZ
+DB/DePaul/depaul2a.cha:PAR:244:da,and somebody else is looking awful at her or
+POS,CC NN RB VBZ VBG JJ IN PRP$ CC
 DB/DePaul/depaul2a.cha:PAR:245:da,okay and so she's gonna go look at that bed
 POS,JJ CC RB PRPVBZ VBGTO VB VB IN IN NN
-DB/DePaul/depaul2a.cha:PAR:246:da,and then this person outside is gonna give them something to read or whatever
-POS,CC RB DT NN RB VBZ VBGTO VB PRP NN TO VB CC WDT
+DB/DePaul/depaul2a.cha:PAR:246:da,and then this person outside is gonna give them something mhm to read or whatever
+POS,CC RB DT NN RB VBZ VBGTO VB PRP NN UH TO VB CC WDT
 DB/DePaul/depaul2a.cha:PAR:247:da,uhhuh
-POS,NN
+POS,NNP
 DB/DePaul/depaul2a.cha:PAR:248:da,and that's something to put on her body
 POS,CC DTVBZ NN TO VB IN PRP$ NN
 DB/DePaul/depaul2a.cha:PAR:249:da,clothes
 POS,NNS
 DB/DePaul/depaul2a.cha:PAR:250:da,oh I see
 POS,UH PRP VBP
+DB/DePaul/depaul2a.cha:PAR:251:da,mhm
+POS,UH
 DB/DePaul/depaul2a.cha:PAR:252:da,okay and she's got that stuff not put on her the right way but just kind of whacked over her
 POS,JJ CC PRPVBZ VBN DT NN RB VB RP PRP$ DT JJ NN CC RB RB IN VBN IN PRP
 DB/DePaul/depaul2a.cha:PAR:253:da,mhm
@@ -2727,7 +2727,7 @@ POS,DT NN NN
 DB/DePaul/depaul2a.cha:PAR:268:da,fairy tale I don't know
 POS,NN NN PRP VBPRB VB
 DB/DePaul/depaul2a.cha:PAR:269:da,okay so let's keep looking at this then
-POS,JJ CC VBPRP VB VBG IN DT RB
+POS,UH RB VBPRP VB VBG IN DT RB
 DB/DePaul/depaul2a.cha:PAR:270:da,I don't know
 POS,PRP VBPRB VB
 DB/DePaul/depaul2a.cha:PAR:271:da,okay now she's put on her thing
@@ -2739,13 +2739,13 @@ POS,CC DT NNS VBP VBG IN PRP
 DB/DePaul/depaul2a.cha:PAR:274:da,oh you know what
 POS,UH PRP VBP WP
 DB/DePaul/depaul2a.cha:PAR:275:da,uhhuh
-POS,NN
+POS,NNP
 DB/DePaul/depaul2a.cha:PAR:276:da,seeing this and whatever I think I did know what it was
 POS,VBG DT CC WDT PRP VBP PRP VBD VB WP PRP VBD
 DB/DePaul/depaul2a.cha:PAR:277:da,I don't remember it
 POS,PRP VBPRB VB PRP
-DB/DePaul/depaul2a.cha:PAR:278:da,but I know that
-POS,CC PRP VBP DT
+DB/DePaul/depaul2a.cha:PAR:278:da,but I know that this person whatever and was trying something and whatever and then eventually was in something like that that
+POS,CC PRP VBP IN DT NN WDT CC VBD VBG NN CC WDT CC RB RB VBD IN NN IN IN DT
 DB/DePaul/depaul2a.cha:PAR:279:da,I think that was something that was gonna take her home
 POS,PRP VBP DT VBD NN WDT VBD VBGTO VB PRP$ NN
 DB/DePaul/depaul2a.cha:PAR:280:da,because she had been at a place that wasn't her home that she was just
@@ -2830,8 +2830,8 @@ DB/DePaul/depaul2a.cha:PAR:319:da,tell me how you would make a peanut butter and
 POS,VB PRP WRB PRP MD VB DT NN NN CC NN NN
 DB/DePaul/depaul2a.cha:PAR:320:da,a peanut butter
 POS,DT NN NN
-DB/DePaul/depaul2a.cha:PAR:321:da,I'm trying to think the peanut butter is the
-POS,PRPVBP VBG TO VB DT NN NN VBZ DT
+DB/DePaul/depaul2a.cha:PAR:321:da,I'm trying to think the peanut butter is the huh
+POS,PRPVBP VBG TO VB DT NN NN VBZ DT JJ
 DB/DePaul/depaul2a.cha:PAR:322:da,like a white thing that's around it
 POS,UH DT JJ NN WDTVBZ IN PRP
 DB/DePaul/depaul2a.cha:PAR:323:da,I'm not sure
@@ -2839,7 +2839,7 @@ POS,PRPVBP RB JJ
 DB/DePaul/depaul2a.cha:PAR:324:da,I don't even eat that sort of thing anymore and peanut butter
 POS,PRP VBPRB RB VB DT NN IN NN RB CC NN NN
 DB/DePaul/depaul2a.cha:PAR:325:da,like I said I just do certain stuff for myself goulash stuff
-POS,UH PRP VBD PRP RB VBP JJ NN IN PRP JJ NN
+POS,UH PRP VBD PRP RB VBP JJ NN IN PRP NN NN
 DB/DePaul/depaul2a.cha:PAR:326:da,in fact this afternoon I will be making goulash again
 POS,IN NN DT NN PRP MD VB VBG NN RB
 DB/DePaul/depaul2a.cha:PAR:327:da,because I have this thing that's like this high and this big around
@@ -2883,7 +2883,7 @@ POS,CC RB PRP VBP PRP RP
 DB/DePaul/depaul2a.cha:PAR:346:da,because it's gonna warm up those things down there in about four minutes or something like that
 POS,IN PRPVBZ VBGTO VB RP DT NNS RB RB IN RB CD NNS CC NN IN DT
 DB/DePaul/depaul2a.cha:PAR:347:da,and then I put those tomato things that are whacked way down
-POS,CC RB PRP VBD DT NN NNS WDT VBP JJ NN RB
+POS,CC RB PRP VBP DT NN NNS WDT VBP JJ NN RB
 DB/DePaul/depaul2a.cha:PAR:348:da,and then over on this other thing I do meat stuff
 POS,CC RB RB IN DT JJ NN PRP VBP NN NN
 DB/DePaul/depaul2a.cha:PAR:349:da,and I can't think of the name of the kind of meat with an h
@@ -2931,11 +2931,11 @@ POS,PRP RB VBP PRP RP CC VB PRP
 DB/DePaul/depaul2a.cha:PAR:370:da,so whatever
 POS,RB WDT
 DB/DePaul/depaul2a.cha:PAR:371:da,okay well Firstname thank you for answering all of my questions today
-POS,RB RB NNP VBP PRP IN VBG DT IN PRP$ NNS NN
+POS,UH UH NNP VBP PRP IN VBG DT IN PRP$ NNS NN
 DB/DePaul/depaul2a.cha:PAR:372:da,wow I just don't feel like I'm answering things at all
 POS,UH PRP RB VBPRB VB IN PRPVBP VBG NNS IN DT
 DB/DePaul/depaul2a.cha:PAR:373:da,well I appreciate you talking to me
-POS,RB PRP VBP PRP VBG IN PRP
+POS,UH PRP VBP PRP VBG IN PRP
 DB/DePaul/depaul2a.cha:PAR:374:da,we just wanted to learn a little bit more about your language
 POS,PRP RB VBD TO VB DT JJ NN JJR IN PRP$ NN
 DB/DePaul/depaul2a.cha:PAR:375:da,and mm answering questions like I was asking you and talking about pictures like you did is really gonna help
@@ -2958,8 +2958,8 @@ DB/WLS/00/00137.cha:PAR:8:da,that's all
 POS,DTVBZ DT
 DB/WLS/00/00137.cha:PAR:9:da,okay
 POS,UH
-DB/WLS/00/00342.cha:PAR:1:da,bird feeder was there but they're all gone they go back with the geese you know when on the wings
-POS,NN NN VBD RB CC PRPVBP DT VBN PRP VBP RB IN DT NNS PRP VBP WRB IN DT NNS
+DB/WLS/00/00342.cha:PAR:1:da,bird feeder was there but they're all gone with they go back with the geese you know when on the wings
+POS,NN NN VBD RB CC PRPVBP DT VBN IN PRP VBP RB IN DT NNS PRP VBP WRB IN DT NNS
 DB/WLS/00/00342.cha:PAR:2:da,what
 POS,WP
 DB/WLS/00/00342.cha:PAR:3:da,yeah
@@ -3015,7 +3015,7 @@ POS,DTVBZ RB WP PRP VBD VBG IN
 DB/WLS/00/00481.cha:PAR:1:da,my mind is starting to get tired
 POS,PRP$ NN VBZ VBG TO VB JJ
 DB/WLS/00/00481.cha:PAR:2:da,get tired oh
-POS,VBP JJ UH
+POS,VB JJ UH
 DB/WLS/00/00481.cha:PAR:3:da,we have a little different thing we're going to do right now
 POS,PRP VBP DT JJ JJ NN PRPVBP VBG TO VB RB RB
 DB/WLS/00/00481.cha:PAR:4:da,if you could please take a look at this picture and then describe everything that you see in that picture to me whenever you're ready
@@ -3071,9 +3071,9 @@ POS,IN PRP VBP NN RB
 DB/WLS/00/00481.cha:PAR:29:da,no I really don't
 POS,UH PRP RB VBPRB
 DB/WLS/00/00481.cha:PAR:30:da,alright thank you
-POS,JJ VBP PRP
+POS,UH VBP PRP
 DB/WLS/00/00481.cha:PAR:31:da,that was exactly what we were looking for
-POS,WDT VBD RB WP PRP VBD VBG IN
+POS,DT VBD RB WP PRP VBD VBG IN
 DB/WLS/01/01002.cha:PAR:1:da,you're making me think
 POS,PRPVBP VBG PRP VB
 DB/WLS/01/01002.cha:PAR:2:da,okay
@@ -3111,7 +3111,7 @@ POS,NN
 DB/WLS/01/01002.cha:PAR:18:da,I guess that's about it
 POS,PRP VBP DTVBZ IN PRP
 DB/WLS/01/01002.cha:PAR:19:da,okay thank you
-POS,JJ VBP PRP
+POS,UH VBP PRP
 DB/WLS/01/01079.cha:PAR:1:da,I don't like that
 POS,PRP VBPRB VB DT
 DB/WLS/01/01079.cha:PAR:2:da,please take a look at this picture and describe everything that you see here
@@ -3119,7 +3119,7 @@ POS,UH VB DT NN IN DT NN CC VB NN WDT PRP VBP RB
 DB/WLS/01/01079.cha:PAR:3:da,everything that you see
 POS,NN WDT PRP VBP
 DB/WLS/01/01079.cha:PAR:4:da,uhhuh
-POS,NN
+POS,NNP
 DB/WLS/01/01079.cha:PAR:5:da,well the lady is standing in a puddle of water because the sink is running over as she is wiping the dish
 POS,UH DT NN VBZ VBG IN DT NN IN NN IN DT NN VBZ VBG IN IN PRP VBZ VBG DT NN
 DB/WLS/01/01079.cha:PAR:6:da,and the little boy is about ready to fall off of the school that he is standing on to get the cookie out of the cookie jar that is going to hand to his little sister
@@ -3135,9 +3135,9 @@ POS,JJ
 DB/WLS/01/01079.cha:PAR:11:da,thank you
 POS,VBP PRP
 DB/WLS/01/01079.cha:PAR:12:da,whoops
-POS,VBZ
+POS,NNS
 DB/WLS/01/01079.cha:PAR:13:da,let's see here
-POS,VBDPRP VB RB
+POS,VBPRP VB RB
 DB/WLS/01/01079.cha:PAR:14:da,and that was just Firstname
 POS,CC DT VBD RB NNP
 DB/WLS/01/01136.cha:PAR:1:da,okay
@@ -3158,8 +3158,8 @@ DB/WLS/01/01136.cha:PAR:8:da,and the mother is frowning
 POS,CC DT NN VBZ VBG
 DB/WLS/01/01136.cha:PAR:9:da,something on her mind perhaps
 POS,NN IN PRP$ NN RB
-DB/WLS/01/01136.cha:PAR:10:da,and she's Beaver's mother a June Cleaver woman wearing a skirt and an apron to do housework
-POS,CC PRPVBZ NNPPOS NN DT NNP NNP NN VBG DT NN CC DT NN TO VB NN
+DB/WLS/01/01136.cha:PAR:10:da,and she's Beaver's mother a June woman wearing a skirt and an apron to do housework
+POS,CC PRPVBZ NNPPOS NN DT NNP NN VBG DT NN CC DT NN TO VB NN
 DB/WLS/01/01136.cha:PAR:11:da,so perhaps it's a story a picture from an older time
 POS,RB RB PRPVBZ DT NN DT NN IN DT JJR NN
 DB/WLS/01/01136.cha:PAR:12:da,did I say summer
@@ -3293,7 +3293,7 @@ POS,UH
 DB/WLS/01/01600.cha:PAR:47:da,like when I went to school
 POS,UH WRB PRP VBD IN NN
 DB/WLS/01/01608.cha:PAR:1:da,right
-POS,RB
+POS,UH
 DB/WLS/01/01608.cha:PAR:2:da,it doesn't matter
 POS,PRP VBZRB VB
 DB/WLS/01/01608.cha:PAR:3:da,it does not matter
@@ -3307,7 +3307,7 @@ POS,PRPVBP VBN NN TO VB PRP
 DB/WLS/01/01608.cha:PAR:7:da,I'm going to have you take a look at this picture and describe everything that you see here
 POS,PRPVBP VBG TO VB PRP VB DT NN IN DT NN CC VB NN WDT PRP VBP RB
 DB/WLS/01/01608.cha:PAR:8:da,let's see okay there you go
-POS,VBDPOS UH UH RB PRP VBP
+POS,VBPRP VB UH RB PRP VBP
 DB/WLS/01/01608.cha:PAR:9:da,so just tell me what you see in the picture
 POS,RB RB VB PRP WP PRP VBP IN DT NN
 DB/WLS/01/01608.cha:PAR:10:da,cupboard cookies boy hands the close
@@ -3404,8 +3404,8 @@ DB/WLS/02/02102.cha:PAR:7:da,I don't know what that means
 POS,PRP VBPRB VB WP DT VBZ
 DB/WLS/02/02102.cha:PAR:8:da,and the stool is falling over
 POS,CC DT NN VBZ VBG RP
-DB/WLS/02/02102.cha:PAR:9:da,it's a three stool with braces halfway up the legs
-POS,PRPVBZ DT CD NN IN NNS RB IN DT NNS
+DB/WLS/02/02102.cha:PAR:9:da,it's a stool with braces halfway up the legs
+POS,PRPVBZ DT NN IN NNS RB IN DT NNS
 DB/WLS/02/02102.cha:PAR:10:da,the cupboard door obviously is open and the boy has a cookie in his hand already
 POS,DT NN NN RB VBZ JJ CC DT NN VBZ DT NN IN PRP$ NN RB
 DB/WLS/02/02102.cha:PAR:11:da,the woman appears to be drying dishes and the sink is overflowing on the floor and she's standing in it with her shoes on
@@ -3415,7 +3415,7 @@ POS,RB PRP VBPRB VB IN DTVBZ DT NN IN DT NN CC WP DT VBZ
 DB/WLS/02/02102.cha:PAR:13:da,and there's a tree out there
 POS,CC EXVBZ DT NN RB RB
 DB/WLS/02/02102.cha:PAR:14:da,okey doke
-POS,NNP NNP
+POS,JJ NN
 DB/WLS/02/02102.cha:PAR:15:da,is that enough
 POS,VBZ DT JJ
 DB/WLS/02/02102.cha:PAR:16:da,that's enough
@@ -3431,17 +3431,17 @@ POS,PRP MDRB VB NN
 DB/WLS/02/02348.cha:PAR:3:da,can't cheat huh
 POS,MDRB VB UH
 DB/WLS/02/02348.cha:PAR:4:da,no
-POS,DT
+POS,UH
 DB/WLS/02/02348.cha:PAR:5:da,no cheating allowed
 POS,DT NN VBN
 DB/WLS/02/02348.cha:PAR:6:da,besides we want your answers not my answers
-POS,IN PRP VBP PRP$ NNS RB PRP$ NNS
+POS,RB PRP VBP PRP$ NNS RB PRP$ NNS
 DB/WLS/02/02348.cha:PAR:7:da,because your answers are the correct ones
 POS,IN PRP$ NNS VBP DT JJ NNS
 DB/WLS/02/02348.cha:PAR:8:da,I don't know about that
 POS,PRP VBPRB VB IN DT
 DB/WLS/02/02348.cha:PAR:9:da,alright
-POS,JJ
+POS,UH
 DB/WLS/02/02348.cha:PAR:10:da,here you go
 POS,RB PRP VBP
 DB/WLS/02/02348.cha:PAR:11:da,I would like you to take a look at this you see here
@@ -3519,7 +3519,7 @@ POS,VBP PRP
 DB/WLS/03/03045.cha:PAR:1:da,I missed one of those
 POS,PRP VBD CD IN DT
 DB/WLS/03/03045.cha:PAR:2:da,alright
-POS,JJ
+POS,UH
 DB/WLS/03/03045.cha:PAR:3:da,okay
 POS,UH
 DB/WLS/03/03045.cha:PAR:4:da,now
@@ -3538,13 +3538,13 @@ DB/WLS/03/03045.cha:PAR:10:da,the kid up going to the cookie jar about to fall o
 POS,DT NN RP VBG IN DT NN NN IN TO VB RP DT NN
 DB/WLS/03/03045.cha:PAR:11:da,the little girl's looking for a cookie and saying shh so that mom doesn't hear
 POS,DT JJ NNPOS VBG IN DT NN CC VBG NN RB IN NN VBZRB VB
-DB/WLS/03/03045.cha:PAR:12:da,that's about it I guess
+DB/WLS/03/03045.cha:PAR:13:da,that's about it I guess
 POS,DTVBZ IN PRP PRP VBP
-DB/WLS/03/03045.cha:PAR:13:da,okay good
+DB/WLS/03/03045.cha:PAR:14:da,okay good
 POS,RB JJ
-DB/WLS/03/03045.cha:PAR:14:da,what's outside but
+DB/WLS/03/03045.cha:PAR:15:da,what's outside but
 POS,WPVBZ RB CC
-DB/WLS/03/03045.cha:PAR:15:da,great
+DB/WLS/03/03045.cha:PAR:16:da,great
 POS,JJ
 DB/WLS/03/03085.cha:PAR:1:da,okay
 POS,UH
@@ -3669,7 +3669,7 @@ POS,UH RB DT VBP NNS WDT MD VB IN EXVBZ DT NN CC DT NN WDT VBD NN DT NN IN PRP$ 
 DB/WLS/03/03325.cha:PAR:25:da,I can't see anything else
 POS,PRP MDRB VB NN JJ
 DB/WLS/03/03325.cha:PAR:26:da,alright
-POS,JJ
+POS,UH
 DB/WLS/03/03325.cha:PAR:27:da,that's just what we were looking for
 POS,DTVBZ RB WP PRP VBD VBG IN
 DB/WLS/03/03325.cha:PAR:28:da,thank you
@@ -3721,7 +3721,7 @@ POS,UH
 DB/WLS/03/03582.cha:PAR:11:da,that's all I can see
 POS,DTVBZ DT PRP MD VB
 DB/WLS/03/03582.cha:PAR:12:da,okay very good
-POS,RB RB JJ
+POS,UH RB JJ
 DB/WLS/03/03582.cha:PAR:13:da,thank you
 POS,VBP PRP
 DB/WLS/03/03582.cha:PAR:14:da,and it's just
@@ -3729,7 +3729,7 @@ POS,CC PRPVBZ RB
 DB/WLS/03/03731.cha:PAR:1:da,and please take a look at this picture and describe everything that you see here
 POS,CC UH VB DT NN IN DT NN CC VB NN WDT PRP VBP RB
 DB/WLS/03/03731.cha:PAR:2:da,there is a young lad reaching into a cookie jar and he is going to tip over the chair and it looks probably like his the boy is gonna give his sister one of the cookies and mother isn't paying too much attention because the sink is overflowing and she's wiping the dishes and she's looking out a window
-POS,RB VBZ DT JJ NN VBG IN DT NN NN CC PRP VBZ VBG TO VB IN DT NN CC PRP VBZ RB IN PRP$ DT NN VBZ VBGTO VB PRP$ NN CD IN DT NNS CC NN VBZRB VBG RB JJ NN IN DT NN VBZ VBG CC PRPVBZ VBG DT NNS CC PRPVBZ VBG RP DT NN
+POS,EX VBZ DT JJ NN VBG IN DT NN NN CC PRP VBZ VBG TO VB IN DT NN CC PRP VBZ RB IN PRP$ DT NN VBZ VBGTO VB PRP$ NN CD IN DT NNS CC NN VBZRB VBG RB JJ NN IN DT NN VBZ VBG CC PRPVBZ VBG DT NNS CC PRPVBZ VBG RP DT NN
 DB/WLS/03/03731.cha:PAR:3:da,and out the window there is a path going to what looks like a gate and there's some flowers and other things
 POS,CC IN DT NN EX VBZ DT NN VBG IN WP VBZ IN DT NN CC EXVBZ DT NNS CC JJ NNS
 DB/WLS/03/03731.cha:PAR:4:da,there is some curtains on the window and there's two cups and a dish on the sink to the right and
@@ -3743,9 +3743,9 @@ POS,VBP PRP
 DB/WLS/03/03731.cha:PAR:8:da,that's what we were looking for
 POS,DTVBZ WP PRP VBD VBG IN
 DB/WLS/04/04074.cha:PAR:1:da,just need to tell you that one
-POS,RB VBP TO VB PRP IN CD
+POS,RB VB TO VB PRP IN CD
 DB/WLS/04/04074.cha:PAR:2:da,alright
-POS,JJ
+POS,UH
 DB/WLS/04/04074.cha:PAR:3:da,I have something a little different here for us
 POS,PRP VBP NN DT JJ JJ RB IN PRP
 DB/WLS/04/04074.cha:PAR:4:da,everything is different here for us
@@ -3761,7 +3761,7 @@ POS,PRPVBZ RB JJ
 DB/WLS/04/04074.cha:PAR:9:da,just a whole bunch of different things here today
 POS,RB DT JJ NN IN JJ NNS RB NN
 DB/WLS/04/04074.cha:PAR:10:da,alright
-POS,JJ
+POS,UH
 DB/WLS/04/04074.cha:PAR:11:da,can you please take a look at this picture and describe everything you see here to me
 POS,MD PRP UH VB DT NN IN DT NN CC VB NN PRP VBP RB IN PRP
 DB/WLS/04/04074.cha:PAR:12:da,I see a kid trying to raid the cookie jar and he's falling on his butt
@@ -3777,7 +3777,7 @@ POS,UH
 DB/WLS/04/04074.cha:PAR:17:da,thank you
 POS,VBP PRP
 DB/WLS/04/04074.cha:PAR:18:da,that was exactly what we were looking for
-POS,WDT VBD RB WP PRP VBD VBG IN
+POS,DT VBD RB WP PRP VBD VBG IN
 DB/WLS/04/04074.cha:PAR:19:da,thank you
 POS,VBP PRP
 DB/WLS/04/04138.cha:PAR:1:da,now I'm going to have you take a look at this picture and I want you to describe everything that you see there
@@ -3789,7 +3789,7 @@ POS,RB CD IN DT NNS VBZ VBG NNS CC PRPVBZ RB TO VB RP DT NN IN DT NN VBZ VBG NNS
 DB/WLS/04/04138.cha:PAR:4:da,okay
 POS,UH
 DB/WLS/04/04138.cha:PAR:5:da,anything else significant in the
-POS,NN RB JJ IN DT
+POS,NN JJ JJ IN DT
 DB/WLS/04/04138.cha:PAR:6:da,well there's a little girl who is hoping to get a cookie but it looks like he's going to fall for sure
 POS,RB EXVBZ DT JJ NN WP VBZ VBG TO VB DT NN CC PRP VBZ IN PRPVBZ VBG TO VB IN JJ
 DB/WLS/04/04138.cha:PAR:7:da,that's all I can see there
@@ -3836,8 +3836,8 @@ DB/WLS/04/04223.cha:PAR:19:da,there's a path and a bush and you can see another 
 POS,EXVBZ DT NN CC DT NN CC PRP MD VB DT NN RB IN DT JJ NN IN DT NN PRP VBP
 DB/WLS/04/04223.cha:PAR:20:da,and you can see the roof you can see a tree back there and it looks like there's some other foliage back there some more bushes
 POS,CC PRP MD VB DT NN PRP MD VB DT NN RB RB CC PRP VBZ IN EXVBZ DT JJ NN RB RB DT JJR NNS
-DB/WLS/04/04223.cha:PAR:21:da,there are curtains and there's tie on the curtains
-POS,EX VBP NNS CC EXVBZ NN IN DT NNS
+DB/WLS/04/04223.cha:PAR:21:da,there are curtains and there's on the curtains
+POS,EX VBP NNS CC EXVBZ IN DT NNS
 DB/WLS/04/04223.cha:PAR:22:da,the cupboards have straight handles on them
 POS,DT NNS VBP JJ NNS IN PRP
 DB/WLS/04/04223.cha:PAR:23:da,the faucet there are separate faucets for hot and cold
@@ -3846,14 +3846,14 @@ DB/WLS/04/04223.cha:PAR:24:da,excuse me
 POS,VB PRP
 DB/WLS/04/04223.cha:PAR:25:da,the lady it looks like she's got an apron on a sleeveless dress
 POS,DT NN PRP VBZ IN PRPVBZ VBN DT NN IN DT JJ NN
-DB/WLS/04/04223.cha:PAR:26:da,she's got a medium haircut
-POS,PRPVBZ VBN DT JJ NN
+DB/WLS/04/04223.cha:PAR:26:da,she's got a haircut
+POS,PRPVBZ VBN DT NN
 DB/WLS/04/04223.cha:PAR:27:da,the boy has got shorts on and a shirt
 POS,DT NN VBZ VBN NNS IN CC DT NN
 DB/WLS/04/04223.cha:PAR:28:da,the cookie jar is on the top shelf of the cabinet that they're in
 POS,DT NN NN VBZ IN DT JJ NN IN DT NN IN PRPVBP IN
-DB/WLS/04/04223.cha:PAR:29:da,the girl has looks like shoes and socks on a short skirt and looks like a T maybe
-POS,DT NN VBZ VBZ IN NNS CC NNS IN DT JJ NN CC VBZ IN DT NN RB
+DB/WLS/04/04223.cha:PAR:29:da,the girl has looks like shoes and socks on a short skirt and looks like a maybe
+POS,DT NN VBZ VBZ IN NNS CC NNS IN DT JJ NN CC VBZ IN DT RB
 DB/WLS/04/04223.cha:PAR:30:da,the boy's got socks and shoes on
 POS,DT NNVBZ VBN NNS CC NNS IN
 DB/WLS/04/04223.cha:PAR:31:da,it looks like he's got dark hair
@@ -3955,7 +3955,7 @@ POS,PRPVBZ RB DT NN WRB DT NNS PRP VBP VB RB IN CD CD IN NNS
 DB/WLS/04/04516.cha:PAR:2:da,that's a tough one
 POS,DTVBZ DT JJ NN
 DB/WLS/04/04516.cha:PAR:3:da,boy that takes some thinking to do doesn't it
-POS,NN DT VBZ DT NN TO VB VBZRB PRP
+POS,UH DT VBZ DT NN TO VB VBZRB PRP
 DB/WLS/04/04516.cha:PAR:4:da,because of my cardiomyopathy first the doctors gave me six months to live but obviously
 POS,IN IN PRP$ NN RB DT NNS VBD PRP CD NNS TO VB CC RB
 DB/WLS/04/04516.cha:PAR:5:da,and that was in nineteen ninety
@@ -4003,7 +4003,7 @@ POS,UH
 DB/WLS/04/04516.cha:PAR:26:da,mother doing dishes
 POS,NN VBG NNS
 DB/WLS/04/04516.cha:PAR:27:da,alright
-POS,JJ
+POS,UH
 DB/WLS/04/04516.cha:PAR:28:da,anything else
 POS,NN RB
 DB/WLS/04/04516.cha:PAR:29:da,no
@@ -4057,11 +4057,11 @@ POS,UH
 DB/WLS/05/05032.cha:PAR:22:da,good
 POS,JJ
 DB/WLS/05/05032.cha:PAR:23:da,is that pretty much it then
-POS,VBZ IN RB RB PRP RB
+POS,VBZ DT RB RB PRP RB
 DB/WLS/05/05032.cha:PAR:24:da,I think yeah
 POS,PRP VBP UH
 DB/WLS/05/05032.cha:PAR:25:da,that describes it pretty well
-POS,WDT VBZ PRP RB RB
+POS,DT VBZ PRP RB RB
 DB/WLS/05/05032.cha:PAR:26:da,good
 POS,JJ
 DB/WLS/05/05032.cha:PAR:27:da,thank you for that
@@ -4075,13 +4075,13 @@ POS,PRP VBPRB
 DB/WLS/05/05121.cha:PAR:3:da,or was I
 POS,CC VBD PRP
 DB/WLS/05/05121.cha:PAR:4:da,no I don't think there was a four in there
-POS,DT PRP VBPRB VB EX VBD DT CD IN RB
+POS,UH PRP VBPRB VB EX VBD DT CD IN RB
 DB/WLS/05/05121.cha:PAR:5:da,okay
 POS,UH
 DB/WLS/05/05121.cha:PAR:6:da,alright
-POS,JJ
+POS,UH
 DB/WLS/05/05121.cha:PAR:7:da,okay here's another little thing for you
-POS,RB RBVBZ DT JJ NN IN PRP
+POS,UH RBVBZ DT JJ NN IN PRP
 DB/WLS/05/05121.cha:PAR:8:da,take a look at this if I can find it that and tell me everything that's going on there
 POS,VB DT NN IN DT IN PRP MD VB PRP DT CC VB PRP NN WDTVBZ VBG RB RB
 DB/WLS/05/05121.cha:PAR:9:da,describe everything that you see
@@ -4133,7 +4133,7 @@ POS,PRP MDVB VBN NN
 DB/WLS/05/05159.cha:PAR:1:da,wonderful on that
 POS,JJ IN DT
 DB/WLS/05/05159.cha:PAR:2:da,alright
-POS,JJ
+POS,UH
 DB/WLS/05/05159.cha:PAR:3:da,oh here's the next one
 POS,UH RBVBZ DT JJ NN
 DB/WLS/05/05159.cha:PAR:4:da,this one
@@ -4183,7 +4183,7 @@ POS,RB EXVBZ NN RB IN DT NN CC DT NN RB IN DT NN PRP MD VB TO VB DT JJ NN RB
 DB/WLS/05/05159.cha:PAR:26:da,on some of the shelves here I think you see openers and if you were following around a kitchen there should be two handles on these doors which there aren't
 POS,IN DT IN DT NNS RB PRP VBP PRP VB NNS CC IN PRP VBD VBG IN DT NN RB MD VB CD NNS IN DT NNS WDT EX VBPRB
 DB/WLS/05/05159.cha:PAR:27:da,okay that's fine
-POS,JJ DTVBZ JJ
+POS,UH DTVBZ JJ
 DB/WLS/05/05159.cha:PAR:28:da,alright that's what we were looking for
 POS,UH DTVBZ WP PRP VBD VBG IN
 DB/WLS/05/05259.cha:PAR:1:da,good job
@@ -4225,13 +4225,13 @@ POS,PRPVBZ VBG IN DT NN CC PRPVBZ RB VBG IN DT NN
 DB/WLS/05/05259.cha:PAR:19:da,she's still drying her plate with a towel
 POS,PRPVBZ RB VBG PRP$ NN IN DT NN
 DB/WLS/05/05259.cha:PAR:20:da,well thank you
-POS,RB VBP PRP
+POS,UH VBP PRP
 DB/WLS/05/05259.cha:PAR:21:da,that's just what we were looking for
 POS,DTVBZ RB WP PRP VBD VBG IN
 DB/WLS/05/05259.cha:PAR:22:da,very good
 POS,RB JJ
-DB/WLS/05/05259.cha:PAR:23:da,very detail
-POS,RB NN
+DB/WLS/05/05259.cha:PAR:23:da,very
+POS,RB
 DB/WLS/05/05259.cha:PAR:24:da,good job
 POS,JJ NN
 DB/WLS/05/05305.cha:PAR:1:da,please take a look at this picture and describe everything that you see here
@@ -4239,7 +4239,7 @@ POS,UH VB DT NN IN DT NN CC VB NN WDT PRP VBP RB
 DB/WLS/05/05305.cha:PAR:2:da,everything
 POS,NN
 DB/WLS/05/05305.cha:PAR:3:da,uhhuh
-POS,NN
+POS,NNP
 DB/WLS/05/05305.cha:PAR:4:da,two children trying to get cookies out of the cookie jar in the cupboard with the boy reaching and tipping on the stool and the girl standing below with stretched arms
 POS,CD NNS VBG TO VB NNS IN IN DT NN NN IN DT NN IN DT NN VBG CC VBG IN DT NN CC DT NN VBG RB IN VBN NNS
 DB/WLS/05/05305.cha:PAR:5:da,it is a kitchen and a woman maybe their mother is having a bit of difficulty with the sink because the water is running and flowing to the floor
@@ -4252,8 +4252,8 @@ DB/WLS/05/05305.cha:PAR:8:da,the dishes on the counter are two cups and a plate
 POS,DT NNS IN DT NN VBP CD NNS CC DT NN
 DB/WLS/05/05305.cha:PAR:9:da,mother has on an apron and dress shoes
 POS,NN VBZ IN DT NN CC NN NNS
-DB/WLS/05/05305.cha:PAR:10:da,the little girl has on slippers with a strap across and socks and a little two Firstname well maybe one with a belt dress
-POS,DT JJ NN VBZ IN NNS IN DT NN IN CC NNS CC DT JJ CD NNP UH RB CD IN DT NN NN
+DB/WLS/05/05305.cha:PAR:10:da,the little girl has on slippers with a strap across and socks and a little Firstname well maybe with a belt dress
+POS,DT JJ NN VBZ IN NNS IN DT NN IN CC NNS CC DT JJ NNP UH RB IN DT NN NN
 DB/WLS/05/05305.cha:PAR:11:da,and the boy has some shorts and a shirt with a collar
 POS,CC DT NN VBZ DT NNS CC DT NN IN DT NN
 DB/WLS/05/05305.cha:PAR:12:da,he has long hair
@@ -4283,7 +4283,7 @@ POS,MD PRP VB DT NN RB RB IN PRP CC VB NN
 DB/WLS/05/05387.cha:PAR:2:da,she said I couldn't write it down
 POS,PRP VBD PRP MDRB VB PRP RP
 DB/WLS/05/05387.cha:PAR:3:da,sorry
-POS,JJ
+POS,UH
 DB/WLS/05/05387.cha:PAR:4:da,okay please take a look at this picture and describe everything you see here
 POS,JJ UH VB DT NN IN DT NN CC VB NN PRP VBP RB
 DB/WLS/05/05387.cha:PAR:5:da,water is running over the sink
@@ -4341,7 +4341,7 @@ POS,PRP DT VBP NNS IN
 DB/WLS/05/05421.cha:PAR:18:da,that's it
 POS,DTVBZ PRP
 DB/WLS/05/05421.cha:PAR:19:da,alright
-POS,JJ
+POS,UH
 DB/WLS/05/05421.cha:PAR:20:da,thank you
 POS,VBP PRP
 DB/WLS/05/05421.cha:PAR:21:da,you gave us exactly what we wanted
@@ -4366,33 +4366,33 @@ DB/WLS/05/05538.cha:PAR:9:da,the mother is washing dishes
 POS,DT NN VBZ VBG NNS
 DB/WLS/05/05538.cha:PAR:10:da,the water's overflowing from the sink
 POS,DT NNPOS VBG IN DT NN
-DB/WLS/05/05538.cha:PAR:11:da,she's got an apron on
+DB/WLS/05/05538.cha:PAR:12:da,she's got an apron on
 POS,PRPVBZ VBN DT NN IN
-DB/WLS/05/05538.cha:PAR:12:da,there's curtains
+DB/WLS/05/05538.cha:PAR:13:da,there's curtains
 POS,EXVBZ NNS
-DB/WLS/05/05538.cha:PAR:13:da,I can see a tree outside
+DB/WLS/05/05538.cha:PAR:14:da,I can see a tree outside
 POS,PRP MD VB DT NN RB
-DB/WLS/05/05538.cha:PAR:14:da,an outbuilding of some sort
+DB/WLS/05/05538.cha:PAR:15:da,an outbuilding of some sort
 POS,DT NN IN DT NN
-DB/WLS/05/05538.cha:PAR:15:da,bushes
+DB/WLS/05/05538.cha:PAR:16:da,bushes
 POS,NNS
-DB/WLS/05/05538.cha:PAR:16:da,grass
+DB/WLS/05/05538.cha:PAR:17:da,grass
 POS,NN
-DB/WLS/05/05538.cha:PAR:17:da,a walkway
+DB/WLS/05/05538.cha:PAR:18:da,a walkway
 POS,DT NN
-DB/WLS/05/05538.cha:PAR:18:da,kitchen cabinets
+DB/WLS/05/05538.cha:PAR:19:da,kitchen cabinets
 POS,NN NNS
-DB/WLS/05/05538.cha:PAR:19:da,good
+DB/WLS/05/05538.cha:PAR:20:da,good
 POS,JJ
-DB/WLS/05/05538.cha:PAR:20:da,that's just what we're looking for
+DB/WLS/05/05538.cha:PAR:21:da,that's just what we're looking for
 POS,DTVBZ RB WP PRPVBP VBG IN
-DB/WLS/05/05538.cha:PAR:21:da,yeah but now you want me to repeat that right
+DB/WLS/05/05538.cha:PAR:22:da,yeah but now you want me to repeat that right
 POS,UH CC RB PRP VBP PRP TO VB DT UH
-DB/WLS/05/05538.cha:PAR:22:da,no no
+DB/WLS/05/05538.cha:PAR:23:da,no no
 POS,UH UH
-DB/WLS/05/05538.cha:PAR:23:da,oh
+DB/WLS/05/05538.cha:PAR:24:da,oh
 POS,UH
-DB/WLS/05/05538.cha:PAR:24:da,thank you
+DB/WLS/05/05538.cha:PAR:25:da,thank you
 POS,VBP PRP
 DB/WLS/05/05591.cha:PAR:1:da,now I'd like you to take a look at this picture here and just describe everything that you see
 POS,RB PRPMD VB PRP TO VB DT NN IN DT NN RB CC RB VB NN WDT PRP VBP
@@ -4483,7 +4483,7 @@ POS,RB WRB PRPVBP JJ RB VB VBG RB RB WP PRP VBP RB
 DB/WLS/05/05600.cha:PAR:5:da,without looking at it
 POS,IN VBG IN PRP
 DB/WLS/05/05600.cha:PAR:6:da,no while you're looking at it
-POS,DT IN PRPVBP VBG IN PRP
+POS,UH IN PRPVBP VBG IN PRP
 DB/WLS/05/05600.cha:PAR:7:da,just describe it out loud
 POS,RB VB PRP RB RB
 DB/WLS/05/05600.cha:PAR:8:da,what are you looking at
@@ -4521,7 +4521,7 @@ POS,NN RB
 DB/WLS/05/05600.cha:PAR:24:da,no
 POS,UH
 DB/WLS/05/05600.cha:PAR:25:da,okay thank you very much
-POS,JJ VBP PRP RB RB
+POS,UH VBP PRP RB RB
 DB/WLS/05/05600.cha:PAR:26:da,that's exactly what we were looking for
 POS,DTVBZ RB WP PRP VBD VBG IN
 DB/WLS/05/05634.cha:PAR:1:da,some of those were her Firstname
@@ -4623,7 +4623,7 @@ POS,VBP PRP
 DB/WLS/05/05730.cha:PAR:12:da,that's just what we were looking End
 POS,DTVBZ RB WP PRP VBD VBG NN
 DB/WLS/05/05792.cha:PAR:1:da,alright
-POS,JJ
+POS,UH
 DB/WLS/05/05792.cha:PAR:2:da,next I'm going to do something a little bit different
 POS,RB PRPVBP VBG TO VB NN DT JJ NN JJ
 DB/WLS/05/05792.cha:PAR:3:da,I'm gonna hand you a picture and I want you to tell me everything that you see in this picture
@@ -4715,7 +4715,7 @@ POS,DTVBZ JJ
 DB/WLS/06/06591.cha:PAR:12:da,yeah
 POS,UH
 DB/WLS/06/06591.cha:PAR:13:da,okay so take a look at this picture
-POS,JJ CC VB DT NN IN DT NN
+POS,UH RB VB DT NN IN DT NN
 DB/WLS/06/06591.cha:PAR:14:da,okay
 POS,UH
 DB/WLS/06/06591.cha:PAR:15:da,and describe everything that you see in the picture
@@ -4732,8 +4732,8 @@ DB/WLS/06/06591.cha:PAR:20:da,there's two cups a plate setting out
 POS,EXVBZ CD NNS DT NN VBG RP
 DB/WLS/06/06591.cha:PAR:21:da,and the cookies look pretty good
 POS,CC DT NNS VBP RB JJ
-DB/WLS/06/06591.cha:PAR:22:da,she's got a full cookie jar
-POS,PRPVBZ VBN DT JJ NN NN
+DB/WLS/06/06591.cha:PAR:22:da,she's got a cookie jar
+POS,PRPVBZ VBN DT NN NN
 DB/WLS/06/06591.cha:PAR:23:da,but if I was her I'd be getting after my husband to unplug that sink
 POS,CC IN PRP VBD PRP$ PRPMD VB VBG IN PRP$ NN TO VB DT NN
 DB/WLS/06/06591.cha:PAR:24:da,you would think she would know enough to do that wouldn't you
@@ -4770,8 +4770,8 @@ DB/WLS/06/06858.cha:PAR:6:da,what do you mean like what they're doing or everyth
 POS,WP VBP PRP VB UH WP PRPVBP VBG CC NN WDTVBZ RB
 DB/WLS/06/06858.cha:PAR:7:da,please take a look at this picture and describe everything you see here
 POS,UH VB DT NN IN DT NN CC VB NN PRP VBP RB
-DB/WLS/06/06858.cha:PAR:8:da,curtains trees windows bushes dishes two cups one plate two plates three stool short skirt
-POS,NNS NNS NNS NNS NNS CD NNS CD NN CD NNS CD NN JJ NN
+DB/WLS/06/06858.cha:PAR:8:da,curtains trees windows bushes dishes two cups one plate two plates stool short skirt
+POS,NNS NNS NNS NNS NNS CD NNS CD NN CD NNS NN JJ NN
 DB/WLS/06/06858.cha:PAR:9:da,okay
 POS,UH
 DB/WLS/06/06858.cha:PAR:10:da,just what we were looking for
@@ -4827,7 +4827,7 @@ POS,PRPVBZ VBN NNS
 DB/WLS/07/07117.cha:PAR:24:da,it's got a window with curtains
 POS,PRPVBZ VBN DT NN IN NNS
 DB/WLS/07/07117.cha:PAR:25:da,is that correct
-POS,VBZ IN JJ
+POS,VBZ DT JJ
 DB/WLS/07/07117.cha:PAR:26:da,mhm
 POS,UH
 DB/WLS/07/07117.cha:PAR:27:da,thank you
@@ -4865,7 +4865,7 @@ POS,PRPVBP RB RB JJ WP RB PRP VBP TO VB
 DB/WLS/07/07143.cha:PAR:13:da,okay
 POS,UH
 DB/WLS/07/07143.cha:PAR:14:da,is that all then
-POS,VBZ IN DT RB
+POS,VBZ DT RB RB
 DB/WLS/07/07143.cha:PAR:15:da,yes
 POS,UH
 DB/WLS/07/07143.cha:PAR:16:da,okay
@@ -4903,7 +4903,7 @@ POS,PRP VBZ IN NNS IN DT NN
 DB/WLS/07/07214.cha:PAR:14:da,I think that's all I see
 POS,PRP VBP DTVBZ DT PRP VBP
 DB/WLS/07/07214.cha:PAR:15:da,okay very good
-POS,RB RB JJ
+POS,UH RB JJ
 DB/WLS/07/07214.cha:PAR:16:da,thank you
 POS,VBP PRP
 DB/WLS/07/07517.cha:PAR:1:da,if you could please take a look at this picture and describe everything that you see here
@@ -4943,7 +4943,7 @@ POS,VBP PRP
 DB/WLS/07/07592.cha:PAR:1:da,okay you're getting them all
 POS,UH PRPVBP VBG PRP DT
 DB/WLS/07/07592.cha:PAR:2:da,alright
-POS,JJ
+POS,UH
 DB/WLS/07/07592.cha:PAR:3:da,I'm gonna hand you that
 POS,PRPVBP VBGTO VB PRP DT
 DB/WLS/07/07592.cha:PAR:4:da,please take a look at this picture and describe everything you see here
@@ -4985,7 +4985,7 @@ POS,VBP PRP
 DB/WLS/07/07592.cha:PAR:22:da,that's just what we were looking for
 POS,DTVBZ RB WP PRP VBD VBG IN
 DB/WLS/07/07741.cha:PAR:1:da,alright
-POS,JJ
+POS,UH
 DB/WLS/07/07741.cha:PAR:2:da,please take a look at this picture and describe everything that you see here
 POS,UH VB DT NN IN DT NN CC VB NN WDT PRP VBP RB
 DB/WLS/07/07741.cha:PAR:3:da,well they've got some problems
@@ -5042,8 +5042,8 @@ DB/WLS/07/07769.cha:PAR:12:da,there's two cups and a plate on the counter
 POS,EXVBZ CD NNS CC DT NN IN DT NN
 DB/WLS/07/07769.cha:PAR:13:da,the sink is full and overflowing
 POS,DT NN VBZ JJ CC VBG
-DB/WLS/07/07769.cha:PAR:14:da,the mom has shoulder or chin hair looks like blonde although the picture isn't in color
-POS,DT NN VBZ NN CC NN NN VBZ IN JJ IN DT NN VBZRB IN NN
+DB/WLS/07/07769.cha:PAR:14:da,the mom has shoulder or hair looks like blonde although the picture isn't in color
+POS,DT NN VBZ NN CC NN VBZ IN JJ IN DT NN VBZRB IN NN
 DB/WLS/07/07769.cha:PAR:15:da,she's wearing a dress and an apron
 POS,PRPVBZ VBG DT NN CC DT NN
 DB/WLS/07/07769.cha:PAR:16:da,there we can see four five six wood or six cupboards more
@@ -5056,14 +5056,14 @@ DB/WLS/07/07769.cha:PAR:19:da,there's no certain time so whatever you can
 POS,EXVBZ DT JJ NN RB WDT PRP MD
 DB/WLS/07/07769.cha:PAR:20:da,but the stool the boy is standing on has three legs reminds me of the stool in our kitchen
 POS,CC DT NN DT NN VBZ VBG RP VBZ CD NNS VBZ PRP IN DT NN IN PRP$ NN
-DB/WLS/07/07769.cha:PAR:21:da,the boy has shorts and a t and a vest and the girl has a skirt and a top
-POS,DT NN VBZ NNS CC DT NN CC DT NN CC DT NN VBZ DT NN CC DT NN
+DB/WLS/07/07769.cha:PAR:21:da,the boy has shorts and a and a vest and the girl has a skirt and a top
+POS,DT NN VBZ NNS CC DT CC DT NN CC DT NN VBZ DT NN CC DT NN
 DB/WLS/07/07769.cha:PAR:22:da,does she have a cookie in her mouth already
 POS,VBZ PRP VB DT NN IN PRP$ NN RB
 DB/WLS/07/07769.cha:PAR:23:da,she has her hand up to her mouth but she's looking forward to the cookie
 POS,PRP VBZ PRP$ NN RP IN PRP$ NN CC PRPVBZ VBG RB IN DT NN
 DB/WLS/07/07769.cha:PAR:24:da,okay thank you
-POS,JJ VBP PRP
+POS,UH VBP PRP
 DB/WLS/07/07769.cha:PAR:25:da,that's exactly what we were looking for
 POS,DTVBZ RB WP PRP VBD VBG IN
 DB/WLS/07/07794.cha:PAR:1:da,please take a look at this picture and describe everything that you see here
@@ -5079,7 +5079,7 @@ POS,UH
 DB/WLS/07/07794.cha:PAR:6:da,okay
 POS,UH
 DB/WLS/07/07794.cha:PAR:7:da,describe every anything you see
-POS,VBP DT NN PRP VBP
+POS,VB DT NN PRP VBP
 DB/WLS/07/07794.cha:PAR:8:da,the water is flowing over the sink
 POS,DT NN VBZ VBG IN DT NN
 DB/WLS/07/07794.cha:PAR:9:da,it looks like the mom is drying dishes with a dish towel
@@ -5237,7 +5237,7 @@ POS,PRP VBPRB VB RB
 DB/WLS/08/08092.cha:PAR:5:da,yeah
 POS,UH
 DB/WLS/08/08092.cha:PAR:6:da,well some people do though you know
-POS,RB DT NNS VBP RB PRP VBP
+POS,UH DT NNS VBP RB PRP VBP
 DB/WLS/08/08092.cha:PAR:7:da,some people do
 POS,DT NNS VBP
 DB/WLS/08/08092.cha:PAR:8:da,okay
@@ -5305,7 +5305,7 @@ POS,VBP PRP RB RB
 DB/WLS/08/08092.cha:PAR:39:da,bowls
 POS,NNS
 DB/WLS/08/08092.cha:PAR:40:da,alright
-POS,JJ
+POS,UH
 DB/WLS/08/08172.cha:PAR:1:da,please take a look at this picture and describe everything that you see here
 POS,UH VB DT NN IN DT NN CC VB NN WDT PRP VBP RB
 DB/WLS/08/08172.cha:PAR:2:da,the mother's washing dishes and the sink is running over and the boy is stealing cookies giving them to his sister and falling down on the stool
@@ -5375,7 +5375,7 @@ POS,PRP VBP DT NN IN NN VBG RB CC RB
 DB/WLS/08/08482.cha:PAR:6:da,I thought I was getting some exercise
 POS,PRP VBD PRP VBD VBG DT NN
 DB/WLS/08/08482.cha:PAR:7:da,well your turn is coming
-POS,RB PRP$ NN VBZ VBG
+POS,UH PRP$ NN VBZ VBG
 DB/WLS/08/08482.cha:PAR:8:da,you mean we're still going huh
 POS,PRP VBP PRPVBP RB VBG UH
 DB/WLS/08/08482.cha:PAR:9:da,yes
@@ -5410,21 +5410,21 @@ DB/WLS/08/08482.cha:PAR:23:da,and mama is wiping a dish while the sink overflows
 POS,CC NN VBZ VBG DT NN IN DT NN VBZ IN DT NN
 DB/WLS/08/08482.cha:PAR:24:da,that's absurd
 POS,DTVBZ JJ
-DB/WLS/08/08482.cha:PAR:25:da,is there anything else
+DB/WLS/08/08482.cha:PAR:26:da,is there anything else
 POS,VBZ RB NN JJ
-DB/WLS/08/08482.cha:PAR:26:da,I don't see anything else outside
+DB/WLS/08/08482.cha:PAR:27:da,I don't see anything else outside
 POS,PRP VBPRB VB NN RB RB
-DB/WLS/08/08482.cha:PAR:27:da,I guess that's it
+DB/WLS/08/08482.cha:PAR:28:da,I guess that's it
 POS,PRP VBP DTVBZ PRP
-DB/WLS/08/08482.cha:PAR:28:da,okay
+DB/WLS/08/08482.cha:PAR:29:da,okay
 POS,UH
-DB/WLS/08/08482.cha:PAR:29:da,I see all the obvious things
+DB/WLS/08/08482.cha:PAR:30:da,I see all the obvious things
 POS,PRP VBP PDT DT JJ NNS
-DB/WLS/08/08482.cha:PAR:30:da,I don't know if there's any little hidden
+DB/WLS/08/08482.cha:PAR:31:da,I don't know if there's any little hidden
 POS,PRP VBPRB VB IN EXVBZ DT JJ JJ
-DB/WLS/08/08482.cha:PAR:31:da,well that's just what we were looking for
-POS,RB DTVBZ RB WP PRP VBD VBG IN
-DB/WLS/08/08482.cha:PAR:32:da,thanks
+DB/WLS/08/08482.cha:PAR:32:da,well that's just what we were looking for
+POS,UH DTVBZ RB WP PRP VBD VBG IN
+DB/WLS/08/08482.cha:PAR:33:da,thanks
 POS,NNS
 DB/WLS/08/08882.cha:PAR:1:da,would you like a glass of tea or something
 POS,MD PRP VB DT NN IN NN CC NN
@@ -5445,7 +5445,7 @@ POS,CC PRP VBP DT NN WDT VBZ VBG IN NN
 DB/WLS/08/08882.cha:PAR:9:da,there's a window with a curtain added and outside I can see some grass and some more dirty dishes on the counter and cupboards
 POS,EXVBZ DT NN IN DT NN VBD CC IN PRP MD VB DT NN CC DT JJR JJ NNS IN DT NN CC NNS
 DB/WLS/08/08882.cha:PAR:10:da,okay thank you
-POS,JJ VBP PRP
+POS,UH VBP PRP
 DB/WLS/08/08882.cha:PAR:11:da,that's just what we were looking for
 POS,DTVBZ RB WP PRP VBD VBG IN
 DB/WLS/09/09077.cha:PAR:1:da,did I do pretty good
@@ -5526,24 +5526,20 @@ DB/WLS/09/09106.cha:PAR:15:da,his hand
 POS,PRP$ NN
 DB/WLS/09/09106.cha:PAR:16:da,tie back on the curtain
 POS,VB RB IN DT NN
-DB/WLS/09/09106.cha:PAR:17:da,bric
-POS,JJ
-DB/WLS/09/09106.cha:PAR:18:da,that cupboard door cupboards
+DB/WLS/09/09106.cha:PAR:17:da,that cupboard door cupboards
 POS,DT NN NN NNS
-DB/WLS/09/09106.cha:PAR:19:da,cups plates
+DB/WLS/09/09106.cha:PAR:18:da,cups plates
 POS,NNS NNS
-DB/WLS/09/09106.cha:PAR:20:da,what is this
+DB/WLS/09/09106.cha:PAR:19:da,what is this
 POS,WP VBZ DT
-DB/WLS/09/09106.cha:PAR:21:da,might be grass
+DB/WLS/09/09106.cha:PAR:20:da,might be grass
 POS,MD VB NN
-DB/WLS/09/09106.cha:PAR:22:da,is that it
+DB/WLS/09/09106.cha:PAR:21:da,is that it
 POS,VBZ IN PRP
-DB/WLS/09/09106.cha:PAR:23:da,mmm
-POS,NN
-DB/WLS/09/09106.cha:PAR:24:da,okay good
+DB/WLS/09/09106.cha:PAR:22:da,okay good
 POS,RB JJ
 DB/WLS/09/09390.cha:PAR:1:da,that was great
-POS,WDT VBD JJ
+POS,DT VBD JJ
 DB/WLS/09/09390.cha:PAR:2:da,you did a great job
 POS,PRP VBD DT JJ NN
 DB/WLS/09/09390.cha:PAR:3:da,really
@@ -5567,7 +5563,7 @@ POS,RB RB
 DB/WLS/09/09390.cha:PAR:12:da,you just want me to start at the top
 POS,PRP RB VBP PRP TO VB IN DT NN
 DB/WLS/09/09390.cha:PAR:13:da,uhhuh
-POS,NN
+POS,NNP
 DB/WLS/09/09390.cha:PAR:14:da,I see children a woman
 POS,PRP VBP NNS DT NN
 DB/WLS/09/09390.cha:PAR:15:da,a cookie jar
@@ -5611,7 +5607,7 @@ POS,PRP MDRB VB NN JJ
 DB/WLS/09/09390.cha:PAR:34:da,okay
 POS,UH
 DB/WLS/09/09390.cha:PAR:35:da,well thank you
-POS,RB VBP PRP
+POS,UH VBP PRP
 DB/WLS/09/09390.cha:PAR:36:da,that's just what we were looking for
 POS,DTVBZ RB WP PRP VBD VBG IN
 DB/WLS/09/09752.cha:PAR:1:da,please take a look at this picture and describe everything that you see here
@@ -5643,9 +5639,9 @@ POS,RB JJ NN
 DB/WLS/09/09910.cha:PAR:6:da,I guess that's it
 POS,PRP VBP DTVBZ PRP
 DB/WLS/09/09910.cha:PAR:7:da,okay thank you
-POS,JJ VBP PRP
+POS,UH VBP PRP
 DB/WLS/09/09910.cha:PAR:8:da,alright
-POS,JJ
+POS,UH
 DB/WLS/10/10053.cha:PAR:1:da,you did a good job
 POS,PRP VBD DT JJ NN
 DB/WLS/10/10053.cha:PAR:2:da,could try that on the grandkids see how good their memory is
@@ -5725,13 +5721,13 @@ POS,NN JJ NN NN
 DB/WLS/10/10093.cha:PAR:12:da,no
 POS,UH
 DB/WLS/10/10093.cha:PAR:13:da,alright
-POS,JJ
+POS,UH
 DB/WLS/10/10093.cha:PAR:14:da,thank you
 POS,VBP PRP
 DB/WLS/10/10093.cha:PAR:15:da,that's just what we were looking
 POS,DTVBZ RB WP PRP VBD VBG
 DB/WLS/10/10669.cha:PAR:1:da,alright
-POS,JJ
+POS,UH
 DB/WLS/10/10669.cha:PAR:2:da,another visual aid here for you to look at
 POS,DT JJ NN RB IN PRP TO VB IN
 DB/WLS/10/10669.cha:PAR:3:da,excuse me
@@ -5781,7 +5777,7 @@ POS,UH
 DB/WLS/10/10882.cha:PAR:3:da,please take a look at this picture and describe everything you see
 POS,UH VB DT NN IN DT NN CC VB NN PRP VBP
 DB/WLS/10/10882.cha:PAR:4:da,hold on a minute
-POS,VBP IN DT NN
+POS,VB RP DT NN
 DB/WLS/10/10882.cha:PAR:5:da,okay
 POS,UH
 DB/WLS/10/10882.cha:PAR:6:da,describe everything you see
@@ -5804,10 +5800,10 @@ DB/WLS/10/10882.cha:PAR:14:da,the lady is wearing a dress
 POS,DT NN VBZ VBG DT NN
 DB/WLS/10/10882.cha:PAR:15:da,the girl is wearing a skirt and the boy is wearing shorts
 POS,DT NN VBZ VBG DT NN CC DT NN VBZ VBG NNS
-DB/WLS/10/10882.cha:PAR:16:da,everything in the picture is black
-POS,NN IN DT NN VBZ JJ
-DB/WLS/10/10882.cha:PAR:17:da,outside the room there is a hedge with a tree in the background and it appears that the lawn is not covered with snow but that's hard to say because it's black
-POS,IN DT NN RB VBZ DT NN IN DT NN IN DT NN CC PRP VBZ IN DT NN VBZ RB VBN IN NN CC DTVBZ JJ TO VB IN PRPVBZ JJ
+DB/WLS/10/10882.cha:PAR:16:da,everything in the picture is
+POS,NN IN DT NN VBZ
+DB/WLS/10/10882.cha:PAR:17:da,outside the room there is a hedge with a tree in the background and it appears that the lawn is not covered with snow but that's hard to say because it's
+POS,IN DT NN RB VBZ DT NN IN DT NN IN DT NN CC PRP VBZ IN DT NN VBZ RB VBN IN NN CC DTVBZ JJ TO VB IN PRPVBZ
 DB/WLS/10/10882.cha:PAR:18:da,but everyone in the picture is wearing shoes
 POS,CC NN IN DT NN VBZ VBG NNS
 DB/WLS/10/10882.cha:PAR:19:da,there are two cups and a plate on the cupboard next to the sink
@@ -5823,7 +5819,7 @@ POS,JJ
 DB/WLS/10/10882.cha:PAR:24:da,okay
 POS,UH
 DB/WLS/10/10882.cha:PAR:25:da,that was what we were looking for
-POS,WDT VBD WP PRP VBD VBG IN
+POS,DT VBD WP PRP VBD VBG IN
 DB/WLS/10/10882.cha:PAR:26:da,really
 POS,RB
 DB/WLS/10/10882.cha:PAR:27:da,okay
@@ -5840,8 +5836,8 @@ DB/WLS/11/11159.cha:PAR:5:da,please take a look at this picture and then describ
 POS,UH VB DT NN IN DT NN CC RB VB WP PRP VBP
 DB/WLS/11/11159.cha:PAR:6:da,accidents happening all over the place
 POS,NNS VBG RB IN DT NN
-DB/WLS/11/11159.cha:PAR:7:da,the sink is overflowing
-POS,DT NN VBZ VBG
+DB/WLS/11/11159.cha:PAR:7:da,sink is overflowing
+POS,NN VBZ VBG
 DB/WLS/11/11159.cha:PAR:8:da,mom's not paying attention to the kid falling falling off the stool and he's sneaking into the cookie jar and the sister's laughing and she's oblivious and she's standing in water
 POS,NNVBZ RB VBG NN IN DT NN VBG VBG IN DT NN CC PRPVBZ VBG IN DT NN NN CC DT NNPOS VBG CC PRPVBZ JJ CC PRPVBZ VBG IN NN
 DB/WLS/11/11159.cha:PAR:9:da,and I don't know if that's a fire underneath the window there or not or if it's just a bush but it could be
@@ -5857,7 +5853,7 @@ POS,RB JJ
 DB/WLS/11/11159.cha:PAR:14:da,that's exactly what we were looking for
 POS,DTVBZ RB WP PRP VBD VBG IN
 DB/WLS/11/11170.cha:PAR:1:da,alright
-POS,JJ
+POS,UH
 DB/WLS/11/11170.cha:PAR:2:da,okay
 POS,UH
 DB/WLS/11/11170.cha:PAR:3:da,please take a look at this picture and describe everything that you see here
@@ -5955,7 +5951,7 @@ POS,UH
 DB/WLS/11/11261.cha:PAR:39:da,do you think somebody did her interview in Florida
 POS,VBP PRP VB NN VBD PRP$ NN IN NNP
 DB/WLS/11/11261.cha:PAR:40:da,well we have Firstname I don't know if we have anyone down there or not
-POS,RB PRP VBP NNP PRP VBPRB VB IN PRP VBP NN RB RB CC RB
+POS,UH PRP VBP NNP PRP VBPRB VB IN PRP VBP NN RB RB CC RB
 DB/WLS/11/11261.cha:PAR:41:da,I do know that we had one person who was going on vacation and she was going to interview somebody there
 POS,PRP VBP VB IN PRP VBD CD NN WP VBD VBG IN NN CC PRP VBD VBG TO VB NN RB
 DB/WLS/11/11261.cha:PAR:42:da,ah
@@ -5967,7 +5963,7 @@ POS,IN PRP VBD PRPVBZ VBN PRP RB
 DB/WLS/11/11338.cha:PAR:1:da,I've got another visual aid for you to look at here
 POS,PRPVBP VBN DT JJ NN IN PRP TO VB IN RB
 DB/WLS/11/11338.cha:PAR:2:da,alright
-POS,JJ
+POS,UH
 DB/WLS/11/11338.cha:PAR:3:da,so go ahead please take a look at this picture and describe everything that you see here
 POS,RB VB RB UH VB DT NN IN DT NN CC VB NN WDT PRP VBP RB
 DB/WLS/11/11338.cha:PAR:4:da,describe what I see
@@ -5997,7 +5993,7 @@ POS,UH
 DB/WLS/11/11338.cha:PAR:16:da,thank you
 POS,VBP PRP
 DB/WLS/11/11338.cha:PAR:17:da,alright thank you
-POS,JJ VBP PRP
+POS,UH VBP PRP
 DB/WLS/11/11338.cha:PAR:18:da,that's just what we were looking for
 POS,DTVBZ RB WP PRP VBD VBG IN
 DB/WLS/11/11415.cha:PAR:1:da,okay
@@ -6035,7 +6031,7 @@ POS,PRP VBD NN
 DB/WLS/11/11435.cha:PAR:1:da,a lot of fun ain't it
 POS,DT NN IN NN VBPRB PRP
 DB/WLS/11/11435.cha:PAR:2:da,no
-POS,DT
+POS,UH
 DB/WLS/11/11435.cha:PAR:3:da,ten years ago maybe
 POS,CD NNS IN RB
 DB/WLS/11/11435.cha:PAR:4:da,there we go
@@ -6079,9 +6075,9 @@ POS,NN JJ DT
 DB/WLS/11/11435.cha:PAR:23:da,okay
 POS,UH
 DB/WLS/11/11435.cha:PAR:24:da,okay thank you
-POS,JJ VBP PRP
+POS,UH VBP PRP
 DB/WLS/11/11435.cha:PAR:25:da,that was just what we were looking for
-POS,WDT VBD RB WP PRP VBD VBG IN
+POS,DT VBD RB WP PRP VBD VBG IN
 DB/WLS/11/11556.cha:PAR:1:da,and this one I'd like you to take a look at this picture and just tell me everything that you see in there
 POS,CC DT NN PRPMD VB PRP TO VB DT NN IN DT NN CC RB VB PRP NN WDT PRP VBP IN RB
 DB/WLS/11/11556.cha:PAR:2:da,I see a mother doing the dishes and the water overflowing from the sink
@@ -6168,12 +6164,12 @@ DB/WLS/12/12012.cha:PAR:16:da,is there anything else
 POS,VBZ RB NN JJ
 DB/WLS/12/12012.cha:PAR:17:da,the curtains on the window
 POS,DT NNS IN DT NN
-DB/WLS/12/12012.cha:PAR:18:da,it's a three stool
-POS,PRPVBZ DT CD NN
+DB/WLS/12/12012.cha:PAR:18:da,it's a stool
+POS,PRPVBZ DT NN
 DB/WLS/12/12012.cha:PAR:19:da,that's about it
 POS,DTVBZ IN PRP
 DB/WLS/12/12012.cha:PAR:20:da,alright thank you
-POS,JJ VBP PRP
+POS,UH VBP PRP
 DB/WLS/12/12012.cha:PAR:21:da,sure
 POS,JJ
 DB/WLS/12/12012.cha:PAR:22:da,he could have said anything he wanted to but he said exactly what we were looking for
@@ -6285,7 +6281,7 @@ POS,NN RB
 DB/WLS/12/12411.cha:PAR:25:da,no
 POS,UH
 DB/WLS/12/12411.cha:PAR:26:da,alright thank you
-POS,JJ VBP PRP
+POS,UH VBP PRP
 DB/WLS/12/12411.cha:PAR:27:da,that's just what we were looking for
 POS,DTVBZ RB WP PRP VBD VBG IN
 DB/WLS/12/12684.cha:PAR:1:da,okay
@@ -6293,7 +6289,7 @@ POS,UH
 DB/WLS/12/12684.cha:PAR:2:da,so please take a look at this picture and if you would describe everything that you see here
 POS,RB UH VB DT NN IN DT NN CC IN PRP MD VB NN WDT PRP VBP RB
 DB/WLS/12/12684.cha:PAR:3:da,that to you
-POS,IN IN PRP
+POS,DT IN PRP
 DB/WLS/12/12684.cha:PAR:4:da,and turn that Firstname
 POS,CC VB DT NNP
 DB/WLS/12/12684.cha:PAR:5:da,yeah
@@ -6375,7 +6371,7 @@ POS,UH
 DB/WLS/13/13163.cha:PAR:18:da,what is this
 POS,WP VBZ DT
 DB/WLS/13/13163.cha:PAR:19:da,let me see
-POS,VBD PRP VB
+POS,VB PRP VB
 DB/WLS/13/13163.cha:PAR:20:da,it looks like a bush
 POS,PRP VBZ IN DT NN
 DB/WLS/13/13163.cha:PAR:21:da,is it
@@ -6389,7 +6385,7 @@ POS,VBD PRP DT NN VBD RP CC WP RB
 DB/WLS/13/13163.cha:PAR:25:da,good
 POS,JJ
 DB/WLS/13/13163.cha:PAR:26:da,no thanks
-POS,DT NNS
+POS,UH UH
 DB/WLS/13/13163.cha:PAR:27:da,that's what we were looking for great
 POS,DTVBZ WP PRP VBD VBG IN JJ
 DB/WLS/13/13163.cha:PAR:28:da,some people look at this and they try to make a scene a story out of it
@@ -6419,13 +6415,13 @@ POS,PRP VBPRB VB NN JJ
 DB/WLS/13/13230.cha:PAR:10:da,okay
 POS,UH
 DB/WLS/13/13230.cha:PAR:11:da,well thank you
-POS,RB VBP PRP
+POS,UH VBP PRP
 DB/WLS/13/13230.cha:PAR:12:da,that's all we're looking for
 POS,DTVBZ DT PRPVBP VBG IN
 DB/WLS/13/13289.cha:PAR:1:da,I got to visualize words because I don't remember them
 POS,PRP VBD TO VB NNS IN PRP VBPRB VB PRP
 DB/WLS/13/13289.cha:PAR:2:da,alright
-POS,JJ
+POS,UH
 DB/WLS/13/13289.cha:PAR:3:da,next I'm going to show you a picture and I'm just like you to tell me everything you see going on in the picture
 POS,RB PRPVBP VBG TO VB PRP DT NN CC PRPVBP RB IN PRP TO VB PRP NN PRP VBP VBG IN IN DT NN
 DB/WLS/13/13289.cha:PAR:4:da,oh one of these jobs
@@ -6437,7 +6433,7 @@ POS,PRPVBZ RB IN NN PRP VBP
 DB/WLS/13/13289.cha:PAR:7:da,oh I thought it was going to be a find it
 POS,UH PRP VBD PRP VBD VBG TO VB DT VB PRP
 DB/WLS/13/13289.cha:PAR:8:da,no
-POS,DT
+POS,UH
 DB/WLS/13/13289.cha:PAR:9:da,just tell me everything that you see there
 POS,RB VB PRP NN WDT PRP VBP RB
 DB/WLS/13/13289.cha:PAR:10:da,the stool is tipping
@@ -6465,7 +6461,7 @@ POS,PRP VBPRB VB
 DB/WLS/13/13289.cha:PAR:21:da,I guess that's it
 POS,PRP VBP DTVBZ PRP
 DB/WLS/13/13289.cha:PAR:22:da,alright
-POS,JJ
+POS,UH
 DB/WLS/13/13289.cha:PAR:23:da,thank you
 POS,VBP PRP
 DB/WLS/13/13289.cha:PAR:24:da,I will take that back
@@ -6473,7 +6469,7 @@ POS,PRP MD VB DT RB
 DB/WLS/13/13289.cha:PAR:25:da,I'm looking back up there to see if there is something on the outside because there should be something on the outside but I couldn't find nothing out there
 POS,PRPVBP VBG RB RB RB TO VB IN EX VBZ NN IN DT NN IN RB MD VB NN IN DT NN CC PRP MDRB VB NN IN RB
 DB/WLS/13/13289.cha:PAR:26:da,no
-POS,DT
+POS,UH
 DB/WLS/13/13526.cha:PAR:1:da,please take a look at this picture and describe everything that you see here
 POS,UH VB DT NN IN DT NN CC VB NN WDT PRP VBP RB
 DB/WLS/13/13526.cha:PAR:2:da,okay
@@ -6617,7 +6613,7 @@ POS,VBP PRP
 DB/WLS/13/13649.cha:PAR:21:da,that's just what we were looking for
 POS,DTVBZ RB WP PRP VBD VBG IN
 DB/WLS/13/13699.cha:PAR:1:da,alright
-POS,JJ
+POS,UH
 DB/WLS/13/13699.cha:PAR:2:da,please take a look at this picture and describe everything that you see here
 POS,UH VB DT NN IN DT NN CC VB NN WDT PRP VBP RB
 DB/WLS/13/13699.cha:PAR:3:da,kid getting in the cookie jar for his sister
@@ -6639,7 +6635,7 @@ POS,RB UH VB IN DT NN CC VB NN WDT PRP VBP RB
 DB/WLS/13/13786.cha:PAR:3:da,do I give it back right away
 POS,VBP PRP VB PRP RB RB RB
 DB/WLS/13/13786.cha:PAR:4:da,no
-POS,DT
+POS,UH
 DB/WLS/13/13786.cha:PAR:5:da,you can look at it
 POS,PRP MD VB IN PRP
 DB/WLS/13/13786.cha:PAR:6:da,describe everything I see
@@ -6673,7 +6669,7 @@ POS,EXVBZ DT NNS IN DT NN NNS IN DT IN PRP
 DB/WLS/13/13786.cha:PAR:20:da,is there a trick
 POS,VBZ RB DT NN
 DB/WLS/13/13786.cha:PAR:21:da,no
-POS,DT
+POS,UH
 DB/WLS/13/13786.cha:PAR:22:da,you just have to tell me what you see
 POS,PRP RB VBP TO VB PRP WP PRP VBP
 DB/WLS/13/13786.cha:PAR:23:da,it looks like it might be a nice day out because the window's open
@@ -6687,7 +6683,7 @@ POS,VBP PRP
 DB/WLS/13/13905.cha:PAR:1:da,I think yeah most of that
 POS,PRP VBP UH JJS IN DT
 DB/WLS/13/13905.cha:PAR:2:da,let's see here
-POS,VBDPRP VB RB
+POS,VBPRP VB RB
 DB/WLS/13/13905.cha:PAR:3:da,I can take that from you too and get that out of your way
 POS,PRP MD VB DT IN PRP RB CC VB DT IN IN PRP$ NN
 DB/WLS/13/13905.cha:PAR:4:da,how long did you go to school for all this
@@ -6715,7 +6711,7 @@ POS,RB PRP$ NN MD RB VB RP
 DB/WLS/13/13905.cha:PAR:15:da,not me
 POS,RB PRP
 DB/WLS/13/13905.cha:PAR:16:da,is that right
-POS,VBZ IN JJ
+POS,VBZ DT JJ
 DB/WLS/13/13905.cha:PAR:17:da,oh my
 POS,UH UH
 DB/WLS/13/13905.cha:PAR:18:da,and I've got one sister that can talk French
@@ -6767,9 +6763,9 @@ POS,DT NN VBZ VBG DT NNP RB VBN TO VB
 DB/WLS/13/13905.cha:PAR:41:da,is there something else
 POS,VBZ RB NN RB
 DB/WLS/13/13905.cha:PAR:42:da,let's see
-POS,VBDPRP VB
+POS,VBPRP VB
 DB/WLS/13/13905.cha:PAR:43:da,well whatever you see going on there
-POS,RB WDT PRP VBP VBG IN RB
+POS,UH WDT PRP VBP VBG IN RB
 DB/WLS/13/13905.cha:PAR:44:da,can I just see him falling off the stool
 POS,MD PRP RB VBP PRP VBG IN DT NN
 DB/WLS/13/13905.cha:PAR:45:da,the cover off the cookies
@@ -6781,13 +6777,13 @@ POS,PRP VBDRB VB DT NN RP
 DB/WLS/13/13905.cha:PAR:48:da,she's wiping dishes and
 POS,PRPVBZ VBG NNS CC
 DB/WLS/13/13905.cha:PAR:49:da,alright
-POS,JJ
+POS,UH
 DB/WLS/13/13905.cha:PAR:50:da,alright thank you
-POS,JJ VBP PRP
+POS,UH VBP PRP
 DB/WLS/13/13905.cha:PAR:51:da,that's
 POS,DTVBZ
 DB/WLS/13/13929.cha:PAR:1:da,alright
-POS,JJ
+POS,UH
 DB/WLS/13/13929.cha:PAR:2:da,I have another card to give you
 POS,PRP VBP DT NN TO VB PRP
 DB/WLS/13/13929.cha:PAR:3:da,please take a look at this picture and describe everything that you see here
@@ -6813,7 +6809,7 @@ POS,DTVBZ IN PRP NN JJ JJ RB JJ IN DT JJ JJR NNS TO VB
 DB/WLS/13/13929.cha:PAR:13:da,curtains
 POS,NNS
 DB/WLS/13/13929.cha:PAR:14:da,anything else or is that it
-POS,NN RB CC VBZ IN PRP
+POS,NN JJ CC VBZ IN PRP
 DB/WLS/13/13929.cha:PAR:15:da,that's it
 POS,DTVBZ PRP
 DB/WLS/13/13929.cha:PAR:16:da,okay
@@ -6919,7 +6915,7 @@ POS,VBP PRP DTVBZ RB WP PRP VBD VBG IN
 DB/WLS/14/14231.cha:PAR:1:da,okay
 POS,UH
 DB/WLS/14/14231.cha:PAR:2:da,alright
-POS,JJ
+POS,UH
 DB/WLS/14/14231.cha:PAR:3:da,I have another to give to you
 POS,PRP VBP DT TO VB IN PRP
 DB/WLS/14/14231.cha:PAR:4:da,I'd like to have you take a look at this card and tell me everything that you see here
@@ -6949,9 +6945,9 @@ POS,UH
 DB/WLS/14/14231.cha:PAR:16:da,so are you ready to take a look at that picture and Firstname can just hang on here a minute
 POS,RB VBP PRP JJ TO VB DT NN IN DT NN CC NNP MD RB VB RP RB DT NN
 DB/WLS/14/14231.cha:PAR:17:da,let me do Firstname okay
-POS,VBD PRP VB NNP JJ
+POS,VB PRP VB NNP JJ
 DB/WLS/14/14231.cha:PAR:18:da,alright
-POS,JJ
+POS,UH
 DB/WLS/14/14231.cha:PAR:19:da,so if you'd take a look at the picture and describe everything you see here
 POS,RB IN PRPMD VB DT NN IN DT NN CC VB NN PRP VBP RB
 DB/WLS/14/14231.cha:PAR:20:da,go ahead
@@ -6971,7 +6967,7 @@ POS,UH
 DB/WLS/14/14231.cha:PAR:27:da,just Firstname okay
 POS,RB NNP UH
 DB/WLS/14/14231.cha:PAR:28:da,let's see if this works
-POS,VBDPRP VB IN DT VBZ
+POS,VBPRP VB IN DT VBZ
 DB/WLS/14/14231.cha:PAR:29:da,so again you can go ahead and tell me what you see
 POS,RB RB PRP MD VB RB CC VB PRP WP PRP VBP
 DB/WLS/14/14231.cha:PAR:30:da,there's a little boy who's taking cookies from the top shelf of the kitchen cabinet giving them to his sister handing them to his sister but we know the stool is falling over and the mother has her back turned to the kids
@@ -7035,7 +7031,7 @@ POS,DTVBZ PRP
 DB/WLS/14/14432.cha:PAR:1:da,are you helping
 POS,VBP PRP VBG
 DB/WLS/14/14432.cha:PAR:2:da,alright
-POS,JJ
+POS,UH
 DB/WLS/14/14432.cha:PAR:3:da,we have a picture
 POS,PRP VBP DT NN
 DB/WLS/14/14432.cha:PAR:4:da,please take a look at this picture and describe everything you see here
@@ -7097,7 +7093,7 @@ POS,PRPVBZ VBG DT NNS
 DB/WLS/14/14432.cha:PAR:32:da,I don't think so
 POS,PRP VBPRB VB RB
 DB/WLS/14/14432.cha:PAR:33:da,alright
-POS,JJ
+POS,UH
 DB/WLS/14/14432.cha:PAR:34:da,thank you
 POS,VBP PRP
 DB/WLS/14/14526.cha:PAR:1:da,good
@@ -7105,7 +7101,7 @@ POS,JJ
 DB/WLS/14/14526.cha:PAR:2:da,I think I got them all wrong but
 POS,PRP VBP PRP VBD PRP DT JJ CC
 DB/WLS/14/14526.cha:PAR:3:da,no
-POS,DT
+POS,UH
 DB/WLS/14/14526.cha:PAR:4:da,I should have got them wrong because I don't remember stuff like that
 POS,PRP MD VB VBN PRP JJ IN PRP VBPRB VB NN IN DT
 DB/WLS/14/14526.cha:PAR:5:da,okay
@@ -7114,45 +7110,43 @@ DB/WLS/14/14526.cha:PAR:6:da,please take a look at this picture and describe eve
 POS,UH VB DT NN IN DT NN CC VB NN WDT PRP VBP RB
 DB/WLS/14/14526.cha:PAR:7:da,describe it
 POS,VB PRP
-DB/WLS/14/14526.cha:PAR:8:da,mmm
-POS,NNP
-DB/WLS/14/14526.cha:PAR:9:da,describe everything that you see in this picture
+DB/WLS/14/14526.cha:PAR:8:da,describe everything that you see in this picture
 POS,VB NN WDT PRP VBP IN DT NN
-DB/WLS/14/14526.cha:PAR:10:da,oh wow
+DB/WLS/14/14526.cha:PAR:9:da,oh wow
 POS,UH UH
-DB/WLS/14/14526.cha:PAR:11:da,well the mother is standing in the next to the kitchen sink looking out the window while the sink is where the water is running out of the sink displacing on the floor
+DB/WLS/14/14526.cha:PAR:10:da,well the mother is standing in the next to the kitchen sink looking out the window while the sink is where the water is running out of the sink displacing on the floor
 POS,UH DT NN VBZ VBG IN DT RB IN DT NN NN VBG IN DT NN IN DT NN VBZ WRB DT NN VBZ VBG IN IN DT NN NN IN DT NN
-DB/WLS/14/14526.cha:PAR:12:da,and the boy is reaching the cookie jar while standing on a highchair and he's going to fall off
+DB/WLS/14/14526.cha:PAR:11:da,and the boy is reaching the cookie jar while standing on a highchair and he's going to fall off
 POS,CC DT NN VBZ VBG DT NN NN IN VBG IN DT NN CC PRPVBZ VBG TO VB RP
-DB/WLS/14/14526.cha:PAR:13:da,and the girl is laughing about it
+DB/WLS/14/14526.cha:PAR:12:da,and the girl is laughing about it
 POS,CC DT NN VBZ VBG IN PRP
-DB/WLS/14/14526.cha:PAR:14:da,thank you
+DB/WLS/14/14526.cha:PAR:13:da,thank you
 POS,VBP PRP
-DB/WLS/14/14526.cha:PAR:15:da,anything else
+DB/WLS/14/14526.cha:PAR:14:da,anything else
 POS,NN RB
-DB/WLS/14/14526.cha:PAR:16:da,I'm not sure at all what I'm looking at this right
+DB/WLS/14/14526.cha:PAR:15:da,I'm not sure at all what I'm looking at this right
 POS,PRPVBP RB JJ IN DT WP PRPVBP VBG IN DT NN
-DB/WLS/14/14526.cha:PAR:17:da,no just what you see
-POS,DT RB WP PRP VBP
-DB/WLS/14/14526.cha:PAR:18:da,that's all
+DB/WLS/14/14526.cha:PAR:16:da,no just what you see
+POS,UH RB WP PRP VBP
+DB/WLS/14/14526.cha:PAR:17:da,that's all
 POS,DTVBZ DT
-DB/WLS/14/14526.cha:PAR:19:da,the house is apparently in a residential area very upscale I would say with a pretty nice exterior
+DB/WLS/14/14526.cha:PAR:18:da,the house is apparently in a residential area very upscale I would say with a pretty nice exterior
 POS,DT NN VBZ RB IN DT JJ NN RB JJ PRP MD VB IN DT RB JJ NN
-DB/WLS/14/14526.cha:PAR:20:da,and I mean do I describe like the kitchen
+DB/WLS/14/14526.cha:PAR:19:da,and I mean do I describe like the kitchen
 POS,CC PRP VBP VBP PRP VB IN DT NN
-DB/WLS/14/14526.cha:PAR:21:da,anything what you see
+DB/WLS/14/14526.cha:PAR:20:da,anything what you see
 POS,NN WP PRP VBP
-DB/WLS/14/14526.cha:PAR:22:da,it doesn't Firstname you're describing what you see
+DB/WLS/14/14526.cha:PAR:21:da,it doesn't Firstname you're describing what you see
 POS,PRP VBZRB VB PRPVBP VBG WP PRP VBP
-DB/WLS/14/14526.cha:PAR:23:da,well the cupboards are pretty traditional I would say for the fifties
+DB/WLS/14/14526.cha:PAR:22:da,well the cupboards are pretty traditional I would say for the fifties
 POS,UH DT NNS VBP RB JJ PRP MD VB IN DT NNS
-DB/WLS/14/14526.cha:PAR:24:da,and it looks to me like they've got some pretty antique faucets
+DB/WLS/14/14526.cha:PAR:23:da,and it looks to me like they've got some pretty antique faucets
 POS,CC PRP VBZ IN PRP IN PRPVBP VBN DT RB JJ NNS
-DB/WLS/14/14526.cha:PAR:25:da,I think that's about it
+DB/WLS/14/14526.cha:PAR:24:da,I think that's about it
 POS,PRP VBP DTVBZ IN PRP
-DB/WLS/14/14526.cha:PAR:26:da,okay thank you
-POS,JJ VBP PRP
-DB/WLS/14/14526.cha:PAR:27:da,you're better organized than I would be
+DB/WLS/14/14526.cha:PAR:25:da,okay thank you
+POS,UH VBP PRP
+DB/WLS/14/14526.cha:PAR:26:da,you're better organized than I would be
 POS,PRPVBP JJR VBN IN PRP MD VB
 DB/WLS/14/14737.cha:PAR:1:da,please take a look at this picture and describe everything that you see here
 POS,UH VB DT NN IN DT NN CC VB NN WDT PRP VBP RB
@@ -7179,7 +7173,7 @@ POS,PRPVBZ JJ WRB PRP VBP CD NNS
 DB/WLS/14/14824.cha:PAR:2:da,I know
 POS,PRP VBP
 DB/WLS/14/14824.cha:PAR:3:da,the more they get the faster they come
-POS,DT JJR PRP VBP DT RBR PRP VBP
+POS,DT RBR PRP VBP DT RBR PRP VBP
 DB/WLS/14/14824.cha:PAR:4:da,okay
 POS,UH
 DB/WLS/14/14824.cha:PAR:5:da,please take a look at this picture and describe everything you see here
@@ -7205,7 +7199,7 @@ POS,DTVBZ RB DT PRP VBP
 DB/WLS/14/14824.cha:PAR:15:da,okay
 POS,UH
 DB/WLS/14/14824.cha:PAR:16:da,alright
-POS,JJ
+POS,UH
 DB/WLS/14/14824.cha:PAR:17:da,that's what we are looking for
 POS,DTVBZ WP PRP VBP VBG IN
 DB/WLS/14/14824.cha:PAR:18:da,thank you
@@ -7218,14 +7212,14 @@ DB/WLS/14/14918.cha:PAR:3:da,all the things I see in the picture
 POS,PDT DT NNS PRP VBP IN DT NN
 DB/WLS/14/14918.cha:PAR:4:da,I see a mother drying the dishes but her sink is overflowing onto the floor where there's water
 POS,PRP VBP DT NN VBG DT NNS CC PRP$ NN VBZ VBG IN DT NN WRB EXVBZ NN
-DB/WLS/14/14918.cha:PAR:5:da,the kids are going after the cookie jar but the boy is on a three stool that's about to fall and he'll probably get himself injured
-POS,DT NNS VBP VBG IN DT NN NN CC DT NN VBZ IN DT CD NN WDTVBZ RB TO VB CC PRPMD RB VB PRP VBN
+DB/WLS/14/14918.cha:PAR:5:da,the kids are going after the cookie jar but the boy is on a stool that's about to fall and he'll probably get himself injured
+POS,DT NNS VBP VBG IN DT NN NN CC DT NN VBZ IN DT NN WDTVBZ RB TO VB CC PRPMD RB VB PRP VBN
 DB/WLS/14/14918.cha:PAR:6:da,he does have cookies in his hands at least two
 POS,PRP VBZ VB NNS IN PRP$ NNS IN RBS CD
 DB/WLS/14/14918.cha:PAR:7:da,so it looks like he's trying to hand them to his sister while he has another hand in the cookie jar taking out some more
 POS,RB PRP VBZ IN PRPVBZ VBG TO VB PRP IN PRP$ NN IN PRP VBZ DT NN IN DT NN NN VBG RP DT JJR
-DB/WLS/14/14918.cha:PAR:8:da,the kitchen window opens up to either another part of their house or the next neighbor where there's a walkway
-POS,DT NN NN VBZ RP IN DT DT NN IN PRP$ NN CC DT JJ NN WRB EXVBZ DT NN
+DB/WLS/14/14918.cha:PAR:8:da,the kitchen window opens up to either another part of their house or the neighbor where there's a walkway
+POS,DT NN NN VBZ RP IN DT DT NN IN PRP$ NN CC DT NN WRB EXVBZ DT NN
 DB/WLS/14/14918.cha:PAR:9:da,there's bushes
 POS,EXVBZ NNS
 DB/WLS/14/14918.cha:PAR:10:da,the window that is on that part of the house has curtains on it similar to the curtains that are in the kitchen
@@ -7247,7 +7241,7 @@ POS,IN PRP VBD DT JJ NN
 DB/WLS/14/14918.cha:PAR:18:da,there's also a tree that you can see out through the curtains along with grass and Firstname at first I thought there was a fire in the background but that could be just Firstname I'm not exactly sure what that is something in the background probably some Firstname it's either fire or some bushes or something in the far background
 POS,EXVBZ RB DT NN WDT PRP MD VB RP IN DT NNS IN IN NN CC NNP IN RB PRP VBD EX VBD DT NN IN DT NN CC DT MD VB RB NNP PRPVBP RB RB JJ WP DT VBZ NN IN DT NN RB DT NNP PRPVBZ CC NN CC DT NNS CC NN IN DT JJ NN
 DB/WLS/14/14918.cha:PAR:19:da,okay very good
-POS,RB RB JJ
+POS,UH RB JJ
 DB/WLS/14/14988.cha:PAR:1:da,alright I have another item to hand to you
 POS,UH PRP VBP DT NN TO VB IN PRP
 DB/WLS/14/14988.cha:PAR:2:da,please take a look at this picture and describe everything that you see here
@@ -7299,7 +7293,7 @@ POS,NN RB
 DB/WLS/14/14996.cha:PAR:7:da,we're supposed to talk about everything we see in the picture
 POS,PRPVBP VBN TO VB IN NN PRP VBP IN DT NN
 DB/WLS/14/14996.cha:PAR:8:da,uhhuh
-POS,NN
+POS,NNP
 DB/WLS/14/14996.cha:PAR:9:da,everything you see
 POS,NN PRP VBP
 DB/WLS/14/14996.cha:PAR:10:da,yeah
@@ -7347,7 +7341,7 @@ POS,UH PRP MD VB VBG IN PRP
 DB/WLS/15/15035.cha:PAR:6:da,you
 POS,PRP
 DB/WLS/15/15035.cha:PAR:7:da,look at it and then
-POS,VBP IN PRP CC RB
+POS,VB IN PRP CC RB
 DB/WLS/15/15035.cha:PAR:8:da,oh I was going to try to
 POS,UH PRP VBD VBG TO VB TO
 DB/WLS/15/15035.cha:PAR:9:da,oh no
@@ -7371,7 +7365,7 @@ POS,RB VBZ DT NN IN DT NN IN DT NN IN DT JJ NN
 DB/WLS/15/15035.cha:PAR:18:da,curtains on the window
 POS,NNS IN DT NN
 DB/WLS/15/15035.cha:PAR:19:da,alright
-POS,JJ
+POS,UH
 DB/WLS/15/15035.cha:PAR:20:da,do you want me to describe the clothes
 POS,VBP PRP VB PRP TO VB DT NNS
 DB/WLS/15/15088.cha:PAR:1:da,I can't return
@@ -7411,7 +7405,7 @@ POS,VBP PRP
 DB/WLS/15/15088.cha:PAR:18:da,thank you
 POS,VBP PRP
 DB/WLS/15/15088.cha:PAR:19:da,that was just what we were looking for
-POS,WDT VBD RB WP PRP VBD VBG IN
+POS,DT VBD RB WP PRP VBD VBG IN
 DB/WLS/15/15264.cha:PAR:1:da,that's the long
 POS,DTVBZ DT JJ
 DB/WLS/15/15264.cha:PAR:2:da,that's
@@ -7453,7 +7447,7 @@ POS,UH
 DB/WLS/15/15264.cha:PAR:20:da,you did good
 POS,PRP VBD JJ
 DB/WLS/15/15518.cha:PAR:1:da,alright
-POS,JJ
+POS,UH
 DB/WLS/15/15518.cha:PAR:2:da,I have another card to hand to you
 POS,PRP VBP DT NN TO VB IN PRP
 DB/WLS/15/15518.cha:PAR:3:da,so please take a look at this picture and describe everything you see here
@@ -7461,13 +7455,13 @@ POS,RB UH VB DT NN IN DT NN CC VB NN PRP VBP RB
 DB/WLS/15/15518.cha:PAR:4:da,describe everything I see
 POS,VB NN PRP VBP
 DB/WLS/15/15518.cha:PAR:5:da,right and you can begin anytime
-POS,RB CC PRP MD VB RB
+POS,UH CC PRP MD VB RB
 DB/WLS/15/15518.cha:PAR:6:da,yeah
 POS,UH
 DB/WLS/15/15518.cha:PAR:7:da,okay
 POS,UH
-DB/WLS/15/15518.cha:PAR:8:da,well I see the kids are stealing cookies but the boy is on a three stool and it's standing only on two legs
-POS,UH PRP VBP DT NNS VBP VBG NNS CC DT NN VBZ IN DT CD NN CC PRPVBZ VBG RB IN CD NNS
+DB/WLS/15/15518.cha:PAR:8:da,well I see the kids are stealing cookies but the boy is on a stool and it's standing only on two legs
+POS,UH PRP VBP DT NNS VBP VBG NNS CC DT NN VBZ IN DT NN CC PRPVBZ VBG RB IN CD NNS
 DB/WLS/15/15518.cha:PAR:9:da,the mother is oblivious to it
 POS,DT NN VBZ JJ IN PRP
 DB/WLS/15/15518.cha:PAR:10:da,she's got her back to what's happening
@@ -7557,9 +7551,9 @@ POS,DTVBZ WP PRP VBD VBG IN
 DB/WLS/15/15753.cha:PAR:20:da,thank you
 POS,VBP PRP
 DB/WLS/15/15886.cha:PAR:1:da,alright
-POS,JJ
+POS,UH
 DB/WLS/15/15886.cha:PAR:2:da,okay so for the next one I'd just like you to take a look at this picture and just describe everything that you see here
-POS,JJ CC IN DT JJ NN PRPMD RB VB PRP TO VB DT NN IN DT NN CC RB VB NN WDT PRP VBP RB
+POS,UH RB IN DT JJ NN PRPMD RB VB PRP TO VB DT NN IN DT NN CC RB VB NN WDT PRP VBP RB
 DB/WLS/15/15886.cha:PAR:3:da,okay
 POS,UH
 DB/WLS/15/15886.cha:PAR:4:da,the girl is asking for a cookie
@@ -7581,7 +7575,7 @@ POS,PRPVBZ VBG IN DT NN IN PRPVBZ VBG TO VB
 DB/WLS/15/15886.cha:PAR:12:da,I don't know if there's anything wrong else
 POS,PRP VBPRB VB IN EXVBZ NN JJ RB
 DB/WLS/15/15886.cha:PAR:13:da,alright
-POS,JJ
+POS,UH
 DB/WLS/15/15886.cha:PAR:14:da,is that it
 POS,VBZ IN PRP
 DB/WLS/15/15886.cha:PAR:15:da,yeah I can't think of anything else here
@@ -7593,13 +7587,13 @@ POS,DTVBZ JJ
 DB/WLS/15/15947.cha:PAR:2:da,I don't do too good in that either
 POS,PRP VBPRB VB RB JJ IN DT RB
 DB/WLS/15/15947.cha:PAR:3:da,don't worry
-POS,VBPRB VB
+POS,VBRB VB
 DB/WLS/15/15947.cha:PAR:4:da,if you give me ten numbers I could just go through hit one two three four five six seven eight nine zero one two
 POS,IN PRP VBP PRP JJ NNS PRP MD RB VB RB VBN CD CD CD CD CD CD CD CD CD CD CD CD
 DB/WLS/15/15947.cha:PAR:5:da,when they came up in when we were debugging I said to myself that would be a good one for me just one through ten but I'd still mess it up
 POS,WRB PRP VBD RP IN WRB PRP VBD VBG PRP VBD IN PRP DT MD VB DT JJ NN IN PRP RB CD IN CD CC PRPVBD RB NN PRP RP
 DB/WLS/15/15947.cha:PAR:6:da,that said please take a look at this picture and describe everything that you see here
-POS,WDT VBD UH VB DT NN IN DT NN CC VB NN WDT PRP VBP RB
+POS,DT VBD UH VB DT NN IN DT NN CC VB NN WDT PRP VBP RB
 DB/WLS/15/15947.cha:PAR:7:da,well okay
 POS,UH UH
 DB/WLS/15/15947.cha:PAR:8:da,the little girl is asking for a cookie
@@ -7651,7 +7645,7 @@ POS,PRP VBZ IN PRP MD VB JJ WDT IN PRP VBZ IN PRPVBZ VBG IN PRP$ NN UH VB PRP DT
 DB/WLS/15/15947.cha:PAR:31:da,okay
 POS,UH
 DB/WLS/15/15947.cha:PAR:32:da,well thank you
-POS,RB VBP PRP
+POS,UH VBP PRP
 DB/WLS/15/15947.cha:PAR:33:da,that's just what we're looking for
 POS,DTVBZ RB WP PRPVBP VBG IN
 DB/WLS/16/16411.cha:PAR:1:da,please take a look at this picture and describe everything that you see there
@@ -7665,7 +7659,7 @@ POS,CC DT NN VBZ VBG NNS IN DT NN VBG RB CC NN IN DT NN CC PRP MD VB CC VB
 DB/WLS/16/16411.cha:PAR:5:da,what's wrong in here
 POS,WPVBZ JJ IN RB
 DB/WLS/16/16411.cha:PAR:6:da,okay thank you
-POS,JJ VBP PRP
+POS,UH VBP PRP
 DB/WLS/16/16411.cha:PAR:7:da,that's just what we are looking for
 POS,DTVBZ RB WP PRP VBP VBG IN
 DB/WLS/16/16425.cha:PAR:1:da,what I'd like you to do is take a look at the picture and tell me everything you see here
@@ -7737,11 +7731,11 @@ POS,UH
 DB/WLS/16/16477.cha:PAR:22:da,that's Firstname mhm
 POS,DTVBZ NNP UH
 DB/WLS/16/16477.cha:PAR:23:da,well thank you
-POS,RB VBP PRP
+POS,UH VBP PRP
 DB/WLS/16/16477.cha:PAR:24:da,that's just what we were look Firstname
 POS,DTVBZ RB WP PRP VBD VB NNP
 DB/WLS/16/16751.cha:PAR:1:da,alright
-POS,JJ
+POS,UH
 DB/WLS/16/16751.cha:PAR:2:da,and if you could please take a look at this picture and describe everything that you see here
 POS,CC IN PRP MD VB VB DT NN IN DT NN CC VB NN WDT PRP VBP RB
 DB/WLS/16/16751.cha:PAR:3:da,okay
@@ -7771,11 +7765,11 @@ POS,UH
 DB/WLS/16/16751.cha:PAR:15:da,mhm
 POS,UH
 DB/WLS/16/16751.cha:PAR:16:da,alright
-POS,JJ
+POS,UH
 DB/WLS/16/16751.cha:PAR:17:da,well thank you
-POS,RB VBP PRP
+POS,UH VBP PRP
 DB/WLS/16/16751.cha:PAR:18:da,that was just what we were looking for
-POS,WDT VBD RB WP PRP VBD VBG IN
+POS,DT VBD RB WP PRP VBD VBG IN
 DB/WLS/16/16751.cha:PAR:19:da,would you like a glass of water or anything
 POS,MD PRP VB DT NN IN NN CC NN
 DB/WLS/16/16751.cha:PAR:20:da,I think I'm okay but I would encourage you to have some if you're feeling it at all
@@ -7867,7 +7861,7 @@ POS,UH
 DB/WLS/17/17054.cha:PAR:10:da,thank you
 POS,VBP PRP
 DB/WLS/17/17342.cha:PAR:1:da,you're
-POS,PRPVBP
+POS,PRP''
 DB/WLS/17/17342.cha:PAR:2:da,but I don't have to
 POS,CC PRP VBPRB VB TO
 DB/WLS/17/17342.cha:PAR:3:da,I have the option
@@ -8022,29 +8016,29 @@ DB/WLS/18/18621.cha:PAR:9:da,and
 POS,CC
 DB/WLS/18/18621.cha:PAR:10:da,okay quite frankly I couldn't understand that but I had for a visual thing for a minute on what was outside but I see a walk
 POS,UH RB RB PRP MDRB VB IN CC PRP VBD IN DT JJ NN IN DT NN IN WP VBD JJ CC PRP VBP DT NN
-DB/WLS/18/18621.cha:PAR:11:da,the woman looks like she's got a scowl on her face
+DB/WLS/18/18621.cha:PAR:12:da,the woman looks like she's got a scowl on her face
 POS,DT NN VBZ IN PRPVBZ VBN DT NN IN PRP$ NN
-DB/WLS/18/18621.cha:PAR:12:da,is that enough
+DB/WLS/18/18621.cha:PAR:13:da,is that enough
 POS,VBZ DT JJ
-DB/WLS/18/18621.cha:PAR:13:da,it's whatever you want to say so
+DB/WLS/18/18621.cha:PAR:14:da,it's whatever you want to say so
 POS,PRPVBZ WP PRP VBP TO VB RB
-DB/WLS/18/18621.cha:PAR:14:da,okay
+DB/WLS/18/18621.cha:PAR:15:da,okay
 POS,UH
-DB/WLS/18/18621.cha:PAR:15:da,are you recording that or no
+DB/WLS/18/18621.cha:PAR:16:da,are you recording that or no
 POS,VBP PRP VBG DT CC DT
-DB/WLS/18/18621.cha:PAR:16:da,it records it yeah
+DB/WLS/18/18621.cha:PAR:17:da,it records it yeah
 POS,PRP VBZ PRP UH
-DB/WLS/18/18621.cha:PAR:17:da,oh okay
+DB/WLS/18/18621.cha:PAR:18:da,oh okay
 POS,UH UH
-DB/WLS/18/18621.cha:PAR:18:da,well the little girl is reaching up to get the cookie from her brother or the young man that's in there
+DB/WLS/18/18621.cha:PAR:19:da,well the little girl is reaching up to get the cookie from her brother or the young man that's in there
 POS,UH DT JJ NN VBZ VBG RP TO VB DT NN IN PRP$ NN CC DT JJ NN WDTVBZ IN RB
-DB/WLS/18/18621.cha:PAR:19:da,I did say the sink's splashing down
+DB/WLS/18/18621.cha:PAR:20:da,I did say the sink's splashing down
 POS,PRP VBD VB DT NNPOS VBG RP
-DB/WLS/18/18621.cha:PAR:20:da,I think that's all I can get out of that
+DB/WLS/18/18621.cha:PAR:21:da,I think that's all I can get out of that
 POS,PRP VBP DTVBZ DT PRP MD VB IN IN DT
-DB/WLS/18/18621.cha:PAR:21:da,okay
+DB/WLS/18/18621.cha:PAR:22:da,okay
 POS,UH
-DB/WLS/18/18621.cha:PAR:22:da,thank you
+DB/WLS/18/18621.cha:PAR:23:da,thank you
 POS,VBP PRP
-DB/WLS/18/18621.cha:PAR:23:da,okay
+DB/WLS/18/18621.cha:PAR:24:da,okay
 POS,UH

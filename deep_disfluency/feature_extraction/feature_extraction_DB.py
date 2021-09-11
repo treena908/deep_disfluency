@@ -22,22 +22,22 @@ def extract_features_DB(args):
         replace("_ranges.text", "")
 
 
-    corpus_filename = corpusName + "_data"
+    corpus_filename = corpusName + "_data.csv"
 
 
-    if args.newTags:
-        # create the tag representations (normally from the training data
-        # not allowed to look into unseen tags in the test/dev set
-        # assuming the tags we created for DB
-        c = [
-            sys.executable,
-            os.path.dirname(os.path.realpath(__file__)) +
-            '/create_tag_files_DB.py',
-            '-i', args.corpusLocation + "/" + corpus_filename,
-            '-tag', args.tagFolder,
-            ]
-
-        subprocess.call(c)
+    # if args.newTags:
+    #     # create the tag representations (normally from the training data
+    #     # not allowed to look into unseen tags in the test/dev set
+    #     # assuming the tags we created for DB
+    #     c = [
+    #         sys.executable,
+    #         os.path.dirname(os.path.realpath(__file__)) +
+    #         '/create_tag_files_DB.py',
+    #         '-i', args.corpusLocation + "/" + corpus_filename,
+    #         '-tag', args.tagFolder,
+    #         ]
+    #
+    #     subprocess.call(c)
     c = [
         sys.executable,
         os.path.dirname(os.path.realpath(__file__)) +
