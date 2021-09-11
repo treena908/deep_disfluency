@@ -47,7 +47,9 @@ file_divisions_transcripts = [
 # 37 LSTM simple tags, disf only
 # 38 LSTM simple tags, utt only
 # 39 LSTM complex tags, disf only
-experiments = [33, 34, 35, 36, 37, 38]
+# experiments = [33, 34, 35, 36, 37, 38]
+experiments = [43]
+
 # experiments = [35]  # short version for testing
 # 1. Download the SWDA and word timings
 # if download_raw_data:
@@ -159,3 +161,91 @@ if extract_features:
 
         subprocess.call(c)
     print('Finished extracting features.')
+# 4. Train the model on the transcripts (and audio data if available)
+# NB each of these experiments can take up to 24 hours
+systems_best_epoch = {}
+if train_models:
+    feature_matrices_filepath = THIS_DIR + '/../data/disfluency_detection/' + \
+        'feature_matrices/train'
+    validation_filepath = THIS_DIR + '/../data/disfluency_detection/' + \
+        'feature_matrices/heldout'
+    # train until convergence
+    # on the settings according to the numbered experiments in
+    # experiments/config.csv file
+    for exp in experiments:
+        disf = DeepDisfluencyTagger(
+            config_file=THIS_DIR + "/experiment_configs.csv",
+            config_number=exp
+            )
+        exp_str = '%03d' % exp
+        e = disf.train_net(
+                    train_dialogues_filepath=feature_matrices_filepath,
+                    validation_dialogues_filepath=validation_filepath,
+                    model_dir=THIS_DIR + '/' + exp_str,
+                    tag_accuracy_file_path=THIS_DIR +
+                    '/results_DB/tag_accuracies/{}.text'.format(exp_str))
+        systems_best_epoch[exp] = e
+else:
+    # 33 RNN simple tags, disf + utt joint
+    # 34 RNN complex tags, disf + utt joint
+    # 35 LSTM simple tags, disf + utt joint
+    # 36 LSTM complex tags, disf + utt joint
+    # 37 LSTM simple tags, disf only
+    # 38 LSTM simple tags, utt only
+    # 39 LSTM complex tags, disf only
+    # Take our word for it that the saved models are the best ones:
+    systems_best_epoch[33] = 45  # RNN
+    systems_best_epoch[34] = 37  # RNN (complex tags)
+    systems_best_epoch[35] = 6   # LSTM
+    systems_best_epoch[36] = 15  # LSTM (complex tags)
+    systems_best_epoch[37] = 6   # LSTM (disf only)
+    systems_best_epoch[38] = 8   # LSTM (utt only)
+
+# 5. Test the models on the test transcripts according to the best epochs
+# from training.
+# The output from the models is made in the folders
+# For now all use timing data
+if test_models:
+    print "testing models..."
+    for exp, best_epoch in sorted(systems_best_epoch.items(),
+                                  key=lambda x: x[0]):
+        for timing_bool in [
+            False,
+            True
+                            ]:  # test with and without timing info
+            if exp in [37, 39] and timing_bool:
+                print "skipping timing condition for disfluency-only tagger"
+                continue
+            exp_str = '%03d' % exp
+            # load the model
+            disf = DeepDisfluencyTagger(
+                            config_file=THIS_DIR + '/experiment_configs.csv',
+                            config_number=exp,
+                            saved_model_dir=THIS_DIR +
+                            '/{0}/epoch_{1}'.format(exp_str, best_epoch),
+                            use_timing_data=timing_bool
+                                        )
+            # simulating (or using real) ASR results
+            # for now just saving these in the same folder as the best epoch
+            # also outputs the speed
+            timing_string = '_timings' if timing_bool else ''
+            partial_string = '_partial' if partial else ''
+            for div in [
+                'heldout',
+                'test'
+                        ]:
+                disf.incremental_output_from_file(
+                        THIS_DIR +
+                        '/../data/disfluency_detection/DB/' +
+                        'DB_disf_{0}{1}_1_data.csv'.format(
+                            div, partial_string),
+                        target_file_path=THIS_DIR + '/{0}/epoch_{1}/'.format(
+                            'DB'+exp_str, best_epoch) +
+                        'DB_disf_{0}{1}{2}_data_output_increco.text'
+                        .format(div, partial_string, timing_string)
+                        )
+
+
+# 6. To get the numbers run the notebook:
+# experiments/analysis/EACL_2017/EACL_2017.ipynb
+# The results should be consistent with that in the EACL 2017 paper.
