@@ -19,7 +19,7 @@ import re
 from copy import deepcopy
 import numpy as np
 from collections import defaultdict
-import cPickle as pickle
+import pickle
 import nltk
 
 import tag_conversion
@@ -99,7 +99,7 @@ class FirstOrderHMM():
                 self.convert_tag = tag_conversion.convert_to_diact_tag
 
         if markov_model_file:
-            print "loading", markov_model_file, "Markov model"
+            print ("loading"+ markov_model_file+ "Markov model")
 
             # print "If we have just seen 'DET', \
             # the probability of 'N' is", cpd_tags["DET"].prob("N")
@@ -122,14 +122,16 @@ class FirstOrderHMM():
             #        tags.append((spl[0], spl[2]))
             #    self.cfd_tags += nltk.ConditionalFreqDist(tags)
         else:
-            print 'No Markov model file specified, empty CFD. Needs training.'
+            print('No Markov model file specified, empty CFD. Needs training.')
         # whatever happens turn this into a cond prob dist:
         self.cpd_tags = nltk.ConditionalProbDist(self.cfd_tags,
                                                  nltk.MLEProbDist)
 
         all_outcomes = [v.keys() for v in self.cfd_tags.values()]
-        self.tag_set = set(self.cfd_tags.keys() +
-                           [y for x in all_outcomes for y in x])
+
+
+
+        self.tag_set = set(self.getList(self.cfd_tags) +[y for x in all_outcomes for y in x])
         self.viterbi_init()  # initialize viterbi
         # print "Test: If we have just seen 'rpSM',\
         # the probability of 'f' is", self.cpd_tags["c_rpSM_c"].prob("c_f_c")
@@ -143,13 +145,19 @@ class FirstOrderHMM():
             # Only use the Inbetween and Start tags
             self.simple_trp_idx2label = {0: "<c", 1: "<t"}
         else:
-            print "No timing model given"
-        print "Markov Model ready mode:"
+            print ("No timing model given")
+        print ("Markov Model ready mode:")
         if self.constraint_only:
-            print "constraint only"
+            print ("constraint only")
         else:
-            print "conditional probability"
+            print ("conditional probability")
 
+    def getList(self,dict):
+        list = []
+        for key in dict.keys():
+            list.append(key)
+
+        return list
     def train_markov_model_from_file(self, corpus_path, mm_path, update=False,
                                      non_sparse=False):
         """Adds to the self.cfd_tags conditional frequency distribution
@@ -167,7 +175,7 @@ class FirstOrderHMM():
         tags = []
         # expects line separated sequences
         corpus_file = open(corpus_path)
-        print "training decoder from", corpus_path
+        print ("training decoder from"+ corpus_path)
         for line in corpus_file:
             if line.strip("\n") == "":
                 continue
@@ -180,7 +188,7 @@ class FirstOrderHMM():
             # print "length sequence", len(labels_data)
             for i in range(len(labels_data)):
                 if labels_data[i] not in self.observation_tags:
-                    print labels_data[i], "not in obs tags"
+                    print (labels_data[i]+ "not in obs tags")
                     continue
                 if any(["<i" in t for t in self.observation_tags]):
                     if "<e" in labels_data[i] and i < len(labels_data)-1:
@@ -226,10 +234,10 @@ class FirstOrderHMM():
             self.cfd_tags += nltk.ConditionalFreqDist(tags)
         else:
             self.cfd_tags = nltk.ConditionalFreqDist(tags)
-        print "cfd trained, counts:"
+        print ("cfd trained, counts:")
         self.cfd_tags.tabulate()
-        print "test:"
-        print tabulate_cfd(self.cfd_tags)
+        print ("test:")
+        print (tabulate_cfd(self.cfd_tags))
         # save this new cfd for later use
         pickle.dump(self.cfd_tags, open(mm_path, "wb"))
         # initialize the cpd
@@ -237,7 +245,7 @@ class FirstOrderHMM():
                                                  nltk.MLEProbDist)
         # print "cpd summary:"
         # print self.cpd_tags.viewitems()
-        print tabulate_cfd(self.cpd_tags)
+        print (tabulate_cfd(self.cpd_tags))
         all_outcomes = [v.keys() for v in self.cfd_tags.values()]
         self.tag_set = set(self.cfd_tags.keys() +
                            [y for x in all_outcomes for y in x])
@@ -246,6 +254,7 @@ class FirstOrderHMM():
     def train_markov_model_from_constraint_matrix(self, csv_path, mm_path,
                                                   delim="\t"):
         table = [line.split(delim) for line in open(csv_path)]
+        print(table)
         tags = []
         range_states = table.pop(0)[1:]
         for row in table:
@@ -257,11 +266,13 @@ class FirstOrderHMM():
                 if int(s) > 0:
                     for _ in range(0, int(s)):
                         tags.append((domain, range_states[i]))
+        print(tags)
         self.cfd_tags = nltk.ConditionalFreqDist(tags)
-        print "cfd trained, counts:"
+        print ("cfd trained, counts:")
+        print(self.cfd_tags)
         self.cfd_tags.tabulate()
-        print "test:"
-        print tabulate_cfd(self.cfd_tags)
+        print ("test:")
+        print (tabulate_cfd(self.cfd_tags))
         # save this new cfd for later use
         pickle.dump(self.cfd_tags, open(mm_path, "wb"))
         # initialize the cpd
@@ -269,7 +280,7 @@ class FirstOrderHMM():
                                                  nltk.MLEProbDist)
         # print "cpd summary:"
         # print self.cpd_tags.viewitems()
-        print tabulate_cfd(self.cpd_tags)
+        print (tabulate_cfd(self.cpd_tags))
         all_outcomes = [v.keys() for v in self.cfd_tags.values()]
         self.tag_set = set(self.cfd_tags.keys() +
                            [y for x in all_outcomes for y in x])
@@ -616,10 +627,10 @@ class FirstOrderHMM():
         best_n = sorted(best_n, key=lambda x: x[1], reverse=True)
         debug = False
         if debug:
-            print "getting best n"
+            print ("getting best n")
             for s, p in best_n:
-                print s[-1], p
-            print "***"
+                print (str(s[-1])+ str(p))
+            print ("***")
         assert(best_n[0][1] > log(0.0)), "best prob 0!"
 
         if not noisy_channel_source_model:
@@ -778,7 +789,8 @@ if __name__ == '__main__':
         f.close()
         return tag_dictionary
 
-    tags_name = "swbd_disf1_uttseg_simple_033"
+    # tags_name = "swbd_disf1_uttseg_simple_033"
+    tags_name = "DB_disf1"
     tags = load_tags(
         "../data/tag_representations/{}_tags.csv".format(
             tags_name)
@@ -787,7 +799,7 @@ if __name__ == '__main__':
         intereg_ind = len(tags.keys())
         interreg_tag = "<i/><cc/>" if "uttseg" in tags_name else "<i/>"
         tags[interreg_tag] = intereg_ind  # add the interregnum tag
-    print tags
+    print (tags)
 
     h = FirstOrderHMM(tags, markov_model_file=None)
     mm_path = "models/{}_tags.pkl".format(tags_name)

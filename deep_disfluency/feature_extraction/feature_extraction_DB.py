@@ -74,7 +74,7 @@ if __name__ == '__main__':
         '-m', action='store',
         dest='matrixFolder',
         default='../data/disfluency_detection/feature_matrices',
-        help='location of the disfluency annotation csv files'
+        help='location of the disfluency annotation feature matrix'
                         )
     parser.add_argument('-f', action='store', dest='divisionFile',
                         default='../data/disfluency_detection/\

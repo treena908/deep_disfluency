@@ -12,9 +12,10 @@ import os
 import urllib
 import zipfile
 import tarfile
+# from deep_disfluency.tagger.deep_tagger import DeepDisfluencyTagger
 THIS_DIR = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(THIS_DIR + "/../../")
-#from deep_disfluency.tagger.deep_tagger import DeepDisfluencyTagger
+from deep_disfluency.tagger.deep_tagger import DeepDisfluencyTagger
 print('this_dir'+ THIS_DIR)
 # The data must been downloaded
 # and put in place according to the top-level README
@@ -22,9 +23,9 @@ print('this_dir'+ THIS_DIR)
 # though they must be run in order so the latter stages work
 download_raw_data = False
 create_disf_corpus = False
-extract_features = True
-train_models = False
-test_models = False
+extract_features = False
+train_models = True
+test_models = True
 
 asr = False  # extract and test on ASR results too
 partial = False  # whether to include partial words or not
@@ -146,8 +147,7 @@ if extract_features:
         print("div :"+divfile)
         c = [sys.executable, THIS_DIR +'/../feature_extraction/feature_extraction_DB.py',
              '-i', THIS_DIR +'/../data/disfluency_detection/DB',
-             '-t', THIS_DIR +'/../data/disfluency_detection/switchboard/' +
-             'feature_matrices',
+             '-m', THIS_DIR +'/../data/disfluency_detection/feature_matrices/'+div,
              '-f', divfile,
 
              '-tag', THIS_DIR +'/../data/tag_representations',
@@ -165,10 +165,10 @@ if extract_features:
 # NB each of these experiments can take up to 24 hours
 systems_best_epoch = {}
 if train_models:
-    feature_matrices_filepath = THIS_DIR + '/../data/disfluency_detection/' + \
-        'feature_matrices/train'
-    validation_filepath = THIS_DIR + '/../data/disfluency_detection/' + \
-        'feature_matrices/heldout'
+    feature_matrices_filepath = THIS_DIR + '/../data/disfluency_detection/feature_matrices/train'
+
+    validation_filepath = THIS_DIR + '/../data/disfluency_detection/feature_matrices/heldout'
+
     # train until convergence
     # on the settings according to the numbered experiments in
     # experiments/config.csv file
@@ -181,7 +181,7 @@ if train_models:
         e = disf.train_net(
                     train_dialogues_filepath=feature_matrices_filepath,
                     validation_dialogues_filepath=validation_filepath,
-                    model_dir=THIS_DIR + '/' + exp_str,
+                    model_dir=THIS_DIR + '/' + 'DB'+exp_str,
                     tag_accuracy_file_path=THIS_DIR +
                     '/results_DB/tag_accuracies/{}.text'.format(exp_str))
         systems_best_epoch[exp] = e
@@ -195,34 +195,29 @@ else:
     # 39 LSTM complex tags, disf only
     # Take our word for it that the saved models are the best ones:
     systems_best_epoch[33] = 45  # RNN
-    systems_best_epoch[34] = 37  # RNN (complex tags)
-    systems_best_epoch[35] = 6   # LSTM
-    systems_best_epoch[36] = 15  # LSTM (complex tags)
-    systems_best_epoch[37] = 6   # LSTM (disf only)
-    systems_best_epoch[38] = 8   # LSTM (utt only)
+    # systems_best_epoch[34] = 37  # RNN (complex tags)
+    # systems_best_epoch[35] = 6   # LSTM
+    # systems_best_epoch[36] = 15  # LSTM (complex tags)
+    # systems_best_epoch[37] = 6   # LSTM (disf only)
+    # systems_best_epoch[38] = 8   # LSTM (utt only)
 
 # 5. Test the models on the test transcripts according to the best epochs
 # from training.
 # The output from the models is made in the folders
 # For now all use timing data
 if test_models:
-    print "testing models..."
+    print ("testing models...")
     for exp, best_epoch in sorted(systems_best_epoch.items(),
                                   key=lambda x: x[0]):
-        for timing_bool in [
-            False,
-            True
-                            ]:  # test with and without timing info
-            if exp in [37, 39] and timing_bool:
-                print "skipping timing condition for disfluency-only tagger"
-                continue
+        for timing_bool in [False]:  # test with and without timing info
+
             exp_str = '%03d' % exp
             # load the model
             disf = DeepDisfluencyTagger(
                             config_file=THIS_DIR + '/experiment_configs.csv',
                             config_number=exp,
                             saved_model_dir=THIS_DIR +
-                            '/{0}/epoch_{1}'.format(exp_str, best_epoch),
+                            '/{0}/epoch_{1}'.format('DB'+exp_str, best_epoch),
                             use_timing_data=timing_bool
                                         )
             # simulating (or using real) ASR results
@@ -230,10 +225,7 @@ if test_models:
             # also outputs the speed
             timing_string = '_timings' if timing_bool else ''
             partial_string = '_partial' if partial else ''
-            for div in [
-                'heldout',
-                'test'
-                        ]:
+            for div in ['heldout','test']:
                 disf.incremental_output_from_file(
                         THIS_DIR +
                         '/../data/disfluency_detection/DB/' +
