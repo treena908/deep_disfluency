@@ -608,6 +608,10 @@ def dialogue_data_and_indices_from_matrix(d_matrix,
     net in training for each label in :labels:. :extra: is the matrix
     of extra features.
     """
+    print('printinf d_matrix')
+    print(len(d_matrix))
+    if len(d_matrix)==0:
+        return
     utt_indices = d_matrix[:, 0]
     words = d_matrix[:, 1]
     pos = d_matrix[:, 2]

@@ -649,7 +649,7 @@ class DeepDisfluencyTagger(IncrementalTagger):
         """Train the internal deep learning model
         from a list of dialogue matrices.
         """
-        tag_accuracy_file = open(tag_accuracy_file_path, "a")
+        tag_accuracy_file = open(tag_accuracy_file_path, "a+")
         print ("Verifying files...")
         for filepath in [train_dialogues_filepath,
                          validation_dialogues_filepath]:
@@ -692,9 +692,14 @@ class DeepDisfluencyTagger(IncrementalTagger):
         for e in range(start, self.args.n_epochs + 1):
             tic = time.time()
             epoch_folder = model_dir + "/epoch_{}".format(e)
+            # try:
+            #     if not os.path.exists(os.path.dirname(epoch_folder)):
+            #         os.makedirs(os.path.dirname(epoch_folder))
+            # except OSError as err:
+            #     print(err)
             if not os.path.exists(epoch_folder):
                 os.mkdir(epoch_folder)
-                os.mkdir(epoch_folder)
+
             train_loss = 0
             # TODO IO is slow, where the memory allows do in one
             load_separately = True
@@ -707,6 +712,11 @@ class DeepDisfluencyTagger(IncrementalTagger):
                     print (dialogue_f)
                     d_matrix = np.load(train_dialogues_filepath + "/" +
                                        dialogue_f)
+
+                    print(train_dialogues_filepath + "/" +dialogue_f)
+                    # print(d_matrix)
+                    if len(d_matrix)==0:
+                        continue
                     word_idx, pos_idx, extra, y, indices = \
                         dialogue_data_and_indices_from_matrix(
                                           d_matrix,
