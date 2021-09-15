@@ -1,12 +1,13 @@
 from __future__ import division
 import numpy as np
-import cPickle
+import pickle
 import os
 from copy import deepcopy
 import time
 from sklearn.metrics import precision_recall_fscore_support
 from sklearn.metrics import classification_report
 import gensim
+from gensim.models import KeyedVectors
 from nltk.tag import CRFTagger
 import re
 
@@ -123,8 +124,10 @@ class DeepDisfluencyTagger(IncrementalTagger):
         print ("Processing args from config number {} ...".format(config_number))
         self.args = process_arguments(config_file,
                                       config_number,
-                                      use_saved=False,
-                                      hmm=True)
+                                      use_saved=False,hmm=True)
+
+        print('printing tags')
+        print(self.args.emb_dimension)
         #  separate manual setting
         setattr(self.args, "use_timing_data", use_timing_data)
         print ("Intializing model from args...")
@@ -172,12 +175,12 @@ class DeepDisfluencyTagger(IncrementalTagger):
                 '/../decoder/timing_models/' + \
                 'LogReg_balanced_timing_classifier.pkl'
             with open(timer_path, 'rb') as fid:
-                self.timing_model = cPickle.load(fid)
+                self.timing_model = pickle.load(fid)
             timer_scaler_path = os.path.dirname(os.path.realpath(__file__)) +\
                 '/../decoder/timing_models/' + \
                 'LogReg_balanced_timing_scaler.pkl'
             with open(timer_scaler_path, 'rb') as fid:
-                self.timing_model_scaler = cPickle.load(fid)
+                self.timing_model_scaler = pickle.load(fid)
                 # TODO a hack
                 # self.timing_model_scaler.scale_ = \
                 #    self.timing_model_scaler.std_.copy()
@@ -350,9 +353,10 @@ class DeepDisfluencyTagger(IncrementalTagger):
         # load pre-trained embeddings
         embeddings_dir = os.path.dirname(os.path.realpath(__file__)) +\
                                 "/../embeddings/"
-        pretrained = gensim.models.Word2Vec.load(embeddings_dir +
-                                                 embeddings_name)
-        print ("emb shape"+ str(pretrained[pretrained.index2word[0]].shape))
+        # pretrained = gensim.models.Word2Vec.load(embeddings_dir +
+        #                                          embeddings_name)
+        pretrained = KeyedVectors.load(embeddings_dir +embeddings_name)
+        print ("emb shape"+ str(pretrained[pretrained.wv.index2word[0]].shape))
         # print pretrained[0].shape
         # assign and fill in the gaps
         emb = populate_embeddings(self.args.emb_dimension,
