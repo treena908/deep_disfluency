@@ -491,7 +491,12 @@ def get_tag_data_from_corpus_file(f, representation="1", limit=8):
             count_seq += 1
             utt_reference = line.strip("\n").replace("Speaker: ", "")
         spl = line.strip("\n").split("\t")
-        if not len(spl) == 6:
+
+        print('length spl')
+        print(line)
+
+        print(spl)
+        if not len(spl) == 5:
             continue
         _, start_time, end_time, word, postag, disftag = spl
         currentWords.append(word)

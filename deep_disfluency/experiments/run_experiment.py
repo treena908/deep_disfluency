@@ -25,7 +25,7 @@ download_raw_data = False
 create_disf_corpus = False
 extract_features = False
 train_models = True
-test_models = True
+test_models = False
 
 asr = False  # extract and test on ASR results too
 partial = False  # whether to include partial words or not
@@ -194,7 +194,7 @@ else:
     # 38 LSTM simple tags, utt only
     # 39 LSTM complex tags, disf only
     # Take our word for it that the saved models are the best ones:
-    systems_best_epoch[33] = 45  # RNN
+    systems_best_epoch[43] = 2  # lstm
     # systems_best_epoch[34] = 37  # RNN (complex tags)
     # systems_best_epoch[35] = 6   # LSTM
     # systems_best_epoch[36] = 15  # LSTM (complex tags)

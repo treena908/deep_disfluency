@@ -1,4 +1,7 @@
 from __future__ import division
+
+import sys
+
 import numpy as np
 import pickle
 import os
@@ -611,7 +614,21 @@ class DeepDisfluencyTagger(IncrementalTagger):
                                     idx_to_label_dict):
         output = []
         true_y = []
+        log_file = open('log_inside_evaluate.txt', 'a+')
+        print('validation_matrices len')
+        print(len(validation_matrices))
+        # print(type(validation_matrices))
         for v in validation_matrices:
+            # print('val_inside')
+            # print(len(v))
+            # log_file.write('val_inside')
+            # log_file.write(str(v))
+            # log_file.write('\n')
+            # log_file.write(str(type(v)))
+            # log_file.write('\n')
+
+            if v is None:
+                continue
             words_idx, pos_idx, extra, y, indices = v
             if extra:
                 output.extend(self.model.classify_by_index(words_idx, indices,
@@ -624,14 +641,33 @@ class DeepDisfluencyTagger(IncrementalTagger):
         p_r_f_tags = precision_recall_fscore_support(true_y,
                                                      output,
                                                      average='macro')
+        log_file.write('dict item')
+        log_file.write(str(len(idx_to_label_dict.items())))
+        log_file.write('\n')
+        labels_id=[]
+        targets=[]
+        for idx,item in enumerate(idx_to_label_dict.items()):
+            if (type(idx_to_label_dict[idx])==str):
+                labels_id.append(idx)
+
+                targets.append(idx_to_label_dict[idx])
+        log_file.write('dict item target')
+        log_file.write(str(targets))
+        log_file.write('\n')
+        # tag_summary = classification_report(
+        #             true_y, output,
+        #             labels=[i for i in xrange(len(idx_to_label_dict.items()))],
+        #             target_names=[
+        #                 idx_to_label_dict[i]
+        #                 for i in xrange(len(idx_to_label_dict.items()))
+        #                           ])
         tag_summary = classification_report(
                     true_y, output,
-                    labels=[i for i in xrange(len(idx_to_label_dict.items()))],
-                    target_names=[
-                        idx_to_label_dict[i]
-                        for i in xrange(len(idx_to_label_dict.items()))
-                                  ]
-                                            )
+                    labels=labels_id,
+                    target_names=targets)
+        log_file.write('tag_summary')
+
+        log_file.write(str(tag_summary))
         print (tag_summary)
         results = {"f1_rmtto": p_r_f_tags[2], "f1_rm": p_r_f_tags[2],
                    "f1_tto1": p_r_f_tags[2], "f1_tto2": p_r_f_tags[2]}
@@ -640,6 +676,7 @@ class DeepDisfluencyTagger(IncrementalTagger):
                     'f1_tags': p_r_f_tags[2],
                     'tag_summary': tag_summary
         })
+        log_file.close()
         return results
 
     def train_net(self, train_dialogues_filepath=None,
@@ -650,6 +687,8 @@ class DeepDisfluencyTagger(IncrementalTagger):
         from a list of dialogue matrices.
         """
         tag_accuracy_file = open(tag_accuracy_file_path, "a+")
+        log_file = open('log.txt', 'a+')
+
         print ("Verifying files...")
         for filepath in [train_dialogues_filepath,
                          validation_dialogues_filepath]:
@@ -671,6 +710,7 @@ class DeepDisfluencyTagger(IncrementalTagger):
                                     validation_dialogues_filepath + "/" + fp)
                                for fp in os.listdir(
                                 validation_dialogues_filepath)]
+
         validation_matrices = [dialogue_data_and_indices_from_matrix(
                                   d_matrix,
                                   n_extra,
@@ -682,6 +722,7 @@ class DeepDisfluencyTagger(IncrementalTagger):
                                   in_utterances=self.args.utts_presegmented)
                                for d_matrix in validation_matrices
                                ]
+
         idx_2_label_dict = {v: k for k, v in self.tag_to_index_map.items()}
         if not os.path.exists(model_dir):
             os.mkdir(model_dir)
@@ -734,34 +775,64 @@ class DeepDisfluencyTagger(IncrementalTagger):
                                                  indices,
                                                  pos_idx=pos_idx,
                                                  extra_features=extra)
-                    print ('[learning] file %d completed in %.2f (sec) <<\r '%((i+1),(time.time() - tic)))
+                    print ('[learning] file %d completed in %.2f (sec) epoch %d <<\r '%((i+1),(time.time() - tic),e))
             # save the initial states we've learned to override the random
             self.initial_h0_state = self.model.h0.get_value()
             if self.args.model_type == "lstm":
                 self.initial_c0_state = self.model.c0.get_value()
             # reset and evaluate simply
             self.reset()
-            results = self.evaluate_fast_from_matrices(
-                                        validation_matrices,
-                                        tag_accuracy_file,
-                                        idx_to_label_dict=idx_2_label_dict
-                                        )
-            val_score = results['f1_tags']  #TODO get best score type
-            print ("epoch training loss %.3f"% train_loss)
-            print ('[learning] epoch %d  completed in %.2f (sec) <<\r' % (e,(time.time() - tic)))
+            print('evaluate')
 
-            print ("validation score %.3f" %(val_score))
-            tag_accuracy_file.write(str(e) + "\n" + results['tag_summary'] +
-                                    "\n%%%%%%%%%%\n")
-            tag_accuracy_file.flush()
-            print ("saving model...")
-            self.model.save(epoch_folder)  # Epoch file dump
-            # checking patience and decay, if applicable
-            # stopping criterion
+
+
+            if validation_matrices is not None:
+
+
+
+
+                results = self.evaluate_fast_from_matrices(
+                                            validation_matrices,
+                                            tag_accuracy_file,
+                                            idx_to_label_dict=idx_2_label_dict
+                                            )
+                log_file.write(str(results))
+                if results:
+                    val_score = results['f1_tags']  #TODO get best score type
+                    print ("epoch training loss %.3f"% train_loss)
+                    print ('[learning] epoch %d  completed in %.2f (sec) <<\r' % (e,(time.time() - tic)))
+
+                    print ("validation score %.3f" %(val_score))
+                    tag_accuracy_file.write(str(e) + "\n" + results['tag_summary'] +
+                                            "\n%%%%%%%%%%\n")
+                    log_file.write(str(results))
+                    tag_accuracy_file.flush()
+                    print ("saving model...")
+
+                    self.model.save(epoch_folder)  # Epoch file dump
+                    # checking patience and decay, if applicable
+                    # stopping criterion
+                else:
+                    log_file.write(str('results null'))
+                    if e == 1:
+                        break
+                    break
+
+            else:
+                log_file.write(str('val_mat null'))
+                if e == 1:
+                    break
+                break
+            log_file.write('val and best score')
+            log_file.write(str(val_score))
+            log_file.write('\n')
+            log_file.write(str(best_score))
+            log_file.write('\n')
             if val_score > best_score:
                 self.model.save(model_dir)
                 best_score = val_score
                 print ('NEW BEST raw labels at epoch %d best valid %.3f'%(e, best_score))
+                log_file.write('NEW BEST raw labels at epoch %d best valid '+str(e)+" "+str(best_score))
 
                 best_epoch = e
             # stopping criteria = if no improvement in 10 epochs
@@ -778,9 +849,13 @@ class DeepDisfluencyTagger(IncrementalTagger):
                 print ("stopping, below learning rate threshold")
                 break
             print ('[learning and testing] epoch %d completed in %.2f (sec) <<\r' % (e,(time.time()-tic)))
+            # if e==3:
+            #     break
 
 
         print ('BEST RESULT: epoch %d valid score %.3f'%( best_epoch, best_score))
+        log_file.write('BEST RESULT: epoch %d valid score ' + str(best_epoch) + " " + str(best_score))
+        log_file.close()
         tag_accuracy_file.close()
         return best_epoch
 
@@ -831,21 +906,21 @@ class DeepDisfluencyTagger(IncrementalTagger):
             print("not doing utt seg, using pre-segmented file")
         if is_asr_results_file:
             return NotImplementedError
-        if 'timings' in source_file_path:
-            print ("input file has timings")
-            if not is_asr_results_file:
-                dialogues = []
-                IDs, timings, words, pos_tags, labels = \
-                    get_tag_data_from_corpus_file(source_file_path)
-                for dialogue, a, b, c, d in zip(IDs,
-                                                timings,
-                                                words,
-                                                pos_tags,
-                                                labels):
-                    dialogues.append((dialogue, (a, b, c, d)))
-        else:
-            print ("no timings in input file, creating fake timings")
-            raise NotImplementedError
+        # if 'timings' in source_file_path:
+        print ("input file has timings")
+        if not is_asr_results_file:
+            dialogues = []
+            IDs, timings, words, pos_tags, labels = \
+                get_tag_data_from_corpus_file(source_file_path)
+            for dialogue, a, b, c, d in zip(IDs,
+                                            timings,
+                                            words,
+                                            pos_tags,
+                                            labels):
+                dialogues.append((dialogue, (a, b, c, d)))
+        # else:
+        #     print ("no timings in input file, creating fake timings")
+        #     raise NotImplementedError
 
         for speaker, speaker_data in dialogues:
             # if "4565" in speaker: quit()
