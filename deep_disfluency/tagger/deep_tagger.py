@@ -678,6 +678,102 @@ class DeepDisfluencyTagger(IncrementalTagger):
         })
         log_file.close()
         return results
+    def evaluate_result_from_trained_model(self,
+                  validation_dialogues_filepath=None,
+                  model_dir=None,
+                  tag_accuracy_file_path=None):
+        """evaluate the trained model.
+              """
+        tag_accuracy_file = open(tag_accuracy_file_path, "a+")
+        log_file = open('log_evaluate.txt', 'a+')
+
+        print("Verifying files...")
+        for filepath in [
+                         validation_dialogues_filepath]:
+            if not verify_dialogue_data_matrices_from_folder(
+                    filepath,
+                    word_dict=self.word_to_index_map,
+                    pos_dict=self.pos_to_index_map,
+                    tag_dict=self.tag_to_index_map,
+                    n_lm=self.args.n_language_model_features,
+                    n_acoustic=self.args.n_acoustic_features):
+                raise Exception("Dialogue vectors in wrong format!\
+                      See README.md.")
+        lr = self.args.lr  # even if decay, start with specific lr
+        n_extra = self.args.n_language_model_features + \
+                  self.args.n_acoustic_features
+        # validation matrices filepath much smaller so can store these
+        # and preprocess them all:
+        validation_matrices = [np.load(
+            validation_dialogues_filepath + "/" + fp)
+            for fp in os.listdir(
+                validation_dialogues_filepath)]
+
+        validation_matrices = [dialogue_data_and_indices_from_matrix(
+            d_matrix,
+            n_extra,
+            pre_seg=self.args.utts_presegmented,
+            window_size=self.window_size,
+            bs=self.args.bs,
+            tag_rep=self.args.tags,
+            tag_to_idx_map=self.tag_to_index_map,
+            in_utterances=self.args.utts_presegmented)
+            for d_matrix in validation_matrices
+        ]
+
+        idx_2_label_dict = {v: k for k, v in self.tag_to_index_map.items()}
+        if not os.path.exists(model_dir):
+            os.mkdir(model_dir)
+        start = 1  # by default start from the first epoch
+        best_score = 0
+        best_epoch = 0
+        print("Net training started...")
+        for e in range(start, self.args.n_epochs + 1):
+
+            # try:
+            #     if not os.path.exists(os.path.dirname(epoch_folder)):
+            #         os.makedirs(os.path.dirname(epoch_folder))
+            # except OSError as err:
+            #     print(err)
+
+
+
+            print('evaluate')
+
+            if validation_matrices is not None:
+
+                results = self.evaluate_fast_from_matrices(
+                    validation_matrices,
+                    tag_accuracy_file,
+                    idx_to_label_dict=idx_2_label_dict
+                )
+                log_file.write(str(results))
+                if results:
+
+                    tag_accuracy_file.write(str(e) + "\n" + results['tag_summary'] +
+                                            "\n%%%%%%%%%%\n")
+                    log_file.write(str(results))
+                    tag_accuracy_file.flush()
+                    print("saving model...")
+
+
+                else:
+                    log_file.write(str('results null'))
+                    if e == 1:
+                        break
+                    break
+
+            else:
+                log_file.write(str('val_mat null'))
+                if e == 1:
+                    break
+                break
+            if e==1:
+                break
+
+        log_file.close()
+        tag_accuracy_file.close()
+
 
     def train_net(self, train_dialogues_filepath=None,
                   validation_dialogues_filepath=None,

@@ -24,8 +24,9 @@ print('this_dir'+ THIS_DIR)
 download_raw_data = False
 create_disf_corpus = False
 extract_features = False
-train_models = True
+train_models = False
 test_models = False
+debug=True
 
 asr = False  # extract and test on ASR results too
 partial = False  # whether to include partial words or not
@@ -194,7 +195,7 @@ else:
     # 38 LSTM simple tags, utt only
     # 39 LSTM complex tags, disf only
     # Take our word for it that the saved models are the best ones:
-    systems_best_epoch[43] = 2  # lstm
+    systems_best_epoch[43] = 12  # lstm
     # systems_best_epoch[34] = 37  # RNN (complex tags)
     # systems_best_epoch[35] = 6   # LSTM
     # systems_best_epoch[36] = 15  # LSTM (complex tags)
@@ -237,6 +238,29 @@ if test_models:
                         .format(div, partial_string, timing_string)
                         )
 
+if debug:
+    feature_matrices_filepath = THIS_DIR + '/../data/disfluency_detection/feature_matrices/train'
+
+    validation_filepath = THIS_DIR + '/../data/disfluency_detection/feature_matrices/heldout'
+
+    # train until convergence
+    # on the settings according to the numbered experiments in
+    # experiments/config.csv file
+    for exp in experiments:
+        exp_str = '%03d' % exp
+        disf = DeepDisfluencyTagger(
+            config_file=THIS_DIR + "/experiment_configs.csv",
+            config_number=exp,
+            saved_model_dir=THIS_DIR +
+                            '/{0}/epoch_{1}'.format('DB' + exp_str, str(12))
+            )
+
+        disf.evaluate_result_from_trained_model(
+
+                    validation_dialogues_filepath=validation_filepath,
+                    saved_model_dir=THIS_DIR +'/{0}/epoch_{1}'.format('DB' + exp_str, str(12)),
+                    tag_accuracy_file_path=THIS_DIR +
+                    '/results_DB/tag_accuracies/{}.text'.format(exp_str+'tesing'))
 
 # 6. To get the numbers run the notebook:
 # experiments/analysis/EACL_2017/EACL_2017.ipynb
