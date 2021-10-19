@@ -24,9 +24,9 @@ print('this_dir'+ THIS_DIR)
 download_raw_data = False
 create_disf_corpus = False
 extract_features = False
-train_models = False
+train_models = True
 test_models = False
-debug=True
+debug=False
 
 asr = False  # extract and test on ASR results too
 partial = False  # whether to include partial words or not
@@ -50,7 +50,7 @@ file_divisions_transcripts = [
 # 38 LSTM simple tags, utt only
 # 39 LSTM complex tags, disf only
 # experiments = [33, 34, 35, 36, 37, 38]
-experiments = [43]
+experiments = [44]
 
 # experiments = [35]  # short version for testing
 # 1. Download the SWDA and word timings
@@ -173,18 +173,25 @@ if train_models:
     # train until convergence
     # on the settings according to the numbered experiments in
     # experiments/config.csv file
+    trained_model = '%03d' % 41
     for exp in experiments:
         disf = DeepDisfluencyTagger(
             config_file=THIS_DIR + "/experiment_configs.csv",
-            config_number=exp
-            )
+            config_number=exp,
+            saved_model_dir=THIS_DIR +
+                            '/{0}/epoch_{1}'.format(trained_model, str(16))
+        )
+        # disf = DeepDisfluencyTagger(
+        #     config_file=THIS_DIR + "/experiment_configs.csv",
+        #     config_number=exp
+        #     )
         exp_str = '%03d' % exp
         e = disf.train_net(
                     train_dialogues_filepath=feature_matrices_filepath,
                     validation_dialogues_filepath=validation_filepath,
                     model_dir=THIS_DIR + '/' + 'DB'+exp_str,
                     tag_accuracy_file_path=THIS_DIR +
-                    '/results_DB/tag_accuracies/{}.text'.format(exp_str))
+                    '/results_DB/tag_accuracies/{}.text'.format(exp_str+"retrain"))
         systems_best_epoch[exp] = e
 else:
     # 33 RNN simple tags, disf + utt joint
@@ -258,9 +265,9 @@ if debug:
         disf.evaluate_result_from_trained_model(
 
                     validation_dialogues_filepath=validation_filepath,
-                    saved_model_dir=THIS_DIR +'/{0}/epoch_{1}'.format('DB' + exp_str, str(12)),
+
                     tag_accuracy_file_path=THIS_DIR +
-                    '/results_DB/tag_accuracies/{}.text'.format(exp_str+'tesing'))
+                    '/results_DB/tag_accuracies/{}.text'.format(exp_str+'tesing_micro'))
 
 # 6. To get the numbers run the notebook:
 # experiments/analysis/EACL_2017/EACL_2017.ipynb
