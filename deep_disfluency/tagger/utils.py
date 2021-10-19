@@ -160,7 +160,7 @@ def process_arguments(config=None,
         'tags',  # the output tag representations used
         'end_utterance'  # whether we do combined end of utterance detection too
     ]
-    print (header)
+    # print (header)
     if args.config:
         for line in open(args.config):
             # print line
@@ -187,7 +187,7 @@ def process_arguments(config=None,
                     feat_value = int(feat_value)
                 print config_header[i], feat_value
                 setattr(args, config_header[i], feat_value)
-    print args
+    # print args
 
     return args
 
