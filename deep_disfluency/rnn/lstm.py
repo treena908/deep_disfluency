@@ -4,7 +4,16 @@ import theano
 import theano.tensor as T
 from theano import shared
 from collections import OrderedDict
-
+from keras import Input, Model, initializers
+from keras.models import Sequential
+from keras.layers import Dense, LSTM,Flatten, Dropout, Conv1D, MaxPooling1D, \
+     GlobalMaxPooling1D, concatenate,Bidirectional, Layer
+from keras.layers.embeddings import Embedding
+from keras.preprocessing.text import Tokenizer
+from keras.preprocessing.sequence import pad_sequences
+from keras.callbacks import EarlyStopping,TensorBoard
+from keras.optimizers import Adagrad, SGD
+from keras import backend as K
 
 def init_weight(shape, name, sample='uni', seed=None):
     rng = np.random.RandomState(seed)
@@ -31,7 +40,7 @@ def init_weight(shape, name, sample='uni', seed=None):
 dtype = T.config.floatX  # @UndefinedVariable
 #FOR retraing using theano LSTM weights
 class keras_LSTM(object):
-    def __init__(self, ne, de, na, n_lstm, n_out, cs, npos, lr=0.05,
+    def __init__(self, sequence_len,ne, de, na, n_lstm, n_out, cs, npos, lr=0.05,
                  single_output=True, output_activation=T.nnet.softmax,
                  cost_function='nll',bcw=False):
         '''
@@ -44,43 +53,37 @@ class keras_LSTM(object):
         cs :: word window context size
         npos :: number of pos tags
         '''
+        #dimension initialization
+        self.sequence_len=sequence_len
+        self.emb = init_weight((ne + 1, de), 'emb')
+        self.vocab=ne+1
+        self.word_in = (de * cs)
 
-        self.emb = init_weight((ne+1, de), 'emb')  # add one to ne for PADDING
-        self.n_in = (de * cs)+(npos * cs)
+        self.emb_dim=de
+        self.pos_in=(npos * cs)
         self.n_lstm = n_lstm
         self.n_out = n_out
-        self.W_xi = init_weight((self.n_in, self.n_lstm), 'W_xi')
-        self.W_hi = init_weight((self.n_lstm, self.n_lstm), 'W_hi', 'svd')
-        self.W_ci = init_weight((self.n_lstm, self.n_lstm), 'W_ci', 'svd')
-        # bias to the input:
-        self.b_i = shared(np.cast[dtype](np.random.uniform(-0.5, .5,
-                                                           size=n_lstm)))
-        # forget gate weights:
-        self.W_xf = init_weight((self.n_in, self.n_lstm), 'W_xf')
-        self.W_hf = init_weight((self.n_lstm, self.n_lstm), 'W_hf', 'svd')
-        self.W_cf = init_weight((self.n_lstm, self.n_lstm), 'W_cf', 'svd')
-        # bias
-        self.b_f = shared(np.cast[dtype](np.random.uniform(0, 1.,
-                                                           size=n_lstm)))
-        # memory cell gate weights:
-        self.W_xc = init_weight((self.n_in, self.n_lstm), 'W_xc')
-        self.W_hc = init_weight((self.n_lstm, self.n_lstm), 'W_hc', 'svd')
-        # bias to the memory cell:
-        self.b_c = shared(np.zeros(n_lstm, dtype=dtype))
-        # output gate weights:
-        self.W_xo = init_weight((self.n_in, self.n_lstm), 'W_xo')
-        self.W_ho = init_weight((self.n_lstm, self.n_lstm), 'W_ho', 'svd')
-        self.W_co = init_weight((self.n_lstm, self.n_lstm), 'W_co', 'svd')
-        # bias on output gate:
-        self.b_o = shared(np.cast[dtype](np.random.uniform(-0.5, .5,
-                                                           size=n_lstm)))
-        # hidden to y matrix weights:
-        self.W_hy = init_weight((self.n_lstm, self.n_out), 'W_hy')
-        self.b_y = shared(np.zeros(n_out, dtype=dtype))  # output bias
+        self.lr=lr
+        #input/output shape
 
-        # Weights for L1 and L2
-        self.L1_reg = 0.0
-        self.L2_reg = 0.00001
+        word_inputs = Input(shape=(self.sequence_len,self.word_in))
+        pos_inputs=Input(shape=(self.sequence_len,self.pos_in))
+
+        embedding = Embedding(self.vocab, self.emb_dim, input_length=self.sequence_len, weights=[self.emb],
+                              trainable=False)(word_inputs)  # line A
+        word_pos_inputs= concatenate([embedding,pos_inputs],axis=2)
+
+        #model architectute
+
+        lstm=LSTM(units=self.n_lstm,return_sequences=True)(word_pos_inputs)
+
+        output=Dense(output_dim=self.n_out, activation='softmax')(lstm)
+        model = Model(inputs=[word_inputs, pos_inputs], outputs=output)
+        model.compile(loss='categorical_crossentropy', optimizer=SGD(self.lr), metrics=['accuracy'])
+        model.summary()
+        return model
+
+
 
         self.params = [self.W_xi, self.W_hi, self.W_ci, self.b_i,
                        self.W_xf, self.W_hf, self.W_cf, self.b_f,
@@ -440,8 +443,25 @@ class LSTM(object):
         return theano.shared(np.asarray(mycorpus, dtype='int32'), borrow=True)
 
     def load_weights_from_folder(self, folder):
+        print('shape of weight')
         for name, param in zip(self.names, self.params):
+            print(name)
+            print(np.load(os.path.join(folder, name + ".npy")).shape)
             param.set_value(np.load(os.path.join(folder, name + ".npy")))
+    def load_retrain_weights(self, folder):
+        print('shape of weight')
+        lstm_weight=[]
+        output_weight=[]
+        for name, param in zip(self.names, self.params):
+            if name in ["W_xi", "W_hi", "W_ci", "b_i",
+                      "W_xf", "W_hf", "W_cf", "b_f",
+                      "W_xc", "W_hc", "b_c",
+                      "W_ho", "W_co", "W_co", "b_o"]:
+                lstm_weight.append(np.load(os.path.join(folder, name + ".npy")))
+            elif name in ["W_hy", "b_y"]:
+                output_weight.append(np.load(os.path.join(folder, name + ".npy")))
+
+        return  lstm_weight,output_weight
 
     def load_weights(self, emb=None, c0=None, h0=None):
         if emb is not None:
