@@ -27,6 +27,7 @@ from deep_disfluency.load.load import load_tags
 from deep_disfluency.rnn.elman import Elman
 from deep_disfluency.rnn.lstm import LSTM
 from deep_disfluency.rnn.bilstm import BiLstm
+from deep_disfluency.rnn.lstm import keras_LSTM
 from deep_disfluency.rnn.test_if_using_gpu import test_if_using_GPU
 from deep_disfluency.decoder.hmm import FirstOrderHMM
 from deep_disfluency.decoder.noisy_channel import SourceModel
@@ -146,7 +147,7 @@ class DeepDisfluencyTagger(IncrementalTagger):
                                                self.args.model_type)
 
             # # for retraining
-            # self.load_embeddings(self.args.embeddings)
+            self.load_embeddings(self.args.embeddings)
         else:
             print ("WARNING no saved model params, needs training.")
             print ("Loading original embeddings")
@@ -361,18 +362,25 @@ class DeepDisfluencyTagger(IncrementalTagger):
                          single_output=True,
                          cost_function='nll',
                          bcw=False)
+            self.initial_h0_state = model.h0.get_value()
+            self.initial_c0_state = model.c0.get_value()
         elif self.model_type == 'retrainLSTM':
-            model = keras_LSTM(ne=vocab_size,
+
+            model = keras_LSTM(sequence_len=256,ne=vocab_size,
+
                          de=emb_dimension,
                          n_lstm=n_hidden,
                          na=n_extra,
                          n_out=n_classes,
                          cs=self.window_size,
                          npos=n_pos,
+
                          lr=lr,
                          single_output=True,
                          cost_function='nll',
                          bcw=False)
+            self.initial_h0_state = model.h0.get_value()
+            self.initial_c0_state = model.c0.get_value()
         elif self.model_type == 'bilstm':
             model = BiLstm(ne=vocab_size,
                          de=emb_dimension,
@@ -387,6 +395,7 @@ class DeepDisfluencyTagger(IncrementalTagger):
                          )
             self.initial_h0_state = model.h0.get_value()
             self.initial_c0_state = model.c0.get_value()
+
         else:
             raise NotImplementedError('No model init for {0}'.format(
                 self.model_type))
@@ -398,6 +407,14 @@ class DeepDisfluencyTagger(IncrementalTagger):
             self.initial_h0_state = self.model.h0.get_value()
             if model_type == "lstm":
                 self.initial_c0_state = self.model.c0.get_value()
+        elif model_type=="retrainLSTM":
+            lstm_weight,output_weight=self.model.load_trained_weights(model_folder)
+            self.model.layers[0].set_weights(lstm_weight)
+            self.model.layers[1].set_weights(output_weight)
+            self.initial_h0_state = self.model.h0.get_value()
+
+            self.initial_c0_state = self.model.c0.get_value()
+
         else:
             raise NotImplementedError('No weight loading for {0}'.format(
                 model_type))
@@ -948,6 +965,13 @@ class DeepDisfluencyTagger(IncrementalTagger):
                                           bs=self.args.bs,
                                           pre_seg=self.args.utts_presegmented
                                                               )
+
+                        # print(word_idx)
+                        # print(y)
+                    # if i==2:
+                    #     return
+                    # else:
+                    #     continue
                     # for i in range(len(indices)):
                     #     print i, word_idx[i], pos_idx[i], \
                     #     y[i], indices[i]
