@@ -1004,11 +1004,7 @@ class DeepDisfluencyTagger(IncrementalTagger):
                                           pre_seg=self.args.utts_presegmented
                                                               )
 
-                    log_file.write('\ntest tags\n')
-                    log_file.write(str(dialogue_f))
-                    log_file.write(str(word_idx)+'\n')
-                    log_file.write(str(y)+'\n')
-                    log_file.close()
+
 
                     # if i==2:
                     #     return

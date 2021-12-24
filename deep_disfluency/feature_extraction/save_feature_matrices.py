@@ -140,7 +140,9 @@ def save_feature_matrices(target_dir,
             word_ix = word_2_idx_dict.get(lex_data[i]+'\r')
             if word_ix is None:
                 # print "unknown word", lex_data[i]
-                word_ix = word_2_idx_dict.get("<unk>")
+                print('ekhane')
+                word_ix = word_2_idx_dict.get("<unk>"+'\r')
+                print(word_ix)
                 unknown_words += 1
                 # print('unk word')
                 # print(unknown_words)
@@ -171,9 +173,15 @@ def save_feature_matrices(target_dir,
             #    .reshape((2, 1))
             # begin filling the vector (row)
             # frame_vector = [int(frames[i])]
+            # if None is word_ix or None is pos_ix:
+            #     print(word_ix)
+            #     print(pos_ix)
+            #     return
+
             frame_vector = [0]
             frame_vector.append(word_ix)
             frame_vector.append(pos_ix)
+
             # print label_ix
             # print audio[i].shape
             # print audio[i][:,1:].shape

@@ -25,7 +25,7 @@ print('this_dir'+ THIS_DIR)
 download_raw_data = False
 create_disf_corpus = False
 extract_features =False
-train_models = True
+train_models =True
 test_models = False
 debug=False
 

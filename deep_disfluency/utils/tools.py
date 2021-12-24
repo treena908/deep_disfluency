@@ -614,7 +614,7 @@ def dialogue_data_and_indices_from_matrix(d_matrix,
     utt_indices = d_matrix[:, 0]
     words = d_matrix[:, 1]
     pos = d_matrix[:, 2]
-    extra = str(None) if n_extra == 0 else d_matrix[:, 3: -1]
+    extra = None if n_extra == 0 else d_matrix[:, 3: -1]
     labels = d_matrix[:, -1]
     word_idx = []
     pos_idx = []
@@ -653,22 +653,22 @@ def dialogue_data_and_indices_from_matrix(d_matrix,
                                                       window_size)
 
         previous_idx = utt_idx
-        print(pos_idx)
-        print(word_idx)
+        # print(pos_idx)
+        # print(word_idx)
 
         # print(extra)
         # print(labels)
         # print(indices)
-    return np.asarray(word_idx, dtype=np.int32), np.asarray(pos_idx,
-                                                            dtype=np.int32),\
-                                                            labels,\
-                                        np.asarray(indices, dtype=np.int32)
-
     # return np.asarray(word_idx, dtype=np.int32), np.asarray(pos_idx,
     #                                                         dtype=np.int32),\
-    #                                                         extra,\
     #                                                         labels,\
     #                                     np.asarray(indices, dtype=np.int32)
+
+    return np.asarray(word_idx, dtype=np.int32), np.asarray(pos_idx,
+                                                            dtype=np.int32),\
+                                                            extra,\
+                                                            labels,\
+                                        np.asarray(indices, dtype=np.int32)
 
 
 
