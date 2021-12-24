@@ -99,15 +99,18 @@ class FirstOrderHMM():
                 self.convert_tag = tag_conversion.convert_to_diact_tag
 
         if markov_model_file:
-            print ("loading"+ markov_model_file+ "Markov model")
+            markov_model_file='DB_disf1'
+            print ("loading  "+ markov_model_file+ "Markov model")
 
             # print "If we have just seen 'DET', \
             # the probability of 'N' is", cpd_tags["DET"].prob("N")
             # or load from file
+
             mm_path = os.path.dirname(os.path.realpath(__file__)) +\
                 "/models/{}_tags.pkl".format(markov_model_file)
             # if load:
             self.cfd_tags = pickle.load(open(mm_path, "rb"))
+
             # else:
             #    # or create this from scratch
             #    graph = convert_to_dot("../decoder/models/{}.csv".format(

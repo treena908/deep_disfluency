@@ -12,10 +12,11 @@ import os
 import urllib
 import zipfile
 import tarfile
-# from deep_disfluency.tagger.deep_tagger import DeepDisfluencyTagger
 THIS_DIR = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(THIS_DIR + "/../../")
+
 from deep_disfluency.tagger.deep_tagger import DeepDisfluencyTagger
+
 print('this_dir'+ THIS_DIR)
 # The data must been downloaded
 # and put in place according to the top-level README
@@ -23,7 +24,7 @@ print('this_dir'+ THIS_DIR)
 # though they must be run in order so the latter stages work
 download_raw_data = False
 create_disf_corpus = False
-extract_features = False
+extract_features =False
 train_models = True
 test_models = False
 debug=False
@@ -142,10 +143,10 @@ no audio extraction.
 """
 if extract_features:
     print('Extracting features...')
-    tags_created = False
+    tags_created = True
     tagger_trained = False
     for div, divfile in file_divisions_transcripts:
-        print("div :"+divfile)
+        print("divfile :"+divfile)
         c = [sys.executable, THIS_DIR +'/../feature_extraction/feature_extraction_DB.py',
              '-i', THIS_DIR +'/../data/disfluency_detection/DB',
              '-m', THIS_DIR +'/../data/disfluency_detection/feature_matrices/'+div,
@@ -213,38 +214,38 @@ else:
 # from training.
 # The output from the models is made in the folders
 # For now all use timing data
-if test_models:
-    print ("testing models...")
-    for exp, best_epoch in sorted(systems_best_epoch.items(),
-                                  key=lambda x: x[0]):
-        for timing_bool in [False]:  # test with and without timing info
-
-            exp_str = '%03d' % exp
-            # load the model
-            disf = DeepDisfluencyTagger(
-                            config_file=THIS_DIR + '/experiment_configs.csv',
-                            config_number=exp,
-                            saved_model_dir=THIS_DIR +
-                            '/{0}/epoch_{1}'.format('DB'+exp_str, best_epoch),
-                            use_timing_data=timing_bool
-                                        )
-            # simulating (or using real) ASR results
-            # for now just saving these in the same folder as the best epoch
-            # also outputs the speed
-            timing_string = '_timings' if timing_bool else ''
-            partial_string = '_partial' if partial else ''
-            for div in ['heldout','test']:
-                disf.incremental_output_from_file(
-                        THIS_DIR +
-                        '/../data/disfluency_detection/DB/' +
-                        'DB_disf_{0}{1}_1_data.csv'.format(
-                            div, partial_string),
-                        target_file_path=THIS_DIR + '/{0}/epoch_{1}/'.format(
-                            'DB'+exp_str, best_epoch) +
-                        'DB_disf_{0}{1}{2}_data_output_increco.text'
-                        .format(div, partial_string, timing_string)
-                        )
-
+# if test_models:
+#     print ("testing models...")
+#     for exp, best_epoch in sorted(systems_best_epoch.items(),
+#                                   key=lambda x: x[0]):
+#         for timing_bool in [False]:  # test with and without timing info
+#
+#             exp_str = '%03d' % exp
+#             # load the model
+#             disf = DeepDisfluencyTagger(
+#                             config_file=THIS_DIR + '/experiment_configs.csv',
+#                             config_number=exp,
+#                             saved_model_dir=THIS_DIR +
+#                             '/{0}/epoch_{1}'.format('DB'+exp_str, best_epoch),
+#                             use_timing_data=timing_bool
+#                                         )
+#             # simulating (or using real) ASR results
+#             # for now just saving these in the same folder as the best epoch
+#             # also outputs the speed
+#             timing_string = '_timings' if timing_bool else ''
+#             partial_string = '_partial' if partial else ''
+#             for div in ['heldout','test']:
+#                 disf.incremental_output_from_file(
+#                         THIS_DIR +
+#                         '/../data/disfluency_detection/DB/' +
+#                         'DB_disf_{0}{1}_1_data.csv'.format(
+#                             div, partial_string),
+#                         target_file_path=THIS_DIR + '/{0}/epoch_{1}/'.format(
+#                             'DB'+exp_str, best_epoch) +
+#                         'DB_disf_{0}{1}{2}_data_output_increco.text'
+#                         .format(div, partial_string, timing_string)
+#                         )
+#
 if debug:
     feature_matrices_filepath = THIS_DIR + '/../data/disfluency_detection/feature_matrices/train'
 

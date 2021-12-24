@@ -1,5 +1,6 @@
 import numpy
 from copy import deepcopy
+
 import gensim
 
 def populate_embeddings(emb_dim, vocsize, words2index, pretrained):
@@ -13,17 +14,21 @@ def populate_embeddings(emb_dim, vocsize, words2index, pretrained):
     emb = 0.2 * numpy.random.uniform(-1.0, 1.0,
                                      (vocsize+1, emb_dim)).astype('Float32')
     vocab = deepcopy(words2index.keys())
+    # print('words')
+    # print(words2index.keys())
+    print('vocab len')
+    print(len(words2index.keys()))
     for i in range(0, len(pretrained.wv.index2word)):
         word = pretrained.wv.index2word[i]
-        index = words2index.get(word)
+        index = words2index.get(word+'\r')
         if index is None:
             # i.e. no index for this word
             print "no such word in vocab for embedding for word:", word
             continue
         # print i, word # returns the word and its index in pretrained
         emb[index] = pretrained[word]  # assign the correct index
-        vocab.remove(word)
+        vocab.remove(word+'\r')
     print len(vocab), "words with no pretrained embedding."
-    for v in vocab:
-        print v
+    # for v in vocab:
+    #     print v
     return emb

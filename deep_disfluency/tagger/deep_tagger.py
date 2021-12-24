@@ -14,7 +14,8 @@ from gensim.models import KeyedVectors
 from gensim.models import Word2Vec
 from nltk.tag import CRFTagger
 import re
-
+THIS_DIR = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(THIS_DIR + "/../../")
 from deep_disfluency.language_model.ngram_language_model \
     import KneserNeySmoothingModel
 from deep_disfluency.utils.tools \
@@ -25,13 +26,14 @@ from deep_disfluency.utils.tools import \
     dialogue_data_and_indices_from_matrix
 from deep_disfluency.load.load import load_tags
 from deep_disfluency.rnn.elman import Elman
-from deep_disfluency.rnn.lstm import LSTM
+from deep_disfluency.rnn.lstm import my_LSTM
 from deep_disfluency.rnn.bilstm import BiLstm
-from deep_disfluency.rnn.lstm import keras_LSTM
 from deep_disfluency.rnn.test_if_using_gpu import test_if_using_GPU
 from deep_disfluency.decoder.hmm import FirstOrderHMM
 from deep_disfluency.decoder.noisy_channel import SourceModel
 from deep_disfluency.embeddings.load_embeddings import populate_embeddings
+from deep_disfluency.embeddings.load_emb_swbd_DB import populate_both_embeddings
+
 from deep_disfluency.feature_extraction.feature_utils import \
     load_data_from_disfluency_corpus_file
 from deep_disfluency.evaluation.disf_evaluation import \
@@ -143,11 +145,13 @@ class DeepDisfluencyTagger(IncrementalTagger):
         if saved_model_dir:
             print ("Loading saved weights from"
                    +saved_model_dir)
+            # # for retraining
+
             self.load_model_params_from_folder(saved_model_dir,
                                                self.args.model_type)
 
             # # for retraining
-            self.load_embeddings(self.args.embeddings)
+            # self.load_embeddings(self.args.embeddings)
         else:
             print ("WARNING no saved model params, needs training.")
             print ("Loading original embeddings")
@@ -350,8 +354,8 @@ class DeepDisfluencyTagger(IncrementalTagger):
             self.initial_h0_state = model.h0.get_value()
             self.initial_c0_state = None
 
-        elif self.model_type == 'lstm':
-            model = LSTM(ne=vocab_size,
+        elif self.model_type in ['lstm','retrainLSTM']:
+            model = my_LSTM(ne=vocab_size,
                          de=emb_dimension,
                          n_lstm=n_hidden,
                          na=n_extra,
@@ -364,23 +368,23 @@ class DeepDisfluencyTagger(IncrementalTagger):
                          bcw=False)
             self.initial_h0_state = model.h0.get_value()
             self.initial_c0_state = model.c0.get_value()
-        elif self.model_type == 'retrainLSTM':
-
-            model = keras_LSTM(sequence_len=256,ne=vocab_size,
-
-                         de=emb_dimension,
-                         n_lstm=n_hidden,
-                         na=n_extra,
-                         n_out=n_classes,
-                         cs=self.window_size,
-                         npos=n_pos,
-
-                         lr=lr,
-                         single_output=True,
-                         cost_function='nll',
-                         bcw=False)
-            self.initial_h0_state = model.h0.get_value()
-            self.initial_c0_state = model.c0.get_value()
+        # elif self.model_type == 'retrainLSTM':
+            #
+            # model = keras_LSTM(sequence_len=256,ne=vocab_size,
+            #
+            #              de=emb_dimension,
+            #              n_lstm=n_hidden,
+            #              na=n_extra,
+            #              n_out=n_classes,
+            #              cs=self.window_size,
+            #              npos=n_pos,
+            #
+            #              lr=lr,
+            #              single_output=True,
+            #              cost_function='nll',
+            #              bcw=False)
+            # self.initial_h0_state = model.h0.get_value()
+            # self.initial_c0_state = model.c0.get_value()
         elif self.model_type == 'bilstm':
             model = BiLstm(ne=vocab_size,
                          de=emb_dimension,
@@ -407,13 +411,21 @@ class DeepDisfluencyTagger(IncrementalTagger):
             self.initial_h0_state = self.model.h0.get_value()
             if model_type == "lstm":
                 self.initial_c0_state = self.model.c0.get_value()
-        elif model_type=="retrainLSTM":
-            lstm_weight,output_weight=self.model.load_trained_weights(model_folder)
-            self.model.layers[0].set_weights(lstm_weight)
-            self.model.layers[1].set_weights(output_weight)
-            self.initial_h0_state = self.model.h0.get_value()
 
-            self.initial_c0_state = self.model.c0.get_value()
+        elif model_type=="retrainLSTM":
+            # lstm_weight,output_weight=self.model.load_trained_weights(model_folder)
+            # self.model.layers[0].set_weights(lstm_weight)
+            # self.model.layers[1].set_weights(output_weight)
+            # self.initial_h0_state = self.model.h0.get_value()
+            #
+            # self.initial_c0_state = self.model.c0.get_value()
+
+            self.model.load_lstm_weights_from_folder(model_folder)
+            # self.model.load_output_weights_from_folder(model_folder)
+            self.model.load_weights(emb=self.load_embeddings_retrain('embeddings.npy'))
+            self.initial_h0_state = self.model.h0.get_value()
+            if model_type == "retrainLSTM":
+                self.initial_c0_state = self.model.c0.get_value()
 
         else:
             raise NotImplementedError('No weight loading for {0}'.format(
@@ -425,17 +437,38 @@ class DeepDisfluencyTagger(IncrementalTagger):
                                 "/../embeddings/"
         # pretrained = gensim.models.Word2Vec.load(embeddings_dir +
         #                                          embeddings_name)
-        # pretrained = KeyedVectors.load(embeddings_dir +embeddings_name)
+        pretrained = KeyedVectors.load(embeddings_dir +embeddings_name)
 
-        pretrained = Word2Vec.load(embeddings_dir + embeddings_name)
+
         # print ("emb shape"+ str(pretrained[pretrained.wv.index2word[0]].shape))
         # print pretrained[0].shape
         # assign and fill in the gaps
-        emb = populate_embeddings(self.args.emb_dimension,
+        emb = populate_both_embeddings(self.args.emb_dimension,
                                   len(self.word_to_index_map.items()),
                                   self.word_to_index_map,
                                   pretrained)
         self.model.load_weights(emb=emb)
+    def load_embeddings_retrain(self, embeddings_name):
+        # load pre-trained embeddings
+        embeddings_dir = os.path.dirname(os.path.realpath(__file__)) +\
+                                "/../embeddings/"
+        embeddings_dir_pretrained = os.path.dirname(os.path.realpath(__file__)) + \
+                         "/../experiments/041/epoch_16/"
+        # pretrained = gensim.models.Word2Vec.load(embeddings_dir +
+        #                                          embeddings_name)
+        # pretrained = KeyedVectors.load(embeddings_dir +embeddings_name)
+
+        pretrained_swbd = np.load(embeddings_dir_pretrained + embeddings_name,allow_pickle=True)
+        pretrained_DB = KeyedVectors.load(embeddings_dir + 'DB_clean_50')
+        # print ("emb shape"+ str(pretrained[pretrained.wv.index2word[0]].shape))
+        # print pretrained[0].shape
+        # assign and fill in the gaps
+        emb = populate_both_embeddings(self.args.emb_dimension,
+                                  len(self.word_to_index_map.items()),
+                                  self.word_to_index_map,
+                                  pretrained_swbd,pretrained_DB)
+        return emb
+        # self.model.load_weights(emb=emb)
 
     def standardize_word_and_pos(self, word, pos=None,
                                  proper_name_pos_tags=["NNP", "NNPS",
@@ -494,13 +527,13 @@ class DeepDisfluencyTagger(IncrementalTagger):
             c0_state = self.initial_c0_state
             h0_state = self.initial_h0_state
         else:
-            if self.model_type == "lstm":
+            if self.model_type in ["lstm","retrainLSTM"]:
                 c0_state = self.state_history[-1][0][-1]
                 h0_state = self.state_history[-1][1][-1]
             elif self.model_type == "elman":
                 h0_state = self.state_history[-1][-1]
 
-        if self.model_type == "lstm":
+        if self.model_type in ["lstm","retrainLSTM"]:
             self.model.load_weights(c0=c0_state,
                                     h0=h0_state)
         elif self.model_type == "elman":
@@ -521,7 +554,7 @@ class DeepDisfluencyTagger(IncrementalTagger):
                                           n=self.window_size)
                       ]
         # print "word_window, pos_window", word_window, pos_window
-        if self.model_type == "lstm":
+        if self.model_type in ["lstm","retrainLSTM"]:
             h_t, c_t, s_t = self.model.\
                 soft_max_return_hidden_layer([word_window], [pos_window])
             self.softmax_history.append(s_t)
@@ -663,7 +696,7 @@ class DeepDisfluencyTagger(IncrementalTagger):
             self.decoder.rollback(backwards)
 
     def init_deep_model_internal_state(self):
-        if self.model_type == "lstm":
+        if self.model_type in ["lstm","retrainLSTM"]:
             self.model.load_weights(c0=self.initial_c0_state,
                                     h0=self.initial_h0_state)
         elif self.model_type == "elman":
@@ -683,7 +716,7 @@ class DeepDisfluencyTagger(IncrementalTagger):
                                     idx_to_label_dict):
         output = []
         true_y = []
-        log_file = open('log_evaluate_weighted.txt', 'a+')
+        log_file = open('log_evaluate_weighted_retrain.txt', 'a+')
         # print('validation_matrices len')
         # print(len(validation_matrices))
         # print(type(validation_matrices))
@@ -710,7 +743,9 @@ class DeepDisfluencyTagger(IncrementalTagger):
         log_file.write(str(true_y))
         log_file.write("\n")
         log_file.write(str(output))
+        log_file.write("\n")
         log_file.write('dict item')
+        log_file.write("\n")
         log_file.write(str(idx_to_label_dict.items()))
         log_file.write('\n')
         labels_id=[]
@@ -725,9 +760,11 @@ class DeepDisfluencyTagger(IncrementalTagger):
             labels_id.append(idx)
 
             targets.append(idx_to_label_dict[idx])
-        log_file.write('dict item target')
-        log_file.write('\n')
+        log_file.write('target\n')
         log_file.write(str(targets))
+        log_file.write('label_id\n')
+        log_file.write(str(labels_id))
+
         log_file.write('\n')
         log_file.write(str(p_r_f_tags))
         log_file.write('\n')
@@ -799,7 +836,7 @@ class DeepDisfluencyTagger(IncrementalTagger):
         # validation matrices filepath much smaller so can store these
         # and preprocess them all:
         validation_matrices = [np.load(
-            validation_dialogues_filepath + "/" + fp)
+            validation_dialogues_filepath + "/" + fp,allow_pickle=True)
             for fp in os.listdir(
                 validation_dialogues_filepath)]
 
@@ -906,7 +943,7 @@ class DeepDisfluencyTagger(IncrementalTagger):
         # validation matrices filepath much smaller so can store these
         # and preprocess them all:
         validation_matrices = [np.load(
-                                    validation_dialogues_filepath + "/" + fp)
+                                    validation_dialogues_filepath + "/" + fp,allow_pickle=True)
                                for fp in os.listdir(
                                 validation_dialogues_filepath)]
 
@@ -922,7 +959,8 @@ class DeepDisfluencyTagger(IncrementalTagger):
                                for d_matrix in validation_matrices
                                ]
 
-        idx_2_label_dict = {v: k for k, v in self.tag_to_index_map.items()}
+        # idx_2_label_dict = {v: k for k, v in self.tag_to_index_map.items()}
+        idx_2_label_dict=self.make_tag_to_index_map()
         if not os.path.exists(model_dir):
             os.mkdir(model_dir)
         start = 1  # by default start from the first epoch
@@ -951,7 +989,7 @@ class DeepDisfluencyTagger(IncrementalTagger):
                         break
                     # print (dialogue_f)
                     d_matrix = np.load(train_dialogues_filepath + "/" +
-                                       dialogue_f)
+                                       dialogue_f,allow_pickle=True)
 
                     # print(train_dialogues_filepath + "/" +dialogue_f)
                     # print(d_matrix)
@@ -966,8 +1004,12 @@ class DeepDisfluencyTagger(IncrementalTagger):
                                           pre_seg=self.args.utts_presegmented
                                                               )
 
-                        # print(word_idx)
-                        # print(y)
+                    log_file.write('\ntest tags\n')
+                    log_file.write(str(dialogue_f))
+                    log_file.write(str(word_idx)+'\n')
+                    log_file.write(str(y)+'\n')
+                    log_file.close()
+
                     # if i==2:
                     #     return
                     # else:
@@ -984,7 +1026,7 @@ class DeepDisfluencyTagger(IncrementalTagger):
                     print ('[learning] file %d completed in %.2f (sec) epoch %d <<\r '%((i+1),(time.time() - tic),e))
             # save the initial states we've learned to override the random
             self.initial_h0_state = self.model.h0.get_value()
-            if self.args.model_type == "lstm":
+            if self.args.model_type in ["lstm",'retrainLSTM']:
                 self.initial_c0_state = self.model.c0.get_value()
             # reset and evaluate simply
             self.reset()
@@ -1006,9 +1048,15 @@ class DeepDisfluencyTagger(IncrementalTagger):
                 if results:
                     val_score = results['f1_tags']  #TODO get best score type
                     print ("epoch training loss %.3f"% train_loss)
+                    log_file("\n epoch\n")
+                    log_file("\n "+str(e)+'\n')
+                    log_file("\n epoch training loss \n")
+                    log_file("\n "+str(train_loss))
                     print ('[learning] epoch %d  completed in %.2f (sec) <<\r' % (e,(time.time() - tic)))
 
                     print ("validation score %.3f" %(val_score))
+                    log_file("\n validation score \n")
+                    log_file("\n " + str(val_score)+"\n")
                     tag_accuracy_file.write(str(e) + "\n" + results['tag_summary'] +
                                             "\n%%%%%%%%%%\n")
                     log_file.write(str(results))

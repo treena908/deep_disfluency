@@ -9,7 +9,7 @@ except ImportError:
     print "no installed deep_disfluency package, pathing to source"
     import sys
     sys.path.append("../")
-from deep_disfluency.tagger.deep_tagger import DeepDisfluencyTagger
+from deep_disfluency.experiments.results.deep_tagger import DeepDisfluencyTagger
 
 
 # In[2]:

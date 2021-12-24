@@ -25,28 +25,28 @@ def extract_features_DB(args):
     corpus_filename = corpusName + "_data.csv"
 
 
-    # if args.newTags:
-    #     # create the tag representations (normally from the training data
-    #     # not allowed to look into unseen tags in the test/dev set
-    #     # assuming the tags we created for DB
-    #     c = [
-    #         sys.executable,
-    #         os.path.dirname(os.path.realpath(__file__)) +
-    #         '/create_tag_files_DB.py',
-    #         '-i', args.corpusLocation + "/" + corpus_filename,
-    #         '-tag', args.tagFolder,
-    #         ]
-    #
-    #     subprocess.call(c)
+    if args.newTags:
+        # create the tag representations (normally from the training data
+        # not allowed to look into unseen tags in the test/dev set
+        # assuming the tags we created for DB
+        c = [
+            sys.executable,
+            os.path.dirname(os.path.realpath(__file__)) +
+            '/create_tag_files_DB.py',
+            '-i', args.corpusLocation + "/" + corpus_filename,
+            '-tag', args.tagFolder,
+            ]
+
+        subprocess.call(c)
     c = [
         sys.executable,
         os.path.dirname(os.path.realpath(__file__)) +
         '/save_feature_matrices.py',
         '-i', args.corpusLocation + "/" + corpus_filename,
         '-m', args.matrixFolder,
-        '-w', args.tagFolder + "/DB_word_rep.csv",
-        '-p', args.tagFolder + "/DB_pos_rep.csv",
-        '-tag', args.tagFolder + "/DB_disf1_tags.csv"
+        '-w', args.tagFolder + "/swbd_DB_word_rep.csv",
+        '-p', args.tagFolder + "/swbd_pos_rep_041.csv",
+        '-tag', args.tagFolder + "/swbd_DB_disf1_tags.csv"
     ]
 
     subprocess.call(c)

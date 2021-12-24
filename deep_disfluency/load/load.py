@@ -117,11 +117,27 @@ def load_tags(filepath):
     by an integer
     """
     tag_dictionary = defaultdict(int)
+    log_file = open('load.txt', 'a')
+    # print(filepath)
+    if 'tags' in filepath:
+        log_file.write('file tag ' + filepath)
+        log_file.write('\n ')
+
     f = open(filepath)
+
     for line in f:
         l = line.strip('\n').split(",")
+
+
+        if 'tags' in filepath:
+
+            log_file.write('{}{}{}'.format('first ',str(l[0])+" ",str(l[1])))
+            log_file.write('\n ')
+
         tag_dictionary[l[1]] = int(l[0])
     f.close()
+    log_file.close()
+    # print(tag_dictionary)
     return tag_dictionary
 
 
@@ -449,8 +465,8 @@ def get_tag_data_from_corpus_file(f, representation="1", limit=8):
     NB this does not convert them into one-hot arrays, just outputs lists of string tags in GOLD form."""
      
     f = open(f)
-    print("loading data")
-    print(f.name)
+    # print("loading data")
+    # print(f.name)
     count_seq = 0
     IDs = []
     seq = []
@@ -530,4 +546,5 @@ def download(origin):
     urllib.urlretrieve(origin, name)
 
 if __name__ == '__main__':
-    print(load_word_rep("../data/tag_representations/swbd_pos_rep.csv"))
+    # print(load_word_rep("../data/tag_representations/swbd_pos_rep.csv"))
+    print(load_tags("../data/tag_representations/swbd_DB_disf1_tags.csv"))

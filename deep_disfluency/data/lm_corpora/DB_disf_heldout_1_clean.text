@@ -1948,8 +1948,8 @@ DB/Lanzi/Group1/538.cha:PAR:116:da,is it not tomorrow
 POS,VBZ PRP RB NN
 DB/Lanzi/Group1/538.cha:PAR:117:da,comes every other Monday
 POS,VBZ DT JJ NNP
-DB/Lanzi/Group1/538.cha:PAR:118:da,oh maybe I was on the phone
-POS,UH RB PRP VBD IN DT NN
+DB/Lanzi/Group1/538.cha:PAR:118:da,oh I was on the phone
+POS,UH PRP VBD IN DT NN
 DB/Lanzi/Group1/538.cha:PAR:119:da,oh I was
 POS,UH PRP VBD
 DB/Lanzi/Group1/538.cha:PAR:120:da,yeah
@@ -2802,8 +2802,8 @@ DB/Lanzi/Group1/538.cha:PAR:543:da,oh yeah
 POS,UH UH
 DB/Lanzi/Group1/538.cha:PAR:544:da,of course
 POS,RB RB
-DB/Lanzi/Group1/538.cha:PAR:545:da,so that means yeah well I hafta get another book
-POS,RB DT VBZ UH UH PRP VBP VB DT NN
+DB/Lanzi/Group1/538.cha:PAR:545:da,so that means I hafta get another book
+POS,RB DT VBZ PRP VBP VB DT NN
 DB/Lanzi/Group1/538.cha:PAR:546:da,yup
 POS,UH
 DB/Lanzi/Group1/538.cha:PAR:547:da,so or have my sister help me put together a slideshow

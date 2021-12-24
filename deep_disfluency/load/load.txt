@@ -1,0 +1,27 @@
+file tag ../data/tag_representations/DB_disf1_tags.csv
+ first 0 <e/>
+ first 1 <e/><rm-1/><rpEndSub/>
+ first 2 <e/><rm-2/><rpEndSub/>
+ first 3 <e/><rpEndDel/>
+ first 4 <f/>
+ first 5 <rm-1/><rpEndDel/>
+ first 6 <rm-1/><rpEndSub/>
+ first 7 <rm-2/><rpEndDel/>
+ first 8 <rm-2/><rpEndSub/>
+ first 9 <rm-2/><rpMid/>
+ first 10 <rm-3/><rpEndDel/>
+ first 11 <rm-3/><rpEndSub/>
+ first 12 <rm-3/><rpMid/>
+ first 13 <rm-4/><rpEndDel/>
+ first 14 <rm-4/><rpEndSub/>
+ first 15 <rm-4/><rpMid/>
+ first 16 <rm-5/><rpEndDel/>
+ first 17 <rm-5/><rpEndSub/>
+ first 18 <rm-5/><rpMid/>
+ first 19 <rm-6/><rpMid/>
+ first 20 <rm-7/><rpEndDel/>
+ first 21 <rm-7/><rpMid/>
+ first 22 <rm-8/><rpMid/>
+ first 23 <rpEndDel/>
+ first 24 <rpEndSub/>
+ 

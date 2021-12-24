@@ -1,0 +1,37 @@
+Transfer learning:
+to-do list:
+1. fix the pos label POS_tagging in feature_extraction/POS_tagging
+ - create the pos list on training data of DB-done
+ -CHECK WITH swbd, if there is any mismatch-done
+2. change the train/test, dev format of DB dataset :
+    - make the word list on swbd-train and DB-train -done
+        -clean text in DB --done
+            -remove apostrophe --done
+        -remove & and &- symbol --done
+        -for word with &unc&-kept it as iit is --done
+        - check on the disfluency tag--why there are two unusual tags--manually done
+        (<e/><rm-1/><rpEndSub/>, <e/><rm-2/><rpEndSub/>
+        ,<e/><rpEndDel/>).
+        DB/Pitt/Dementia/cookie/078-1.cha:PAR:5
+        DB/Pitt/Dementia/cookie/018-0.cha:PAR:28
+        DB/Pitt/Dementia/cookie/350-1.cha:PAR:14
+        DB/Pitt/Dementia/cookie/236-0.cha:PAR:10
+
+        - to use parameter sharing, we have to make the label sets same. we have some discrepencies
+        regarding that.--done
+            -one extra label, its addded
+    - the data is in entire transscript format
+    - need to chunk it (code is in lstm.py (fit method))
+    - add padding to the input and fit the model.
+        -look into padding
+3. training instance by instance/ or other.
+
+filename:nuu_num
+word pos label
+3. make the word list adding DB train set and make word2index, pos2index and label2index files.
+ - add word set including source_train, target_train file
+ - create word2index as per index value of word set
+ - create feature matix for input (num_instance,max_len,window)-por both words and pos.
+ - during TL, transfer embedding weight as well, initially the target data's embedding will be word2vec value. then the common words
+ that are in source and target train data, will be replace by the embedding for the source weight. rest will be iniatialized
+ with word2vec.

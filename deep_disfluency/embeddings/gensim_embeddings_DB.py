@@ -31,9 +31,9 @@ class MySentences(object):
 training_files = [DB_clean_directory +
                   "/DB_disf_train_1_clean.text"]
 sentences = MySentences(training_files)
-emb_size = 50
-model = gensim.models.Word2Vec(sentences, min_count=2, size=emb_size)
-model.save('db_clean_50')
+# emb_size = 50
+# model = gensim.models.Word2Vec(sentences, min_count=2, size=emb_size)
+# model.save('DB_clean_50')
 # print (model.index2word[0])
 # print (len(model.index2word))
 # print model['um']

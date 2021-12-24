@@ -2,7 +2,9 @@ import os
 import pandas
 import numpy as np
 import argparse
-
+import sys
+THIS_DIR = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(THIS_DIR + "/../..")
 from deep_disfluency.load.load import load_word_rep, load_tags
 from feature_utils import load_data_from_disfluency_corpus_file
 from feature_utils import load_data_from_corpus_file
@@ -135,23 +137,35 @@ def save_feature_matrices(target_dir,
             lm_feature_list = open_with_pandas_read_csv(lm_filename)
         for i in range(0, len(frames)):
             tag = labels[i]
-            word_ix = word_2_idx_dict.get(lex_data[i])
+            word_ix = word_2_idx_dict.get(lex_data[i]+'\r')
             if word_ix is None:
                 # print "unknown word", lex_data[i]
                 word_ix = word_2_idx_dict.get("<unk>")
                 unknown_words += 1
-            # print word_ix
+                # print('unk word')
+                # print(unknown_words)
+                # print (word_ix)
+            # print('word')
+            # print(lex_data[i])
+            # print (word_ix)
             pos_ix = pos_2_idx_dict.get(pos_data[i])
+            # print(pos_data[i])
             if pos_ix is None:
                 # print "unknown pos", "%%%" + pos_data[i] + "%%%"
                 pos_ix = pos_2_idx_dict.get("<unk>")
                 unknown_pos += 1
             # print pos_ix
             # print labels[i]
-            label_ix = label_2_idx_dict.get(tag)
+
+            label_ix = label_2_idx_dict.get(tag+'\r')
+            if label_ix is None:
+                label_ix = label_2_idx_dict.get(tag )
+
             if label_ix is None:
                 # TODO not looking at 1-shot learning for now
-                # print "no label for", tag
+
+                print "no label for", tag
+                print(label_2_idx_dict.keys())
                 raise Exception
             # final_lexical = np.asarray([[word_ix, pos_ix]])\
             #    .reshape((2, 1))
@@ -180,6 +194,8 @@ def save_feature_matrices(target_dir,
             # for fv in frame_vector:
             #    print fv
             # print "len frame vector", len(frame_vector)
+            # print(frame_vector)
+
             all_features.append(np.asarray(frame_vector))
         dialogue_matrix = np.concatenate([all_features])
         d_name = d_name.split('/')
@@ -196,6 +212,7 @@ def save_feature_matrices(target_dir,
     # print unknown_pos, "unknown pos in corpus"
 
 if __name__ == '__main__':
+    log_file = open('matrice.txt', 'w')
     parser = argparse.ArgumentParser(description='Combine all features\
     into matrices (one per dialogue participant) and save.')
     parser.add_argument(
@@ -239,7 +256,9 @@ if __name__ == '__main__':
     word_dict = load_word_rep(args.word_rep_file)
     pos_dict = load_word_rep(args.pos_rep_file)
     label_dict = load_tags(args.label_rep_file)
+    log_file.write('label len')
 
+    log_file.write(str(label_dict))
     # print 'tags', args.label_rep_file
     use_timing_data = False
     if "timings" in args.corpus_file:
@@ -257,13 +276,21 @@ if __name__ == '__main__':
                                                     pos_seq,
                                                     targets,
             add_uttseg="uttseg" in args.label_rep_file,
-            add_dialogue_acts="dact" in args.label_rep_file
-                                                    )
+            add_dialogue_acts="dact" in args.label_rep_file)
+
+
         dialogues = []
         for conv_no, indices, lex_data, pos_data, labels in raw_dialogues:
             frames = indices
             dialogues.append((conv_no, (frames, lex_data, pos_data, indices,
                                         labels)))
+            log_file.write('test ...\n')
+            log_file.write(str(conv_no))
+            log_file.write('test ...\n')
+            log_file.write(str(lex_data))
+            log_file.write('test ...\n')
+            log_file.write(str(labels))
+
 
     save_feature_matrices(args.matrices_folder,
                           dialogues,

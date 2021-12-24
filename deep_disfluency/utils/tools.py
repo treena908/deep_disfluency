@@ -124,7 +124,7 @@ def verify_disfluency_tags(tags, normalize_ID=False):
     repairs = defaultdict(list)
     for r in id_map.keys():
         repairs[r] = [None, None, None]  # three valued None<False<True
-    print(repairs)
+    # print(repairs)
     # second pass verify the validity of the tags
     # and (optionally) modify the IDs
     for i in range(0, len(tags)):  # iterate over all tag strings
@@ -135,8 +135,8 @@ def verify_disfluency_tags(tags, normalize_ID=False):
                         for ID in repairs.keys()])),\
                         "Unresolved repairs at fluent tag\n\t" + str(repairs)
         for tag in get_tags(tags[i]):  # iterate over all tags
-            print(i)
-            print(tag)
+            # print(i)
+            # print(tag)
             if tag == "<e/>":
                 new_tags.append(tag)
                 continue
@@ -333,10 +333,10 @@ def convert_from_eval_tags_to_inc_disfluency_tags(tags, words,
     """
     repair_dict = defaultdict(list)
     new_tags = []
-    print("tags")
-    print(tags)
-    print('words')
-    print(words)
+    # print("tags")
+    # print(tags)
+    # print('words')
+    # print(words)
     for t in range(0, len(tags)):
         if "uttseg" in representation:
             m = re.search(r'<[ct]*/>', tags[t])
@@ -367,10 +367,10 @@ def convert_from_eval_tags_to_inc_disfluency_tags(tags, words,
             rps = re.findall("<rps id\=\"[0-9]+\"\/>", tags[t], re.S)
             for r in rps:
                 repairID = r[r.find("=")+2:-3]
-                print('repairID')
-                print(repairID)
-                print(repair_dict.get(repairID))
-                print(str(repairID)+str(tags)+str(words))
+                # print('repairID')
+                # print(repairID)
+                # print(repair_dict.get(repairID))
+                # print(str(repairID)+str(tags)+str(words))
                 assert repair_dict.get(repairID), str(repairID)+str(tags)+str(words)
                 repair_dict[repairID][1] = t
                 dist = min(t-repair_dict[repairID][0], limit)
@@ -573,7 +573,7 @@ def verify_dialogue_data_matrices_from_folder(matrices_folder_filepath,
     particular configuration in args and tag2idx dicts.
     """
     for dialogue_file in os.listdir(matrices_folder_filepath):
-        v = np.load(matrices_folder_filepath + "/" + dialogue_file)
+        v = np.load(matrices_folder_filepath + "/" + dialogue_file,allow_pickle=True)
         if not verify_dialogue_data_matrix(v,
                                            word_dict=word_dict,
                                            pos_dict=pos_dict,
@@ -608,14 +608,13 @@ def dialogue_data_and_indices_from_matrix(d_matrix,
     net in training for each label in :labels:. :extra: is the matrix
     of extra features.
     """
-    print('printinf d_matrix')
-    print(len(d_matrix))
+
     if len(d_matrix)==0:
         return
     utt_indices = d_matrix[:, 0]
     words = d_matrix[:, 1]
     pos = d_matrix[:, 2]
-    extra = None if n_extra == 0 else d_matrix[:, 3: -1]
+    extra = str(None) if n_extra == 0 else d_matrix[:, 3: -1]
     labels = d_matrix[:, -1]
     word_idx = []
     pos_idx = []
@@ -624,6 +623,7 @@ def dialogue_data_and_indices_from_matrix(d_matrix,
     previous_idx = -1
     for i, a_tuple in enumerate(zip(utt_indices, words, pos, labels)):
         utt_idx, w, p, l = a_tuple
+        # print(w)
         current.append((w, p, l))
         if pre_seg:
             if previous_idx != utt_idx or i == len(labels)-1:
@@ -638,6 +638,10 @@ def dialogue_data_and_indices_from_matrix(d_matrix,
                 pos_idx.extend(context_win_backwards([x[1] for x in current],
                                                      window_size))
                 current = []
+            # print('final')
+            # print(w)
+            # print(word_idx)
+
         elif i == len(labels)-1:
             # indices = indices_from_length(len(current), bs)
             # currently a simple window of same size
@@ -647,12 +651,25 @@ def dialogue_data_and_indices_from_matrix(d_matrix,
                                                        window_size)
             pos_idx = padding + context_win_backwards([x[1] for x in current],
                                                       window_size)
+
         previous_idx = utt_idx
+        print(pos_idx)
+        print(word_idx)
+
+        # print(extra)
+        # print(labels)
+        # print(indices)
     return np.asarray(word_idx, dtype=np.int32), np.asarray(pos_idx,
                                                             dtype=np.int32),\
-                                                            extra,\
                                                             labels,\
                                         np.asarray(indices, dtype=np.int32)
+
+    # return np.asarray(word_idx, dtype=np.int32), np.asarray(pos_idx,
+    #                                                         dtype=np.int32),\
+    #                                                         extra,\
+    #                                                         labels,\
+    #                                     np.asarray(indices, dtype=np.int32)
+
 
 
 if __name__ == '__main__':
@@ -661,19 +678,19 @@ if __name__ == '__main__':
         '<f/>'
     tags = tags.split(",")
     words = "i,like,uh,love,to,uh,love,alot".split(",")
-    print(tags)
-    print(len(tags))
-    print(len(words))
+    # print(tags)
+    # print(len(tags))
+    # print(len(words))
     new_tags = convert_from_eval_tags_to_inc_disfluency_tags(
                                                     tags,
                                                     words,
                                                     representation="disf1")
-    print(new_tags)
+    # print(new_tags)
     old_tags = convert_from_inc_disfluency_tags_to_eval_tags(
                                                     new_tags,
                                                     words,
                                                     representation="disf1")
     assert old_tags == tags, "\n " + str(old_tags) + "\n" + str(tags)
     x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-    print(context_win_backwards(x, 2))
+    # print(context_win_backwards(x, 2))
     # print "indices", indices_from_length(11, 9)

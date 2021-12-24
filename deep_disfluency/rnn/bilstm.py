@@ -2,7 +2,7 @@ import numpy as np
 import os
 import theano
 import theano.tensor as T
-from deep_disfluency.rnn.lstm import LSTM
+from deep_disfluency.rnn.lstm import my_LSTM
 from theano import shared
 from collections import OrderedDict
 class BiLstm(object):

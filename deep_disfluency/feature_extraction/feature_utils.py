@@ -1,8 +1,13 @@
 from __future__ import division
+import os
+import sys
 import csv
 import numpy
 from copy import deepcopy
 import argparse
+THIS_DIR = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(THIS_DIR + "/../../")
+
 from deep_disfluency.utils.tools import \
     convert_from_eval_tags_to_inc_disfluency_tags
 
@@ -47,7 +52,30 @@ def wer(r, h, macro=False):
     wer = 1 if len(r) == 0 and 0 < len(h) else d[len(r)][len(h)]/float(len(r))
     return 100 * float(wer)
 
+def count_tags(s, open_delim='<',
+             close_delim='/>'):
+    """Iterator to spit out the xml style disfluency tags in a given string.
 
+    Keyword arguments:
+    s -- input string
+    """
+    t=s
+    count=0
+    while True:
+        # Search for the next two delimiters in the source text
+        start = t.find(open_delim)
+        end = t.find(close_delim)
+        # We found a non-empty match
+        if -1 < start < end:
+            # Skip the length of the open delimiter
+            start += len(open_delim)
+            # Spit out the tag
+            yield open_delim + t[start:end].strip() + close_delim
+            # Truncate string to start from last match
+            t = t[end + len(close_delim):]
+            count+=1
+        else:
+            return count
 def get_tags(s, open_delim='<',
              close_delim='/>'):
     """Iterator to spit out the xml style disfluency tags in a given string.
@@ -344,12 +372,15 @@ def load_data_from_disfluency_corpus_file(fp, representation="disf1", limit=8,
     currentPOS = []
     currentTags = []
     current_fake_time = 0
-    
+
     #corpus = "" # can write to file
     for ref,timing,word,postag,disftag in reader: #mixture of POS and Words
         # print ref, timing, word, postag, disftag
         counter+=1
+
         if not ref == "":
+
+
             if count_seq>0: #do not reset the first time
                 #convert to the inc tags
                 if convert_to_dnn_format:
@@ -382,6 +413,8 @@ def load_data_from_disfluency_corpus_file(fp, representation="disf1", limit=8,
         currentTags.append(disftag)
         currentTimings.append(timing)
         current_fake_time+=1
+
+
     #flush
     if not currentWords == []:
         if convert_to_dnn_format:
@@ -396,9 +429,7 @@ def load_data_from_disfluency_corpus_file(fp, representation="disf1", limit=8,
         targets.append(tuple(currentTags))
         IDs.append(utt_reference)
         timings.append(tuple(currentTimings))
-    print(len(seq))
-    print(len(targets))
-    print(len(pos_seq))
+
     assert len(seq) == len(targets) == len(pos_seq)
     # print "loaded " + str(len(seq)) + " sequences"
     f.close()

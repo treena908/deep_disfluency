@@ -377,9 +377,10 @@ def fit(word_idx, labels, lr, indices, pos_idx=None,
                 break
 
         print('training data')
-        print(word_idx[start:stop+1, :].shape)
-        print(pos_idx[start:stop+1, :].shape)
-        print(labels[stop].shape)
+        print('start stop %d' % (stop - start + 1))
+        print(len(word_idx[start:stop+1, :]))
+        # print(pos_idx[start:stop+1, :].shape)
+        print((labels[stop]))
 
 
 
@@ -387,7 +388,7 @@ def fit(word_idx, labels, lr, indices, pos_idx=None,
 def test_train_data():
     train_dialogues_filepath=THIS_DIR+'/../data/disfluency_detection/feature_matrices/test'
     # dialogue_f='DBDePauldepaul1a.chaPAR.npy'
-    dialogue_f='DBPittControlcookie0733.chaPAR.npy'
+    dialogue_f='DBPittControlcookie073B3.chaPAR.npy'
 
     d_matrix = np.load(train_dialogues_filepath + "/" +
                        dialogue_f)
@@ -399,15 +400,21 @@ def test_train_data():
             d_matrix,
             n_extra=None,
             window_size=2,
-            bs=9,
+            bs=5,
             pre_seg=True
         )
-    fit(word_idx,
-              y,
-              0.0001,
-              indices,
-              pos_idx=pos_idx,
-              extra_features=extra)
+    print(word_idx[1])
+    print(y[1])
+    print(indices[1])
+    print(word_idx[2])
+    print(y[2])
+    print(indices[2])
+    # fit(word_idx,
+    #           y,
+    #           0.0001,
+    #           indices,
+    #           pos_idx=pos_idx,
+    #           extra_features=extra)
 
 
 
