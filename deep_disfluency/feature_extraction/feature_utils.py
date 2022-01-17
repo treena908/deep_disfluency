@@ -52,30 +52,7 @@ def wer(r, h, macro=False):
     wer = 1 if len(r) == 0 and 0 < len(h) else d[len(r)][len(h)]/float(len(r))
     return 100 * float(wer)
 
-def count_tags(s, open_delim='<',
-             close_delim='/>'):
-    """Iterator to spit out the xml style disfluency tags in a given string.
 
-    Keyword arguments:
-    s -- input string
-    """
-    t=s
-    count=0
-    while True:
-        # Search for the next two delimiters in the source text
-        start = t.find(open_delim)
-        end = t.find(close_delim)
-        # We found a non-empty match
-        if -1 < start < end:
-            # Skip the length of the open delimiter
-            start += len(open_delim)
-            # Spit out the tag
-            yield open_delim + t[start:end].strip() + close_delim
-            # Truncate string to start from last match
-            t = t[end + len(close_delim):]
-            count+=1
-        else:
-            return count
 def get_tags(s, open_delim='<',
              close_delim='/>'):
     """Iterator to spit out the xml style disfluency tags in a given string.

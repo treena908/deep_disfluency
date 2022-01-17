@@ -11,7 +11,7 @@ filename='embeddings.npy'
 d_matrix = np.load(path + "/" +
                        filename)
 print(d_matrix.shape)
-print(len(d_matrix[0]))
+print(d_matrix[0])
 # word_path = os.path.dirname(os.path.realpath(__file__)) +\
 #             "/../data/tag_representations/{}.csv".format('DB_word_rep')
 # word_to_index_map = load_tags(word_path)

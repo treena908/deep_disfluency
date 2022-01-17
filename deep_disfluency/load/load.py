@@ -547,4 +547,4 @@ def download(origin):
 
 if __name__ == '__main__':
     # print(load_word_rep("../data/tag_representations/swbd_pos_rep.csv"))
-    print(load_tags("../data/tag_representations/swbd_DB_disf1_tags.csv"))
+    print(load_tags("../data/tag_representations/DB_disf1_tags.csv"))
