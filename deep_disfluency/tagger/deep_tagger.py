@@ -1043,16 +1043,16 @@ class DeepDisfluencyTagger(IncrementalTagger):
                 log_file.write(str(results))
                 if results:
                     val_score = results['f1_tags']  #TODO get best score type
-                    print ("epoch training loss %.3f"% train_loss)
-                    log_file("\n epoch\n")
-                    log_file("\n "+str(e)+'\n')
-                    log_file("\n epoch training loss \n")
-                    log_file("\n "+str(train_loss))
+                    print ("epoch training loss retrain %.3f"% train_loss)
+                    log_file.write("\n epoch\n")
+                    log_file.write("\n "+str(e)+'\n')
+                    log_file.write("\n epoch training loss \n")
+                    log_file.write("\n "+str(train_loss))
                     print ('[learning] epoch %d  completed in %.2f (sec) <<\r' % (e,(time.time() - tic)))
 
                     print ("validation score %.3f" %(val_score))
-                    log_file("\n validation score \n")
-                    log_file("\n " + str(val_score)+"\n")
+                    log_file.write("\n validation score \n")
+                    log_file.write("\n " + str(val_score)+"\n")
                     tag_accuracy_file.write(str(e) + "\n" + results['tag_summary'] +
                                             "\n%%%%%%%%%%\n")
                     log_file.write(str(results))
