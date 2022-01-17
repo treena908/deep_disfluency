@@ -35,3 +35,10 @@ word pos label
  - during TL, transfer embedding weight as well, initially the target data's embedding will be word2vec value. then the common words
  that are in source and target train data, will be replace by the embedding for the source weight. rest will be iniatialized
  with word2vec.
+ More to look into
+  - no improve upto 5 epoch after TL
+  - try to use theano on GPU
+    - first clear memory in lab PC
+    - then try to run theano on gpu
+   - this week can try bi-lstm on theano
+   - look into how CRF works
