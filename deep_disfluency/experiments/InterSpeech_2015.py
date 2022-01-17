@@ -14,7 +14,7 @@ import zipfile
 import urllib
 THIS_DIR = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(THIS_DIR + "/../../")
-from deep_disfluency.experiments.results.deep_tagger import DeepDisfluencyTagger
+from deep_disfluency.tagger.deep_tagger import DeepDisfluencyTagger
 
 
 # The data must been downloaded

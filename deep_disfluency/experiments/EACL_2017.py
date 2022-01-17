@@ -15,7 +15,7 @@ import zipfile
 import tarfile
 THIS_DIR = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(THIS_DIR + "/../../")
-from deep_disfluency.experiments.results.deep_tagger import DeepDisfluencyTagger
+from deep_disfluency.tagger.deep_tagger import DeepDisfluencyTagger
 
 # The data must been downloaded
 # and put in place according to the top-level README
